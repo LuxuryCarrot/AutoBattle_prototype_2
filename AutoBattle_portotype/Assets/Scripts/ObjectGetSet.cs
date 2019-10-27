@@ -20,6 +20,7 @@ public class ObjectGetSet : MonoBehaviour
             {
                 chess = hit.rigidbody.transform;
                 startPos = chess.position;
+                chess.GetComponent<Rigidbody>().isKinematic = true;
             }
         }
         else if(Input.GetMouseButton(0))
@@ -42,6 +43,7 @@ public class ObjectGetSet : MonoBehaviour
                 if (tile != null)
                 {
                     chess.position = tile.position + new Vector3(0, 2, 0);
+                    chess.GetComponent<Rigidbody>().isKinematic = false;
                     chess.gameObject.layer = 0;
                 }
                 else
