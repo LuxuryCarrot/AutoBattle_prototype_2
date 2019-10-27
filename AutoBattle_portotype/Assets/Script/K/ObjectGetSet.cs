@@ -16,7 +16,7 @@ public class ObjectGetSet : MonoBehaviour
             
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if(Physics.Raycast(ray,out hit, 1000, 512))
+            if(Physics.Raycast(ray,out hit, 1000, 1024))
             {
                 chess = hit.rigidbody.transform;
                 startPos = chess.position;
@@ -29,7 +29,7 @@ public class ObjectGetSet : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 1000, 1024))
+                if (Physics.Raycast(ray, out hit, 1000, 2048))
                 {
                     chess.position = hit.point + new Vector3(0, 2, 0);
                     tile = hit.rigidbody.transform;
