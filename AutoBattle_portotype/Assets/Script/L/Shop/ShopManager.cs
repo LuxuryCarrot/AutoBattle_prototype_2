@@ -4,38 +4,29 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    public PlayerManager Player;
-
     public GameObject inventoryFullErrorTEXT;
     public GameObject NoBalanceErrorTEXT;
 
     public int[] iShopSection = new int[5];
 
 
-    private GameManager GamemgrScript;
     // Start is called before the first frame update
-    void Start()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-        GamemgrScript = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-
-    }
 
     // Update is called once per frame
     void Update()
     {
-        if (GamemgrScript.timeLeft > 0)
+        if (GameManager.instance.timeLeft > 0)
         {
             for (int i = 0; i < 5; i++)
             {
-                Debug.Log("GAMEMANGER상속: " + GamemgrScript.randShop[i]);
+                Debug.Log("GAMEMANGER상속: " + GameManager.instance.randShop[i]);
             }
         }
     }
 
     public void BuySomething()
     {
-        if (!Player.isInventoryFull)
+        if (!PlayerManager.instance.isInventoryFull)
         {
             Debug.Log("Someting buy");
         }
@@ -47,10 +38,10 @@ public class ShopManager : MonoBehaviour
 
     public void ExpBUY()
     {
-        if (Player.bMoneyLeft)
+        if (PlayerManager.instance.bMoneyLeft)
         {
-            Player.iMoney -= 5;
-            Player.iExp += 5;
+            PlayerManager.instance.iBalance -= 5;
+            PlayerManager.instance.iExp += 5;
         }
         else
         {
