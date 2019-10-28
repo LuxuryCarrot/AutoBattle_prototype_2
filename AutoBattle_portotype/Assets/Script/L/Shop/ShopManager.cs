@@ -7,6 +7,13 @@ public class ShopManager : MonoBehaviour
     public GameObject inventoryFullErrorTEXT;
     public GameObject NoBalanceErrorTEXT;
 
+    public GameObject Slot1;
+    public GameObject Slot2;
+    public GameObject Slot3;
+    public GameObject Slot4;
+    public GameObject Slot5;
+
+
     public int[] iShopSection = new int[5];
 
 
@@ -28,7 +35,7 @@ public class ShopManager : MonoBehaviour
     {
         if (!PlayerManager.instance.isInventoryFull)
         {
-            Debug.Log("Someting buy");
+            Debug.Log("Something buy");
         }
         else
         {
