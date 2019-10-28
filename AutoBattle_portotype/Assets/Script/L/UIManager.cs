@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     public GameObject ShopUI;
-    public bool isShopButtonClicked = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,16 +19,12 @@ public class UIManager : MonoBehaviour
 
     public void ShopButtenPushed()
     {
-        if (isShopButtonClicked)
-        {
-            ShopUI.SetActive(true);
-            isShopButtonClicked = false;
-        }
-        else
-        {
-            ShopUI.SetActive(false);
-            isShopButtonClicked = true;
-        }
+        ShopUI.SetActive(true);
+    }
+
+    public void ShopEXIT()
+    {
+        ShopUI.SetActive(false);
     }
 
 

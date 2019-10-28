@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public Text TimeText;
-    private float timeLeft = 1.0f;
+    public float timeLeft = 1.0f;
     public int[] randShop = new int[5];
     // Start is called before the first frame update
 
