@@ -26,7 +26,7 @@ public class ShopManager : MonoBehaviour
         {
             for (int i = 0; i < 5; i++)
             {
-                Debug.Log("GAMEMANGER상속: " + GameManager.instance.randShop[i]);
+                //Debug.Log("GAMEMANGER상속: " + GameManager.instance.randShop[i]);
             }
         }
     }
@@ -54,6 +54,12 @@ public class ShopManager : MonoBehaviour
         {
             StartCoroutine("Error_NoBalance");
         }
+    }
+
+    public void ReRoll()
+    {
+        GameManager.instance.ShopReRoll();
+        Debug.Log(GameManager.instance.sHeroName);
     }
 
     IEnumerator Error_InventoryFull()

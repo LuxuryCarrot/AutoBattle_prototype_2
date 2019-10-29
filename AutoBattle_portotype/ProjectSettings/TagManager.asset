@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - GrabImg
-  - TANK
+  - Capsule
+  - Cube
+  - Cylinder
+  - Sphere
   layers:
   - Default
   - TransparentFX
