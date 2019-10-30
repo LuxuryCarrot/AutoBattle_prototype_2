@@ -44,7 +44,8 @@ public class ObjectGetSet : MonoBehaviour
                 {
                     chess.position = tile.position + new Vector3(0, 2, 0);
                     chess.GetComponent<Rigidbody>().isKinematic = false;
-                    chess.gameObject.layer = 0;
+                    chess.tag = "chess";
+                    //chess.gameObject.layer = 0;
                 }
                 else
                     chess.position = startPos;
