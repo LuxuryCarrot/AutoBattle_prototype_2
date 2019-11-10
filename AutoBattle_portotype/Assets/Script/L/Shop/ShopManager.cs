@@ -1,18 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
     public GameObject inventoryFullErrorTEXT;
     public GameObject NoBalanceErrorTEXT;
 
-    public GameObject Slot1;
-    public GameObject Slot2;
-    public GameObject Slot3;
-    public GameObject Slot4;
-    public GameObject Slot5;
+    public Text[] SlotText = new Text[5];
 
+    public GameObject[] Slot = new GameObject[5];
 
     public int[] iShopSection = new int[5];
 
@@ -58,8 +56,21 @@ public class ShopManager : MonoBehaviour
 
     public void ReRoll()
     {
-        GameManager.instance.ShopReRoll();
-        Debug.Log(GameManager.instance.sHeroName);
+        for (int i = 0; i < 5; i++)
+        {
+            Slot[i].SetActive(true);
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            GameManager.instance.ShopReRoll();
+            SlotText[i].text = GameManager.instance.sHeroName;
+        }
+    }
+
+    public void Buy()
+    {
+
     }
 
     IEnumerator Error_InventoryFull()
