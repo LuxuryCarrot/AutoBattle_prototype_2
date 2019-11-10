@@ -20,6 +20,8 @@ public class PlayerManager : MonoBehaviour
     public Text PlayerLevelUpExp;
     public Text PlayerBalance;
 
+    public Transform[] InventorySlotPos;
+
     // Start is called before the first frame update
     void Awake()
     {
