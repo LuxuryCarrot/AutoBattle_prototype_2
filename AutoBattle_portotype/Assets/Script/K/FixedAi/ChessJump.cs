@@ -6,7 +6,7 @@ public class ChessJump : ChessFSMParent
 {
 
     private Vector3 moveVec;
-    public float gravity;
+    private float gravity;
 
     private float delta;
     private float xSpeed;
@@ -16,6 +16,7 @@ public class ChessJump : ChessFSMParent
     public override void BeginState()
     {
         base.BeginState();
+        gravity = 10.0f;
         moveVec = manager.target.position - transform.position;
         moveVec.y = 0;
         Debug.Log(Vector3.Magnitude(moveVec));
@@ -24,6 +25,7 @@ public class ChessJump : ChessFSMParent
 
         xSpeed = Mathf.Sqrt(delta * gravity);
         ySpeed = xSpeed;
+        manager.anim.SetInteger("Param", (int)ChessStates.JUMP);
     }
 
     private void Update()

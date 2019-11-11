@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ChaseAIParent : MonoBehaviour
 {
+    [HideInInspector]
     public ChessFSMManager manager;
 
 
     private void Awake()
     {
-        manager = GetComponent<ChessFSMManager>();
+        manager = transform.GetComponentInParent<ChessFSMManager>();
     }
     public virtual void Execute() { }
 }

@@ -15,26 +15,35 @@ public enum ChessStates
 
 public class ChessFSMManager : MonoBehaviour
 {
-    //프라이벗 정보들. 
-    private Animator anim;
+    [HideInInspector]
+    public Animator anim;
     private ChessStates current;
     Dictionary<ChessStates, ChessFSMParent> FSMLists = new Dictionary<ChessStates, ChessFSMParent>();
 
-    //기획자가 수정 가능한 필드
-    public AttackAIParent attackai; 
+    [HideInInspector]
+    public AttackAIParent attackai;
+    [HideInInspector]
     public ChaseAIParent chaseai;
+    [HideInInspector]
     public UltimateAIParent ultiai;
-    public bool isRun;
-    public float hp;
-    public float chaseSpeed;
-    public float runSpeed;
 
-    //퍼블릭 정보들.
-    public Transform target;
+    [HideInInspector]
+    public bool isRun;
+    [HideInInspector]
+    public float hp;
+    [HideInInspector]
+    public float chaseSpeed;
+    [HideInInspector]
+    public float runSpeed;
+    [HideInInspector]
+    public Transform target=null;
+   
 
     private void Awake()
-    { 
-        anim = GetComponent<Animator>();
+    {
+        target = null;
+  
+        anim = transform.GetChild(0).GetComponent<Animator>();
 
         FSMLists.Add(ChessStates.IDLE, GetComponent<ChessIdle>());
         FSMLists.Add(ChessStates.CHASE, GetComponent<ChessChase>());
@@ -45,6 +54,15 @@ public class ChessFSMManager : MonoBehaviour
 
         current = ChessStates.IDLE;
         SetState(current);
+
+        attackai = transform.GetChild(0).GetComponent<AttackAIParent>();
+        chaseai = transform.GetChild(0).GetComponent<ChaseAIParent>();
+        ultiai =  transform.GetChild(0).GetComponent<UltimateAIParent>();
+
+        isRun = transform.GetChild(0).GetComponent<StatusLists>().isRun;
+        hp = transform.GetChild(0).GetComponent<StatusLists>().HP;
+        chaseSpeed = transform.GetChild(0).GetComponent<StatusLists>().speed;
+        runSpeed = transform.GetChild(0).GetComponent<StatusLists>().runSpeed;
     }
 
     public void SetState(ChessStates s)

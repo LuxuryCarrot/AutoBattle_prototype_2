@@ -14,7 +14,7 @@ public class WarriorChase : ChaseAIParent
             
         }
 
-        if (manager.target == null)
+        if (manager.target==null)
             return;
 
         if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) > 9.0f)
@@ -25,12 +25,17 @@ public class WarriorChase : ChaseAIParent
                                       manager.target.position,
                                       manager.chaseSpeed * Time.deltaTime);
 
+
+
         Vector3 dir = manager.target.position - manager.transform.position;
 
         dir.y = 0;
 
         manager.transform.rotation = Quaternion.RotateTowards(manager.transform.rotation,
                                         Quaternion.LookRotation(dir), 540);
+
+        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < 1.0f)
+            manager.SetState(ChessStates.ATTACK);
 
     }
 }

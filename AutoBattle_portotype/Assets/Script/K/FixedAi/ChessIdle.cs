@@ -11,7 +11,7 @@ public class ChessIdle : ChessFSMParent
 
     private void Update()
     {
-        
+        manager.SetState(ChessStates.CHASE);
     }
 
     public override void EndState()
