@@ -1,33 +1,34 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
+    public static ShopManager instance;
+
     public GameObject inventoryFullErrorTEXT;
     public GameObject NoBalanceErrorTEXT;
 
-    public GameObject Slot1;
-    public GameObject Slot2;
-    public GameObject Slot3;
-    public GameObject Slot4;
-    public GameObject Slot5;
+    public Text[] SlotText = new Text[5];
 
+    public GameObject[] Slot = new GameObject[5];
 
-    public int[] iShopSection = new int[5];
+    public int[] SlotCost = new int[5];
 
+    private string[] sHeroName = new string[5];
 
-    // Start is called before the first frame update
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if (GameManager.instance.timeLeft > 0)
+        ShopManager.instance = this;
+    }
+
+    private void Update()
+    {
+        if (GameManager.instance.timeLeft <= 1)
         {
-            for (int i = 0; i < 5; i++)
-            {
-                //Debug.Log("GAMEMANGER상속: " + GameManager.instance.randShop[i]);
-            }
+            Debug.Log("Reroll");
+            ReRoll();
         }
     }
 
@@ -58,8 +59,49 @@ public class ShopManager : MonoBehaviour
 
     public void ReRoll()
     {
-        GameManager.instance.ShopReRoll();
-        Debug.Log(GameManager.instance.sHeroName);
+
+        PlayerManager.instance.iBalance -= 2;
+
+        for (int i = 0; i < 5; i++)
+        {
+            Slot[i].SetActive(true);
+        }
+
+        for (int i = 0; i < 5; i++)
+        {
+            GameManager.instance.ShopReRoll();
+            SlotCost[i] = GameManager.instance.Cost;
+            SlotText[i].text = GameManager.instance.sHeroName + "\n" + "Cost = " + SlotCost[i];
+            sHeroName[i] = GameManager.instance.sHeroName;
+            Debug.Log("Slot" + i + "= " + SlotCost[i]);
+        }
+    }
+
+    public void Slot1()
+    {
+        Slot[0].SetActive(false);
+        PlayerManager.instance.iBalance -= SlotCost[0];
+        Instantiate(Resources.Load("Prefabs/ShopTestPrefab/" + sHeroName[0]), PlayerManager.instance.InventorySlotPos[0].position, PlayerManager.instance.InventorySlotPos[0].rotation);
+    }
+    public void Slot2()
+    {
+        Slot[1].SetActive(false);
+        PlayerManager.instance.iBalance -= SlotCost[1];
+    }
+    public void Slot3()
+    {
+        Slot[2].SetActive(false);
+        PlayerManager.instance.iBalance -= SlotCost[2];
+    }
+    public void Slot4()
+    {
+        Slot[3].SetActive(false);
+        PlayerManager.instance.iBalance -= SlotCost[3];
+    }
+    public void Slot5()
+    {
+        Slot[4].SetActive(false);
+        PlayerManager.instance.iBalance -= SlotCost[4];
     }
 
     IEnumerator Error_InventoryFull()
