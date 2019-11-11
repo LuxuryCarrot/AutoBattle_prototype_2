@@ -246,10 +246,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8292161551957575209, guid: ba9bb7190b253a245b70b76083631b1c,
         type: 3}
       propertyPath: m_Name
-      value: ParkWarrior (1)
+      value: DummyAllyChess
       objectReference: {fileID: 0}
     - target: {fileID: 8292161551957575209, guid: ba9bb7190b253a245b70b76083631b1c,
         type: 3}
@@ -317,10 +321,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 293717395477380175, guid: 0f41e2338b938a9469a5eb35a6897b18,
         type: 3}
-    - target: {fileID: 0}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: ba9bb7190b253a245b70b76083631b1c, type: 3}
@@ -537,7 +537,7 @@ PrefabInstance:
     - target: {fileID: 8292161551957575209, guid: ba9bb7190b253a245b70b76083631b1c,
         type: 3}
       propertyPath: m_Name
-      value: ParkWarrior
+      value: DummyEnemyChess
       objectReference: {fileID: 0}
     - target: {fileID: 8292161551957575209, guid: ba9bb7190b253a245b70b76083631b1c,
         type: 3}
