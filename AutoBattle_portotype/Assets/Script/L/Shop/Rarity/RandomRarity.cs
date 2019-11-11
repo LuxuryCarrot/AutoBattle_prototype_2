@@ -28,7 +28,7 @@ public class RandomRarity : MonoBehaviour
         }
         else if (iRandomNum == 1)
         {
-            sRandomHeroName = "dCube";
+            sRandomHeroName = "ParkWarrior";
         }
         else if (iRandomNum == 2)
         {

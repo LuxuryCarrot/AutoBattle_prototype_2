@@ -32,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8292161551957575209}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1474555882896024803}
@@ -160,11 +160,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8292161551957575204}
     m_Modifications:
-    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: m_Name
-      value: ParkWarriorPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 8756368808446140155, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -219,6 +214,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Name
+      value: ParkWarriorPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec1f3030e1f3d243809915c7154da2c, type: 3}

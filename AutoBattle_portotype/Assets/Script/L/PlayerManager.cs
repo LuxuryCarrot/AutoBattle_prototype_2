@@ -74,6 +74,6 @@ public class PlayerManager : MonoBehaviour
     public void SetHero(int _index, string _sHeroName)
     {
         sHeroName[_index] = _sHeroName;
-        Instantiate(Resources.Load("Prefabs/ShopTestPrefab/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation);
+        Instantiate(Resources.Load("Prefabs/Characters/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation);
     }
 }
