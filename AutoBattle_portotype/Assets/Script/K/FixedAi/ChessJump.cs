@@ -20,7 +20,7 @@ public class ChessJump : ChessFSMParent
         moveVec = manager.target.position - transform.position;
         moveVec.y = 0;
         Debug.Log(Vector3.Magnitude(moveVec));
-        delta = Vector3.Magnitude(moveVec) * 0.4f;
+        delta = Vector3.Magnitude(moveVec) * 0.8f;
         movevecNormaled = Vector3.Normalize(moveVec);
 
         xSpeed = Mathf.Sqrt(delta * gravity);

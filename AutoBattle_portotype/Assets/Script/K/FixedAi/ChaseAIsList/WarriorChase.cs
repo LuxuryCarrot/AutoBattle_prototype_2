@@ -8,9 +8,14 @@ public class WarriorChase : ChaseAIParent
     {
         base.Execute();
 
-        if (GameObject.FindGameObjectWithTag("chess") != null && manager.target == null)
+        if (GameObject.FindGameObjectsWithTag("chess") != null && manager.target == null)
         {
-            manager.target = GameObject.FindGameObjectWithTag("chess").transform;
+            GameObject[] objects = GameObject.FindGameObjectsWithTag("chess");
+            for (int i=0; i< objects.Length; i++)
+            {
+                if (objects[i] != manager.gameObject)
+                    manager.target = objects[i].transform;
+            }
             
         }
 
