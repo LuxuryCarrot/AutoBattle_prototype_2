@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChessFSMParent : MonoBehaviour
 {
-
+    [HideInInspector]
     public ChessFSMManager manager;
 
     private void Awake()

@@ -7,6 +7,7 @@ public class ChessAttack : ChessFSMParent
     public override void BeginState()
     {
         base.BeginState();
+        manager.anim.SetInteger("Param", (int)ChessStates.ATTACK);
     }
 
     private void Update()
