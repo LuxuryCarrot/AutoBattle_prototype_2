@@ -18,9 +18,9 @@ public class ObjectGetSet : MonoBehaviour
             RaycastHit hit;
             if(Physics.Raycast(ray,out hit, 1000, 1024))
             {
-                chess = hit.rigidbody.transform;
+                chess = hit.transform;
                 startPos = chess.position;
-                chess.GetComponent<Rigidbody>().isKinematic = true;
+                
             }
         }
         else if(Input.GetMouseButton(0))
@@ -29,10 +29,10 @@ public class ObjectGetSet : MonoBehaviour
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 1000, 2048))
+                if (Physics.Raycast(ray, out hit, 1000, 6144))
                 {
                     chess.position = hit.point + new Vector3(0, 2, 0);
-                    tile = hit.rigidbody.transform;
+                    tile = hit.transform;
                 }
             }
         }
@@ -40,15 +40,18 @@ public class ObjectGetSet : MonoBehaviour
         {
             if (chess != null)
             {
-                if (tile != null)
+                if(tile.gameObject.layer==12)
+                {
+                    chess.position = startPos;
+                }
+                else if (tile != null)
                 {
                     chess.position = tile.position + new Vector3(0, 2, 0);
-                    chess.GetComponent<Rigidbody>().isKinematic = false;
+                    chess.GetComponent<ChessFSMManager>().Settled();
                     chess.tag = "chess";
                     //chess.gameObject.layer = 0;
                 }
-                else
-                    chess.position = startPos;
+               
             }
             chess = null;
             tile = null;

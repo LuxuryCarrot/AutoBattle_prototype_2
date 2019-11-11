@@ -18,6 +18,7 @@ public class ChessFSMManager : MonoBehaviour
     [HideInInspector]
     public Animator anim;
     private ChessStates current;
+    private bool isSettled;
     Dictionary<ChessStates, ChessFSMParent> FSMLists = new Dictionary<ChessStates, ChessFSMParent>();
 
     [HideInInspector]
@@ -42,6 +43,7 @@ public class ChessFSMManager : MonoBehaviour
     private void Awake()
     {
         target = null;
+        isSettled = false;
   
         anim = transform.GetChild(0).GetComponent<Animator>();
 
@@ -89,5 +91,26 @@ public class ChessFSMManager : MonoBehaviour
     public void RangeDamaged()
     {
 
+    }
+
+    public void Settled()
+    {
+        isSettled = true;
+        
+    }
+
+    private void Update()
+    {
+        if(isSettled)
+        {
+            transform.position -= new Vector3(0, 2 * Time.deltaTime, 0);
+
+            if(transform.position.y<=2.0f)
+            {
+                isSettled = false;
+              
+                transform.position = new Vector3(transform.position.x, 2.0f, transform.position.z);
+            }
+        }
     }
 }
