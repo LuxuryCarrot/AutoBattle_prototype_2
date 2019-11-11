@@ -23,18 +23,6 @@ public class ShopManager : MonoBehaviour
         ShopManager.instance = this;
     }
 
-    public void BuySomething()
-    {
-        if (!PlayerManager.instance.isInventoryFull)
-        {
-            Debug.Log("Something buy");
-        }
-        else
-        {
-            StartCoroutine("Error_InventoryFull");
-        }
-    }
-
     public void ExpBUY()
     {
         if (PlayerManager.instance.bMoneyLeft)
@@ -61,7 +49,6 @@ public class ShopManager : MonoBehaviour
             SlotCost[i] = GameManager.instance.Cost;
             SlotText[i].text = GameManager.instance.sHeroName + "\n" + "Cost = " + SlotCost[i];
             sHeroName[i] = GameManager.instance.sHeroName;
-            Debug.Log("Slot" + i + "= " + SlotCost[i]);
         }
     }
 
@@ -85,6 +72,10 @@ public class ShopManager : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            StartCoroutine("Error_NoBalance");
+        }
     }
     public void Slot2()
     {
@@ -99,6 +90,10 @@ public class ShopManager : MonoBehaviour
                     break;
                 }
             }
+        }
+        else
+        {
+            StartCoroutine("Error_NoBalance");
         }
     }
     public void Slot3()
@@ -115,6 +110,10 @@ public class ShopManager : MonoBehaviour
                 }
             }
         }
+        else
+        {
+            StartCoroutine("Error_NoBalance");
+        }
     }
     public void Slot4()
     {
@@ -129,6 +128,10 @@ public class ShopManager : MonoBehaviour
                     break;
                 }
             }
+        }
+        else
+        {
+            StartCoroutine("Error_NoBalance");
         }
     }
     public void Slot5()
