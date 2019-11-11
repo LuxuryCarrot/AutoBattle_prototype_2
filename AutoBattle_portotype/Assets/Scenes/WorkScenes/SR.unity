@@ -1088,6 +1088,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_Attack
       objectReference: {fileID: 0}
+    - target: {fileID: 7189170141731319205, guid: b6b4d7eb480b2674ea5efd49fb902b2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7189170141731319204, guid: b6b4d7eb480b2674ea5efd49fb902b2d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1156,6 +1161,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: VFX_Pick
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448316138760088285, guid: 2a0d80ca73e8db2418ae50c48869b0cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3963924400061466833, guid: 2a0d80ca73e8db2418ae50c48869b0cc,
         type: 3}
