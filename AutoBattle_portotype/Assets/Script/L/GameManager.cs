@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
             PlayerManager.instance.iBalance += 5;
 
             Shop.SetActive(true);
+            ShopManager.instance.ReRoll();
             
             timeLeft = 30.0f;
         }

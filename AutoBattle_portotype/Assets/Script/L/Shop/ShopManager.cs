@@ -23,15 +23,6 @@ public class ShopManager : MonoBehaviour
         ShopManager.instance = this;
     }
 
-    private void Update()
-    {
-        if (GameManager.instance.timeLeft <= 1)
-        {
-            Debug.Log("Reroll");
-            ReRoll();
-        }
-    }
-
     public void BuySomething()
     {
         if (!PlayerManager.instance.isInventoryFull)
@@ -59,9 +50,6 @@ public class ShopManager : MonoBehaviour
 
     public void ReRoll()
     {
-
-        PlayerManager.instance.iBalance -= 2;
-
         for (int i = 0; i < 5; i++)
         {
             Slot[i].SetActive(true);
@@ -77,31 +65,92 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public void ReRoll_Button()
+    {
+        PlayerManager.instance.iBalance -= 2;
+        ReRoll();
+    }
+
     public void Slot1()
     {
-        Slot[0].SetActive(false);
-        PlayerManager.instance.iBalance -= SlotCost[0];
-        Instantiate(Resources.Load("Prefabs/ShopTestPrefab/" + sHeroName[0]), PlayerManager.instance.InventorySlotPos[0].position, PlayerManager.instance.InventorySlotPos[0].rotation);
+        if (SlotCost[0] <= PlayerManager.instance.iBalance)
+        {
+            for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
+            {
+                if (PlayerManager.instance.sHeroName[i] == null)
+                {
+                    BuyHero(i, 0);
+                    Slot[0].SetActive(false);
+                    break;
+                }
+            }
+        }
     }
     public void Slot2()
     {
-        Slot[1].SetActive(false);
-        PlayerManager.instance.iBalance -= SlotCost[1];
+        if (SlotCost[1] <= PlayerManager.instance.iBalance)
+        {
+            for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
+            {
+                if (PlayerManager.instance.sHeroName[i] == null)
+                {
+                    BuyHero(i, 1);
+                    Slot[1].SetActive(false);
+                    break;
+                }
+            }
+        }
     }
     public void Slot3()
     {
-        Slot[2].SetActive(false);
-        PlayerManager.instance.iBalance -= SlotCost[2];
+        if (SlotCost[2] <= PlayerManager.instance.iBalance)
+        {
+            for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
+            {
+                if (PlayerManager.instance.sHeroName[i] == null)
+                {
+                    BuyHero(i, 2);
+                    Slot[2].SetActive(false);
+                    break;
+                }
+            }
+        }
     }
     public void Slot4()
     {
-        Slot[3].SetActive(false);
-        PlayerManager.instance.iBalance -= SlotCost[3];
+        if (SlotCost[3] <= PlayerManager.instance.iBalance)
+        {
+            for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
+            {
+                if (PlayerManager.instance.sHeroName[i] == null)
+                {
+                    BuyHero(i, 3);
+                    Slot[3].SetActive(false);
+                    break;
+                }
+            }
+        }
     }
     public void Slot5()
     {
-        Slot[4].SetActive(false);
-        PlayerManager.instance.iBalance -= SlotCost[4];
+        if (SlotCost[4] <= PlayerManager.instance.iBalance)
+        {
+            for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
+            {
+                if (PlayerManager.instance.sHeroName[i] == null)
+                {
+                    BuyHero(i, 4);
+                    Slot[4].SetActive(false);
+                    break;
+                }
+            }
+        }
+    }
+    private void BuyHero(int _SlotPosIndex, int _ShopSlotNum)
+    {
+        PlayerManager.instance.iBalance -= SlotCost[_ShopSlotNum];
+        PlayerManager.instance.iSlotCount++;
+        PlayerManager.instance.SetHero(_SlotPosIndex, sHeroName[_ShopSlotNum]);
     }
 
     IEnumerator Error_InventoryFull()
