@@ -1401,7 +1401,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1261366246}
-        m_MethodName: ReRoll
+        m_MethodName: ReRoll_Button
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1955,16 +1955,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f680ee39dd0391b48a3b1863e2e68037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxHeroNumber: 8
   iBalance: 999999
   iExp: 0
   iLevel: 0
   iLevelUpEXp: 0
+  iSlotCount: 0
   isInventoryFull: 0
   bMoneyLeft: 0
   PlayerLevel: {fileID: 353473790}
   PlayerExp: {fileID: 1825502564}
   PlayerLevelUpExp: {fileID: 363680428}
   PlayerBalance: {fileID: 2043980117}
+  sHeroName: []
   InventorySlotPos:
   - {fileID: 2089832921}
   - {fileID: 180499847}

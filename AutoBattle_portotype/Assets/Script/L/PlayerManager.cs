@@ -7,10 +7,13 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager instance;
 
+    public int MaxHeroNumber = 8;
+
     public int iBalance;
     public int iExp;
     public int iLevel;
     public int iLevelUpEXp;
+    public int iSlotCount;
 
     public bool isInventoryFull;
     public bool bMoneyLeft;
@@ -20,12 +23,16 @@ public class PlayerManager : MonoBehaviour
     public Text PlayerLevelUpExp;
     public Text PlayerBalance;
 
+    public string[] sHeroName;
+
     public Transform[] InventorySlotPos;
 
     // Start is called before the first frame update
     void Awake()
     {
         PlayerManager.instance = this;
+
+        sHeroName = new string[MaxHeroNumber];
 
         isInventoryFull = false;
 
@@ -62,5 +69,11 @@ public class PlayerManager : MonoBehaviour
         iLevelUpEXp += 5;
         iLevel += 1;
         iExp = 0;
+    }
+
+    public void SetHero(int _index, string _sHeroName)
+    {
+        sHeroName[_index] = _sHeroName;
+        Instantiate(Resources.Load("Prefabs/ShopTestPrefab/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation);
     }
 }
