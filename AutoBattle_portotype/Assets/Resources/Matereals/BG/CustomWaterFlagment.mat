@@ -73,10 +73,10 @@ Material:
     - _DMDistance: 3.07
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _FoAlpha: 0.245
+    - _FoAlpha: 0.435
     - _FoDistance: 1.2
     - _FoDistanceMax: 0.26
-    - _FoDistanceMin: 1.25
+    - _FoDistanceMin: 0.74
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -84,18 +84,19 @@ Material:
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _SkyRefDistance: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _SufDistortionAmount: 0.209
-    - _SufNoiseCutoff: 0.793
+    - _SufDistortionAmount: 0.355
+    - _SufNoiseCutoff: 0.89
     - _UVSec: 0
-    - _WaterAlpha: 0.556
+    - _WaterAlpha: 0.172
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _DGDeep: {r: 0.18222676, g: 0.2252283, b: 0.3679245, a: 1}
     - _DGShallow: {r: 0.41162333, g: 0.5957954, b: 0.6981132, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FoColor: {r: 0.8537736, g: 0.940243, b: 1, a: 1}
+    - _FoColor: {r: 0.8726415, g: 0.9483682, b: 1, a: 1}
     - _SufNoiseScroll: {r: 0.05, g: 0.26, b: 0, a: 0}

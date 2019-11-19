@@ -7,6 +7,7 @@
 		_DGDeep ("Depth Gradient Deep", Color) = (0.886, 0.407, 1, 0.749) //깊은물색
 		_WaterAlpha ("Water Color Alpha", Range(0,1)) = 0.5 //물 투명도
 		_DMDistance ("Depth Maximun Distance", Float) = 1 //깊이조절
+		_SkyRefDistance ("Sky Reflection Distance", Range(0,1)) = 0.5 //하늘 반사
 
 		//움직임 노이즈 구문
 		_SufNoise ("Surface Noise", 2D) = "white" {} //움직임 노이즈
@@ -25,8 +26,8 @@
 		_FoDistanceMax ("Foam Maximun Distance", Float) = 0.4 //최대거품크기
 		_FoDistanceMin ("Foam Minimum Distance", Float) = 0.04 //최소거품크기
 
-		//프레넬 제어
-		
+		//흔들림제어
+		_WavePower ("Wave Power", float) = 0 //흔들림
 	}
 		SubShader
 	{
@@ -47,7 +48,7 @@
 			CGPROGRAM
 
 			//???????????????????
-			//#define SMOOTHSTEP_AA 0.01
+			#define SMOOTHSTEP_AA 0.01
 
 			//프레그먼트 쉐이더임 (아무래도 그래보임)
 			#pragma vertex vert
@@ -109,6 +110,8 @@
 				float3 worldNormal = UnityObjectToWorldNormal(o.viewNormal);
 				o.WorldRef = reflect(-worldViewDir, worldNormal);
 
+				//v.vertex.y += abs(v.texcoord.x * 2 - 1);
+
 				return o;
 			}
 
@@ -119,6 +122,7 @@
 			float4 _DGDeep;
 			float _DMDistance;
 			float _WaterAlpha;
+			float _SkyRefDistance;
 
 			//Surface Noise 선언문
 			float _SufNoiseCutoff;
@@ -184,8 +188,14 @@
 				float Rim = dot(q.viewNormal, q.WorldRef);
 				Rim = pow(1 - Rim, 1.5);
 				//WaterColor.rgb = Rim;
-				WaterColor.rgb = WaterColor.rgb * Rim * 1.5;
 				WaterColor.a = saturate(1 - Rim + _WaterAlpha);
+				//SkyBox 받아오기
+				half4 SkyCUBE = UNITY_SAMPLE_TEXCUBE(unity_SpecCube0, q.WorldRef);
+				half3 SkyColor = DecodeHDR(SkyCUBE, unity_SpecCube0_HDR);
+				Rim = Rim * SkyColor;
+				
+				WaterColor.rgb = WaterColor.rgb + (Rim * _SkyRefDistance);
+				//WaterColor.rgb = SkyColor;	
 
 				//알파블렌드구문 받아와서 계산
 				float4 Out = alphaBlend(SufNoiseColor, WaterColor);
