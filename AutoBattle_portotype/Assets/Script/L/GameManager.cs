@@ -3,6 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+enum CurStage
+{
+    PREPARING,
+    COMPAT,
+    FINISH
+}
+
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
@@ -10,35 +17,88 @@ public class GameManager : MonoBehaviour
     public GameObject Shop;
 
     public Text TimeText;
+    public Text RoundText;
+
+    public bool bisRoundStarted;
 
     public string sHeroName;
 
     public float timeLeft = 1.0f;
 
-    public int Cost = 0;
+    public int iCost = 0;
+    public int iCurrentRound = 0;
+    public int iRoundCount = 0;
+
+    CurStage Stage;
 
     private int iRandomNum;
+    private int iCurrState;
 
-    // Start is called before the first frame update
+    private string StageName;
+
     private void Awake()
     {
         GameManager.instance = this;
+        bisRoundStarted = false;
+        Stage = CurStage.PREPARING; 
+        iCurrState = 1;
     }
-    // Update is called once per frame
+
     void Update()
     {
         timeLeft -= Time.deltaTime;
 
+        RoundText.text = iRoundCount.ToString("0") + (" 라운드 ") + StageName + ("!");
         TimeText.text = ("남은 시간: ") + (timeLeft).ToString("0");
-        if (timeLeft < 0)
-        {
-            PlayerManager.instance.iExp += 1;
-            PlayerManager.instance.iBalance += 5;
 
-            Shop.SetActive(true);
-            ShopManager.instance.ReRoll();
-            
-            timeLeft = 30.0f;
+        if (Stage == CurStage.PREPARING)  //전투 준비 시간
+        {
+            if (iCurrState == 1)
+            {
+                timeLeft = 60.0f;
+                StageName = "준비";
+                Shop.SetActive(true);
+                ShopManager.instance.ReRoll();
+                iCurrState = 2;
+            }
+
+            if (timeLeft < 0)
+            {
+                Stage = CurStage.COMPAT;
+            }
+        }
+        else if (Stage == CurStage.COMPAT) //전투 돌입 
+        {
+            if (iCurrState == 2)
+            {
+                timeLeft = 120.0f;
+                StageName = "전투";
+                ++iRoundCount;
+                bisRoundStarted = true;
+                iCurrState = 3;
+            }
+
+            if (timeLeft < 0)
+            {
+                bisRoundStarted = false;
+                Stage = CurStage.FINISH;
+            }
+        }
+        else if (Stage == CurStage.FINISH) // 전투 마무리 시간
+        {
+            if (iCurrState == 3)
+            {
+                timeLeft = 15.0f;
+                StageName = "마무리";
+                PlayerManager.instance.iExp += 1;
+                PlayerManager.instance.iBalance += 5;
+                iCurrState = 1;
+            }
+
+            if (timeLeft < 0)
+            {
+                Stage = CurStage.PREPARING;
+            }
         }
     }
 
@@ -49,19 +109,19 @@ public class GameManager : MonoBehaviour
         if (PlayerManager.instance.iLevel == 1)
         {
             sHeroName = RandomRarity.instance.RandomDawn();
-            Cost = 1;
+            iCost = 1;
         }
         else if(PlayerManager.instance.iLevel == 2)
         {
             if (iRandomNum < 80)
             {
                 sHeroName = RandomRarity.instance.RandomDawn();
-                Cost = 1;
+                iCost = 1;
             }
             else if (80 <= iRandomNum)
             {
                 sHeroName = RandomRarity.instance.RandomSunrise();
-                Cost = 2;
+                iCost = 2;
             }
         }
         else if (PlayerManager.instance.iLevel == 3)
@@ -69,17 +129,17 @@ public class GameManager : MonoBehaviour
             if (iRandomNum < 70)
             {
                 sHeroName = RandomRarity.instance.RandomDawn();
-                Cost = 1;
+                iCost = 1;
             }
             else if (70 <= iRandomNum && iRandomNum < 90)
             {
                 sHeroName = RandomRarity.instance.RandomSunrise();
-                Cost = 2;
+                iCost = 2;
             }
             else if (90 <= iRandomNum)
             {
                 sHeroName = RandomRarity.instance.RandomLight();
-                Cost = 3;
+                iCost = 3;
             }
         }
         else if (PlayerManager.instance.iLevel == 4)
@@ -87,17 +147,17 @@ public class GameManager : MonoBehaviour
             if (iRandomNum < 50)
             {
                 sHeroName = RandomRarity.instance.RandomDawn();
-                Cost = 1;
+                iCost = 1;
             }
             else if (50 <= iRandomNum && iRandomNum < 85)
             {
                 sHeroName = RandomRarity.instance.RandomSunrise();
-                Cost = 2;
+                iCost = 2;
             }
             else if (85 <= iRandomNum)
             {
                 sHeroName = RandomRarity.instance.RandomLight();
-                Cost = 3;
+                iCost = 3;
             }
         }
         else if (PlayerManager.instance.iLevel == 5)
@@ -105,22 +165,22 @@ public class GameManager : MonoBehaviour
             if (iRandomNum < 40)
             {
                 sHeroName = RandomRarity.instance.RandomDawn();
-                Cost = 1;
+                iCost = 1;
             }
             else if (40 <= iRandomNum && iRandomNum < 75)
             {
                 sHeroName = RandomRarity.instance.RandomSunrise();
-                Cost = 2;
+                iCost = 2;
             }
             else if (75 <= iRandomNum && iRandomNum < 95)
             {
                 sHeroName = RandomRarity.instance.RandomLight();
-                Cost = 3;
+                iCost = 3;
             }
             else if (95<= iRandomNum)
             {
                 sHeroName = RandomRarity.instance.RandomSunset();
-                Cost = 4;
+                iCost = 4;
             }
         }
         else if (PlayerManager.instance.iLevel == 6)
@@ -128,27 +188,27 @@ public class GameManager : MonoBehaviour
             if (iRandomNum < 25)
             {
                 sHeroName = RandomRarity.instance.RandomDawn();
-                Cost = 1;
+                iCost = 1;
             }
             else if (25 <= iRandomNum && iRandomNum < 60)
             {
                 sHeroName = RandomRarity.instance.RandomSunrise();
-                Cost = 2;
+                iCost = 2;
             }
             else if (60 <= iRandomNum && iRandomNum < 89)
             {
                 sHeroName = RandomRarity.instance.RandomLight();
-                Cost = 3;
+                iCost = 3;
             }
             else if (89 <= iRandomNum && iRandomNum < 99)
             {
                 sHeroName = RandomRarity.instance.RandomSunset();
-                Cost = 4;
+                iCost = 4;
             }
             else if (99 <= iRandomNum)
             {
                 sHeroName = RandomRarity.instance.RandomTwilight();
-                Cost = 5;
+                iCost = 5;
             }
         }
         else if (PlayerManager.instance.iLevel == 7)
@@ -156,27 +216,27 @@ public class GameManager : MonoBehaviour
             if (iRandomNum < 20)
             {
                 sHeroName = RandomRarity.instance.RandomDawn();
-                Cost = 1;
+                iCost = 1;
             }
             else if (20 <= iRandomNum && iRandomNum < 40)
             {
                 sHeroName = RandomRarity.instance.RandomSunrise();
-                Cost = 2;
+                iCost = 2;
             }
             else if (40 <= iRandomNum && iRandomNum < 70)
             {
                 sHeroName = RandomRarity.instance.RandomLight();
-                Cost = 3;
+                iCost = 3;
             }
             else if (70 <= iRandomNum && iRandomNum < 95)
             {
                 sHeroName = RandomRarity.instance.RandomSunset();
-                Cost = 4;
+                iCost = 4;
             }
             else if (95 <= iRandomNum)
             {
                 sHeroName = RandomRarity.instance.RandomTwilight();
-                Cost = 5;
+                iCost = 5;
             }
         }
         else if (PlayerManager.instance.iLevel == 8)
@@ -184,27 +244,27 @@ public class GameManager : MonoBehaviour
             if (iRandomNum < 10)
             {
                 sHeroName = RandomRarity.instance.RandomDawn();
-                Cost = 1;
+                iCost = 1;
             }
             else if (10 <= iRandomNum && iRandomNum < 30)
             {
                 sHeroName = RandomRarity.instance.RandomSunrise();
-                Cost = 2;
+                iCost = 2;
             }
             else if (30 <= iRandomNum && iRandomNum < 60)
             {
                 sHeroName = RandomRarity.instance.RandomLight();
-                Cost = 3;
+                iCost = 3;
             }
             else if (60 <= iRandomNum && iRandomNum < 90)
             {
                 sHeroName = RandomRarity.instance.RandomSunset();
-                Cost = 4;
+                iCost = 4;
             }
             else if (90 <= iRandomNum)
             {
                 sHeroName = RandomRarity.instance.RandomTwilight();
-                Cost = 5;
+                iCost = 5;
             }
         }
     }

@@ -46,7 +46,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             GameManager.instance.ShopReRoll();
-            SlotCost[i] = GameManager.instance.Cost;
+            SlotCost[i] = GameManager.instance.iCost;
             SlotText[i].text = GameManager.instance.sHeroName + "\n" + "Cost = " + SlotCost[i];
             sHeroName[i] = GameManager.instance.sHeroName;
         }
