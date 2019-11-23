@@ -51,53 +51,53 @@ public class GameManager : MonoBehaviour
         RoundText.text = iRoundCount.ToString("0") + (" 라운드 ") + StageName + ("!");
         TimeText.text = ("남은 시간: ") + (timeLeft).ToString("0");
 
-        if (Stage == CurStage.PREPARING)  //전투 준비 시간
+        if (Stage == CurStage.PREPARING)            // 전투 준비 시간
         {
-            if (iCurrState == 1)
+            if (iCurrState == 1)                    // 전투 준비 라운드 돌입하면서 한번만 실행됨
             {
                 timeLeft = 60.0f;
+                ++iRoundCount;                      // 현재 라운드 카운트
                 StageName = "준비";
-                Shop.SetActive(true);
-                ShopManager.instance.ReRoll();
+                Shop.SetActive(true);               // 상점 창 자동으로 띄우기
+                ShopManager.instance.ReRoll();      // 상점 아이템 랜덤으로 배치
                 iCurrState = 2;
             }
 
-            if (timeLeft < 0)
+            if (timeLeft < 0)                       // 전투 준비 시간 끝나면 전투 라운드로 스테이지 변경.
             {
                 Stage = CurStage.COMPAT;
             }
         }
-        else if (Stage == CurStage.COMPAT) //전투 돌입 
+        else if (Stage == CurStage.COMPAT)          // 전투 돌입 
         {
-            if (iCurrState == 2)
+            if (iCurrState == 2)                    // 전투 라운드 돌입하면서 한번만 실행됨
             {
                 timeLeft = 120.0f;
                 StageName = "전투";
-                ++iRoundCount;
-                bisRoundStarted = true;
+                bisRoundStarted = true;             // 전투에 들어갔는지 확인. -> 전투 중이면 벤치에서 게임판으로 캐릭터 옮기는거 불가능하게 막아야함.
                 iCurrState = 3;
             }
 
             if (timeLeft < 0)
             {
-                bisRoundStarted = false;
-                Stage = CurStage.FINISH;
+                Stage = CurStage.FINISH;            // 전투 라운드 시간이 다 되어 전투 마무리 라운드로 스테이지 변경.
             }
         }
-        else if (Stage == CurStage.FINISH) // 전투 마무리 시간
+        else if (Stage == CurStage.FINISH)          // 전투 마무리 시간
         {
             if (iCurrState == 3)
             {
+                bisRoundStarted = false;            // 전투 상태 해제 -> 벤치에서 게임판으로, 게임판에서 벤치로의 캐릭터 옮기는 것 활성화.
                 timeLeft = 15.0f;
                 StageName = "마무리";
-                PlayerManager.instance.iExp += 1;
+                PlayerManager.instance.iExp += 1;   
                 PlayerManager.instance.iBalance += 5;
                 iCurrState = 1;
             }
 
             if (timeLeft < 0)
             {
-                Stage = CurStage.PREPARING;
+                Stage = CurStage.PREPARING;         // 전투 마무리 시간이 다 되어 다음라운드의 전투 준비 라운드로 스테이지 변경.
             }
         }
     }
