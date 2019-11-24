@@ -2848,6 +2848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chess: {fileID: 0}
   tile: {fileID: 0}
+  store: {fileID: 3386770101393705486, guid: b855b10ed12f897448b7d1fd5e78b8d2, type: 3}
 --- !u!4 &1523204720
 Transform:
   m_ObjectHideFlags: 0

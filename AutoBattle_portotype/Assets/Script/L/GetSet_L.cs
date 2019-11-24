@@ -7,6 +7,8 @@ public class GetSet_L : MonoBehaviour
     public Transform chess;
     public Transform tile;
 
+    public Transform store;
+
     private Vector3 startPos;
 
     private void Update()
@@ -20,7 +22,11 @@ public class GetSet_L : MonoBehaviour
             {
                 chess = hit.transform;
                 startPos = chess.position;
-
+                if (chess.GetComponent<ChessInfo>().isWaiting == true)
+                {
+                    PlayerManager.instance.sHeroName[chess.GetComponent<ChessInfo>().ichessNum] = null;
+                    --PlayerManager.instance.iSlotCount;
+                }
             }
         }
         else if (Input.GetMouseButton(0))
@@ -40,9 +46,24 @@ public class GetSet_L : MonoBehaviour
         {
             if (chess != null)
             {
-                if (tile.gameObject.layer == 12)
+                if (tile.gameObject.layer == 12 && PlayerManager.instance.iSlotCount < PlayerManager.instance.MaxHeroNumber)
                 {
-                    chess.position = startPos;
+                    for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
+                    {
+                        if (PlayerManager.instance.sHeroName[i] == null)
+                        {
+                            chess.position = tile.position + new Vector3(0, 2, 0);
+                            chess.GetComponent<ChessInfo>().ichessNum = i;
+                            PlayerManager.instance.sHeroName[i] = chess.GetComponent<ChessInfo>().sMyName;
+                            ++PlayerManager.instance.iSlotCount;
+                            break;
+                        }
+                    }
+                    //chess.position = startPos;
+                }
+                if (tile.gameObject.layer == 12 && PlayerManager.instance.iSlotCount >= PlayerManager.instance.MaxHeroNumber)
+                {
+
                 }
                 else if (tile != null)
                 {

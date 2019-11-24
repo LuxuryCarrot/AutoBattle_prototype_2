@@ -27,6 +27,8 @@ public class PlayerManager : MonoBehaviour
 
     public Transform[] InventorySlotPos;
 
+    private GameObject CloneHero;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -74,6 +76,9 @@ public class PlayerManager : MonoBehaviour
     public void SetHero(int _index, string _sHeroName)
     {
         sHeroName[_index] = _sHeroName;
-        Instantiate(Resources.Load("Prefabs/Characters/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation);
+        CloneHero = Instantiate(Resources.Load("Prefabs/Characters/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation) as GameObject;
+        CloneHero.GetComponent<ChessInfo>().ichessNum = _index;
+        CloneHero.GetComponent<ChessInfo>().isWaiting = true;
+        CloneHero.GetComponent<ChessInfo>().sMyName = _sHeroName;
     }
 }

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3152685912407023356}
   - component: {fileID: 4473877327971704087}
   - component: {fileID: 54757637182403874}
+  - component: {fileID: 4478681843647079312}
   m_Layer: 10
   m_Name: dSphere
   m_TagString: Untagged
@@ -108,3 +109,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!114 &4478681843647079312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2521642147004261529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666dc497e8b683d42bc7dcb2622b3835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
