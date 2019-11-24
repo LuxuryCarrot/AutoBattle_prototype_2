@@ -24,7 +24,7 @@ public class GetSet_L : MonoBehaviour
                 startPos = chess.position;
                 if (chess.GetComponent<ChessInfo>().isWaiting == true)
                 {
-                    PlayerManager.instance.sHeroName[chess.GetComponent<ChessInfo>().ichessNum] = null;
+                    PlayerManager.instance.sInventory[chess.GetComponent<ChessInfo>().ichessNum] = null;
                     --PlayerManager.instance.iSlotCount;
                 }
             }
@@ -50,12 +50,13 @@ public class GetSet_L : MonoBehaviour
                 {
                     for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
                     {
-                        if (PlayerManager.instance.sHeroName[i] == null)
+                        if (PlayerManager.instance.sInventory[i] == null)
                         {
                             chess.position = tile.position + new Vector3(0, 2, 0);
                             chess.GetComponent<ChessInfo>().ichessNum = i;
-                            PlayerManager.instance.sHeroName[i] = chess.GetComponent<ChessInfo>().sMyName;
+                            PlayerManager.instance.sInventory[i] = chess.GetComponent<ChessInfo>().sMyName;
                             ++PlayerManager.instance.iSlotCount;
+                            chess.GetComponent<ChessInfo>().isWaiting = true;
                             break;
                         }
                     }
