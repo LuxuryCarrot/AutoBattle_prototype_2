@@ -23,16 +23,20 @@ public class PlayerManager : MonoBehaviour
     public Text PlayerLevelUpExp;
     public Text PlayerBalance;
 
-    public string[] sHeroName;
+    public string[] sInventory;
+    public string[] sGameBord;
 
     public Transform[] InventorySlotPos;
+
+    private GameObject CloneHero;
 
     // Start is called before the first frame update
     void Awake()
     {
         PlayerManager.instance = this;
 
-        sHeroName = new string[MaxHeroNumber];
+        sInventory = new string[MaxHeroNumber];
+        sGameBord = new string[iLevel];
 
         isInventoryFull = false;
 
@@ -73,7 +77,10 @@ public class PlayerManager : MonoBehaviour
 
     public void SetHero(int _index, string _sHeroName)
     {
-        sHeroName[_index] = _sHeroName;
-        Instantiate(Resources.Load("Prefabs/Characters/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation);
+        sInventory[_index] = _sHeroName;
+        CloneHero = Instantiate(Resources.Load("Prefabs/Characters/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation) as GameObject;
+        CloneHero.GetComponent<ChessInfo>().ichessNum = _index;
+        CloneHero.GetComponent<ChessInfo>().isWaiting = true;
+        CloneHero.GetComponent<ChessInfo>().sMyName = _sHeroName;
     }
 }
