@@ -41,6 +41,11 @@
 		{
 			"Queue" = "Transparent"
 		}
+		
+		GrapPass
+		{
+			"_BGTexture"
+		}
 
         Pass
         {
@@ -82,6 +87,8 @@
 				float4 screenPosition : TEXCOORD2;
 				float3 viewNormal : NORMAL;
             };
+
+			sampler2D _BGTexture;
 
 			sampler2D _SurfaceNoise;
 			float4 _SurfaceNoise_ST;
