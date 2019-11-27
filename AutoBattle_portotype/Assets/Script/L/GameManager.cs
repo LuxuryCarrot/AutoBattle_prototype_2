@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             if (iCurrState == 1)                    // 전투 준비 라운드 돌입하면서 한번만 실행됨
             {
 
-
+                //timeLeft = 60.0f // 원래 시간
                 timeLeft = 10.0f;
                 ++iRoundCount;                      // 현재 라운드 카운트
                 StageName = "준비";
@@ -90,6 +90,7 @@ public class GameManager : MonoBehaviour
         {
             if (iCurrState == 2)                    // 전투 라운드 돌입하면서 한번만 실행됨
             {
+                //timeLeft = 120.0f //원래 시간
                 timeLeft = 20.0f;
                 StageName = "전투";
                 bisRoundStarted = true;             // 전투에 들어갔는지 확인. -> 전투 중이면 벤치에서 게임판으로 캐릭터 옮기는거 불가능하게 막아야함.
@@ -122,6 +123,7 @@ public class GameManager : MonoBehaviour
             if (iCurrState == 3)
             {
                 bisRoundStarted = false;            // 전투 상태 해제 -> 벤치에서 게임판으로, 게임판에서 벤치로의 캐릭터 옮기는 것 활성화.
+                //timeLeft = 15.0f; //원래 시간
                 timeLeft = 5.0f;
                 StageName = "마무리";
                 PlayerManager.instance.iExp += 1;   

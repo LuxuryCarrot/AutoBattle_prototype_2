@@ -25,7 +25,14 @@ public class GetSet_L : MonoBehaviour
                 if (chess.GetComponent<ChessInfo>().isWaiting == true)
                 {
                     PlayerManager.instance.sInventory[chess.GetComponent<ChessInfo>().ichessNum] = null;
-                    --PlayerManager.instance.iSlotCount;
+                    --PlayerManager.instance.iBenchSlotCount;
+                    chess.GetComponent<ChessInfo>().ichessNum = 999;
+                }
+                else if (chess.GetComponent<ChessInfo>().isWaiting == false)
+                {
+                    PlayerManager.instance.sGameBord[chess.GetComponent<ChessInfo>().ichessNum] = null;
+                    --PlayerManager.instance.iBordSlotCount;
+                    chess.GetComponent<ChessInfo>().ichessNum = 999;
                 }
             }
         }
@@ -44,9 +51,9 @@ public class GetSet_L : MonoBehaviour
         }
         else if (Input.GetMouseButtonUp(0))
         {
-            if (chess != null)
+            if (chess != null && chess.GetComponent<ChessInfo>().ichessNum == 999)
             {
-                if (tile.gameObject.layer == 12 && PlayerManager.instance.iSlotCount < PlayerManager.instance.MaxHeroNumber)
+                if (tile.gameObject.layer == 12 && PlayerManager.instance.iBenchSlotCount < PlayerManager.instance.MaxHeroNumber)
                 {
                     for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
                     {
@@ -55,23 +62,40 @@ public class GetSet_L : MonoBehaviour
                             chess.position = tile.position + new Vector3(0, 2, 0);
                             chess.GetComponent<ChessInfo>().ichessNum = i;
                             PlayerManager.instance.sInventory[i] = chess.GetComponent<ChessInfo>().sMyName;
-                            ++PlayerManager.instance.iSlotCount;
+                            ++PlayerManager.instance.iBenchSlotCount;
                             chess.GetComponent<ChessInfo>().isWaiting = true;
                             break;
                         }
                     }
                     //chess.position = startPos;
                 }
-                if (tile.gameObject.layer == 12 && PlayerManager.instance.iSlotCount >= PlayerManager.instance.MaxHeroNumber)
+                if (tile.gameObject.layer == 12 && PlayerManager.instance.iBenchSlotCount >= PlayerManager.instance.MaxHeroNumber)
                 {
 
                 }
                 else if (tile != null)
                 {
-                    chess.position = tile.position + new Vector3(0, 2, 0);
-                    //chess.GetComponent<ChessFSMManager>().Settled();
-                    chess.tag = "chess";
-                    //chess.gameObject.layer = 0;
+                    if (PlayerManager.instance.iBordSlotCount < PlayerManager.instance.iLevel)
+                    {
+                        for (int i = 0; i < PlayerManager.instance.iLevel; i++)
+                        {
+                            if (PlayerManager.instance.sGameBord[i] == null)
+                            {
+                                chess.position = tile.position + new Vector3(0, 2, 0);
+                                chess.GetComponent<ChessInfo>().ichessNum = i;
+                                PlayerManager.instance.sGameBord[i] = chess.GetComponent<ChessInfo>().sMyName;
+                                ++PlayerManager.instance.iBordSlotCount;
+                                chess.GetComponent<ChessInfo>().isWaiting = false;
+                                //chess.GetComponent<ChessFSMManager>().Settled();
+                                chess.tag = "chess";
+                                //chess.gameObject.layer = 0;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    chess.position = startPos;
                 }
 
             }

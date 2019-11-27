@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4473877327971704087}
   - component: {fileID: 54757637182403874}
   - component: {fileID: 4478681843647079312}
+  - component: {fileID: 3404434414310727020}
   m_Layer: 10
   m_Name: dSphere
   m_TagString: Untagged
@@ -121,3 +122,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666dc497e8b683d42bc7dcb2622b3835, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ichessNum: 999
+  isWaiting: 0
+  sMyName: 
+--- !u!114 &3404434414310727020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2521642147004261529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e1352ed1f21664d8425fdd0d305091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  gameManager: {fileID: 0}
+  attackai: {fileID: 0}
+  chaseai: {fileID: 0}
+  ultiai: {fileID: 0}
+  isRun: 0
+  hp: 0
+  chaseSpeed: 0
+  runSpeed: 0
+  target: {fileID: 0}
+  ID: 0

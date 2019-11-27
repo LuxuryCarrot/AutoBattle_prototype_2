@@ -152,7 +152,7 @@ public class ShopManager : MonoBehaviour
     private void BuyHero(int _SlotPosIndex, int _ShopSlotNum)
     {
         PlayerManager.instance.iBalance -= SlotCost[_ShopSlotNum];
-        PlayerManager.instance.iSlotCount++;
+        PlayerManager.instance.iBenchSlotCount++;
         PlayerManager.instance.SetHero(_SlotPosIndex, sHeroName[_ShopSlotNum]);
     }
 
