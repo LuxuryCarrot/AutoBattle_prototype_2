@@ -1836,6 +1836,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905843600}
   m_CullTransparentMesh: 0
+--- !u!1 &944391776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 944391778}
+  - component: {fileID: 944391777}
+  m_Layer: 0
+  m_Name: PlayerID
+  m_TagString: IDSet
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &944391777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944391776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 095e6e3376029f84c8f2bb6779d01c35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &944391778
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 944391776}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &966169121
 GameObject:
   m_ObjectHideFlags: 0
@@ -2944,7 +2987,7 @@ GameObject:
   - component: {fileID: 1615465286}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2961,6 +3004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad38767efd6df04d902f6173d510ebb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inst: {fileID: 8292161551957575209, guid: ba9bb7190b253a245b70b76083631b1c, type: 3}
   Shop: {fileID: 1261366242}
   TimeText: {fileID: 1979057322}
   RoundText: {fileID: 966169122}

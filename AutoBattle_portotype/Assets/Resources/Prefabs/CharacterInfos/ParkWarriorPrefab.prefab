@@ -1812,6 +1812,7 @@ MonoBehaviour:
   speed: 3
   runSpeed: 4
   isRun: 0
+  range: 2
 --- !u!1 &8756368808445838049
 GameObject:
   m_ObjectHideFlags: 0

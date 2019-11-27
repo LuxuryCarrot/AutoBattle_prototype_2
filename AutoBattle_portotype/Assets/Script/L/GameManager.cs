@@ -13,6 +13,7 @@ enum CurStage
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public GameObject inst;
 
     public GameObject Shop;
 
@@ -36,6 +37,11 @@ public class GameManager : MonoBehaviour
 
     private string StageName;
 
+    public Queue<GameObject> chessQueue = new Queue<GameObject>();  //라운드 시작 시 체스를 재생시키는 큐
+    public Queue<GameObject> nextRoundQueue = new Queue<GameObject>();
+    public Queue<Vector3> nextRoundPos = new Queue<Vector3>();
+    
+
     private void Awake()
     {
         GameManager.instance = this;
@@ -55,12 +61,24 @@ public class GameManager : MonoBehaviour
         {
             if (iCurrState == 1)                    // 전투 준비 라운드 돌입하면서 한번만 실행됨
             {
-                timeLeft = 60.0f;
+
+
+                timeLeft = 10.0f;
                 ++iRoundCount;                      // 현재 라운드 카운트
                 StageName = "준비";
                 Shop.SetActive(true);               // 상점 창 자동으로 띄우기
                 ShopManager.instance.ReRoll();      // 상점 아이템 랜덤으로 배치
                 iCurrState = 2;
+
+                if(nextRoundQueue!=null)
+                for(;nextRoundQueue.Count!=0;)
+                {
+                    GameObject nextR = nextRoundQueue.Dequeue();
+                    nextR.transform.position = nextRoundPos.Dequeue();
+                    nextR.SetActive(true);
+                    nextR.GetComponent<ChessFSMManager>().EnQueueThis();
+                }
+                
             }
 
             if (timeLeft < 0)                       // 전투 준비 시간 끝나면 전투 라운드로 스테이지 변경.
@@ -72,10 +90,26 @@ public class GameManager : MonoBehaviour
         {
             if (iCurrState == 2)                    // 전투 라운드 돌입하면서 한번만 실행됨
             {
-                timeLeft = 120.0f;
+                timeLeft = 20.0f;
                 StageName = "전투";
                 bisRoundStarted = true;             // 전투에 들어갔는지 확인. -> 전투 중이면 벤치에서 게임판으로 캐릭터 옮기는거 불가능하게 막아야함.
                 iCurrState = 3;
+
+                GameObject insts = Instantiate(inst, new Vector3(10, 2.6f, 10), Quaternion.identity);
+                insts.GetComponent<ChessFSMManager>().ID = PlayerIDSet.AIID;
+                insts.tag = "chess";
+
+                for(;chessQueue.Count!=0;)          //배치한 말들을 모두 재생시키고 다음 라운드에 불러올 수 있도록 저장하는 포문
+                {
+                    GameObject deqChess = chessQueue.Dequeue();
+                    //GameObject enqueChess = new GameObject();
+                    //enqueChess = Instantiate(deqChess, deqChess.transform);
+                    //enqueChess.transform.position = deqChess.transform.position;
+                    //enqueChess.SetActive(false);
+                    nextRoundQueue.Enqueue(deqChess);
+                    nextRoundPos.Enqueue(deqChess.transform.position);
+                    deqChess.GetComponent<ChessFSMManager>().DeQueueThis();
+                }
             }
 
             if (timeLeft < 0)
@@ -88,7 +122,7 @@ public class GameManager : MonoBehaviour
             if (iCurrState == 3)
             {
                 bisRoundStarted = false;            // 전투 상태 해제 -> 벤치에서 게임판으로, 게임판에서 벤치로의 캐릭터 옮기는 것 활성화.
-                timeLeft = 15.0f;
+                timeLeft = 5.0f;
                 StageName = "마무리";
                 PlayerManager.instance.iExp += 1;   
                 PlayerManager.instance.iBalance += 5;
@@ -97,6 +131,17 @@ public class GameManager : MonoBehaviour
 
             if (timeLeft < 0)
             {
+                GameObject[] chesss = GameObject.FindGameObjectsWithTag("chess");
+                if(chesss!=null)
+                {
+                    for(int i=0;i<chesss.Length;i++)
+                    {
+                        chesss[i].GetComponent<ChessFSMManager>().SetState(ChessStates.IDLE);
+                        chesss[i].SetActive(false);
+                        if (chesss[i].GetComponent<ChessFSMManager>().ID == PlayerIDSet.AIID)
+                            Destroy(chesss[i]);
+                    }
+                }
                 Stage = CurStage.PREPARING;         // 전투 마무리 시간이 다 되어 다음라운드의 전투 준비 라운드로 스테이지 변경.
             }
         }

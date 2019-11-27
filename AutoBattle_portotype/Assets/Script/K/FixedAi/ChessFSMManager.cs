@@ -19,6 +19,8 @@ public class ChessFSMManager : MonoBehaviour
     public Animator anim;
     private ChessStates current;
     private bool isSettled;
+    private bool isEnqueued;
+    public GameManager gameManager;
     Dictionary<ChessStates, ChessFSMParent> FSMLists = new Dictionary<ChessStates, ChessFSMParent>();
 
     [HideInInspector]
@@ -38,13 +40,18 @@ public class ChessFSMManager : MonoBehaviour
     public float runSpeed;
     [HideInInspector]
     public Transform target=null;
+    [HideInInspector]
+    public int ID;
+    
    
 
     private void Awake()
     {
         target = null;
         isSettled = false;
+        isEnqueued = false;
   
+        
         anim = transform.GetChild(0).GetComponent<Animator>();
 
         FSMLists.Add(ChessStates.IDLE, GetComponent<ChessIdle>());
@@ -65,6 +72,8 @@ public class ChessFSMManager : MonoBehaviour
         hp = transform.GetChild(0).GetComponent<StatusLists>().HP;
         chaseSpeed = transform.GetChild(0).GetComponent<StatusLists>().speed;
         runSpeed = transform.GetChild(0).GetComponent<StatusLists>().runSpeed;
+
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     public void SetState(ChessStates s)
@@ -112,5 +121,23 @@ public class ChessFSMManager : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, 2.0f, transform.position.z);
             }
         }
+    }
+
+    public void EnQueueThis()
+    {
+        if (!isEnqueued)
+        {
+            isEnqueued = true;
+            
+            gameManager.chessQueue.Enqueue(gameObject);
+            ID = PlayerIDSet.playerID;
+        }
+    }
+
+    public void DeQueueThis()
+    {
+        //gameManager.nextRoundQueue.Enqueue(this.gameObject);
+        isEnqueued = false;
+        SetState(ChessStates.CHASE);
     }
 }
