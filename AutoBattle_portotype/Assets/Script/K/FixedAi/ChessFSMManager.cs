@@ -105,7 +105,6 @@ public class ChessFSMManager : MonoBehaviour
     public void Settled()
     {
         isSettled = true;
-        
     }
 
     private void Update()

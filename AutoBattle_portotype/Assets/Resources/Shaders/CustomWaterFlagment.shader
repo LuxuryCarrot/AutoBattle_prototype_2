@@ -17,7 +17,7 @@
 		//흐르는 속도 구문
 		_SufNoiseScroll ("Surface Noise Scroll (z,w no work)", Vector) = (0.03, 0.03, 0, 0) //속도조절
 		//움직임 2차원 벡터 구문
-		_SufDistortion ("Surface Distortion", 2D) = "white" {} //2차원벡터텍스쳐
+		_SufDistortion ("Surface Distortion", 2D) = "bump" {} //2차원벡터텍스쳐
 		_SufDistortionAmount ("Surface Distortion Amount", Range(0,1)) = 0.27 //벡터강도
 
 		//표면거품제어
@@ -54,7 +54,7 @@
 			#pragma vertex vert
 			#pragma fragment frag
 			#include "UnityCG.cginc"
-
+			
 
 			//--------- 알파블렌드 넘밝게 안나오게 막는구문----------
 			float4 alphaBlend(float4 top, float4 bottom)
@@ -65,7 +65,6 @@
 				return float4(color, alpha);
 			}
 
-
 			//------------ 프레그먼트 쉐이더 준비구문 ----------------
 
 			struct APPdata //프레그먼트 쉐이더의 appdata개념
@@ -74,7 +73,6 @@
 				float4 uv : TEXCOORD0;
 				float3 normal : NORMAL;
 			};
-
 
 			struct v2f //프레그먼트 v2f정의개념 (UV정의포함)
 			{
