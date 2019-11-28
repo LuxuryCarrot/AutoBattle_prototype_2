@@ -24,9 +24,11 @@ public class GetSet_L : MonoBehaviour
                 startPos = chess.position;
                 if (chess.GetComponent<ChessInfo>().isWaiting == true)
                 {
+                    Debug.Log("out");
                     PlayerManager.instance.sInventory[chess.GetComponent<ChessInfo>().ichessNum] = null;
                     --PlayerManager.instance.iBenchSlotCount;
                     chess.GetComponent<ChessInfo>().ichessNum = 999;
+                    chess.GetComponent<ChessInfo>().isWaiting = false;
                 }
                 else if (chess.GetComponent<ChessInfo>().isWaiting == false)
                 {
@@ -55,6 +57,7 @@ public class GetSet_L : MonoBehaviour
             {
                 if (tile.gameObject.layer == 12 && PlayerManager.instance.iBenchSlotCount < PlayerManager.instance.MaxHeroNumber)
                 {
+                    Debug.Log("in");
                     for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
                     {
                         if (PlayerManager.instance.sInventory[i] == null)
@@ -69,11 +72,11 @@ public class GetSet_L : MonoBehaviour
                     }
                     //chess.position = startPos;
                 }
-                if (tile.gameObject.layer == 12 && PlayerManager.instance.iBenchSlotCount >= PlayerManager.instance.MaxHeroNumber)
+                else if (tile.gameObject.layer == 12 && PlayerManager.instance.iBenchSlotCount >= PlayerManager.instance.MaxHeroNumber)
                 {
-
+                    chess.position = startPos;
                 }
-                else if (tile != null)
+                else if (tile != null && tile.gameObject.layer != 12)
                 {
                     if (PlayerManager.instance.iBordSlotCount < PlayerManager.instance.iLevel)
                     {
