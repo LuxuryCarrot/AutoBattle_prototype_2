@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-enum CurStage
+public enum CurStage
 {
     PREPARING,
     COMPAT,
@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     public int iCurrentRound = 0;
     public int iRoundCount = 0;
 
-    CurStage Stage;
+    public CurStage Stage;
 
     private int iRandomNum;
     private int iCurrState;

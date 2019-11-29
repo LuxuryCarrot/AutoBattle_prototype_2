@@ -15,6 +15,9 @@ public class GetSet_L : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.instance.Stage == CurStage.COMPAT)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
 
