@@ -2081,14 +2081,16 @@ MonoBehaviour:
   iExp: 0
   iLevel: 0
   iLevelUpEXp: 0
-  iSlotCount: 0
+  iBenchSlotCount: 0
+  iBordSlotCount: 0
   isInventoryFull: 0
   bMoneyLeft: 0
   PlayerLevel: {fileID: 353473790}
   PlayerExp: {fileID: 1825502564}
   PlayerLevelUpExp: {fileID: 363680428}
   PlayerBalance: {fileID: 2043980117}
-  sHeroName: []
+  sInventory: []
+  sGameBord: []
   InventorySlotPos:
   - {fileID: 2089832921}
   - {fileID: 180499847}
@@ -2986,6 +2988,7 @@ GameObject:
   - component: {fileID: 1615465280}
   - component: {fileID: 1615465279}
   - component: {fileID: 1615465286}
+  - component: {fileID: 1615465281}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -3009,7 +3012,7 @@ MonoBehaviour:
   Shop: {fileID: 1261366242}
   TimeText: {fileID: 1979057322}
   RoundText: {fileID: 966169122}
-  bisRoundStarted: 0
+  bisRoundStarted: 1
   sHeroName: 
   timeLeft: 1
   iCost: 0
@@ -3029,6 +3032,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1615465281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615465278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cca5f8a35cfa110449de0a263b898241, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1615465286
 MonoBehaviour:
   m_ObjectHideFlags: 0

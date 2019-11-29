@@ -11,6 +11,8 @@ public class GetSet_L : MonoBehaviour
 
     private Vector3 startPos;
 
+  
+
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -67,6 +69,7 @@ public class GetSet_L : MonoBehaviour
                             PlayerManager.instance.sInventory[i] = chess.GetComponent<ChessInfo>().sMyName;
                             ++PlayerManager.instance.iBenchSlotCount;
                             chess.GetComponent<ChessInfo>().isWaiting = true;
+                            chess.tag = "chess";
                             break;
                         }
                     }
@@ -87,6 +90,7 @@ public class GetSet_L : MonoBehaviour
                                 chess.position = tile.position + new Vector3(0, 2, 0);
                                 chess.GetComponent<ChessInfo>().ichessNum = i;
                                 PlayerManager.instance.sGameBord[i] = chess.GetComponent<ChessInfo>().sMyName;
+                                //Debug.Log(PlayerManager.instance.sGameBord[i] + "!");
                                 ++PlayerManager.instance.iBordSlotCount;
                                 chess.GetComponent<ChessInfo>().isWaiting = false;
                                 //chess.GetComponent<ChessFSMManager>().Settled();
@@ -106,4 +110,5 @@ public class GetSet_L : MonoBehaviour
             tile = null;
         }
     }
+
 }

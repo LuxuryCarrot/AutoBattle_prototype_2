@@ -34,7 +34,9 @@ public class GameManager : MonoBehaviour
 
     private int iRandomNum;
     private int iCurrState;
+    private int iSameHeroCount = 0;
 
+    private string sEHeroName;
     private string StageName;
 
     public Queue<GameObject> chessQueue = new Queue<GameObject>();  //라운드 시작 시 체스를 재생시키는 큐
@@ -129,6 +131,7 @@ public class GameManager : MonoBehaviour
                 PlayerManager.instance.iExp += 1;   
                 PlayerManager.instance.iBalance += 5;
                 iCurrState = 1;
+                EvolutionCheck();
             }
 
             if (timeLeft < 0)
@@ -313,6 +316,47 @@ public class GameManager : MonoBehaviour
                 sHeroName = RandomRarity.instance.RandomTwilight();
                 iCost = 5;
             }
+        }
+    }
+
+
+    public void EvolutionCheck()
+    {
+        for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
+        {
+            if (PlayerManager.instance.sInventory[i] != null)
+            {
+                sEHeroName = PlayerManager.instance.sInventory[i];
+                for (int j = 0; j < PlayerManager.instance.MaxHeroNumber; j++)
+                {
+                    if (sEHeroName == PlayerManager.instance.sInventory[j])
+                    {
+                        ++iSameHeroCount;
+                    }
+                }
+                if (bisRoundStarted == false)
+                {
+                    Debug.Log("!!");
+                    for (int k = 0; k < PlayerManager.instance.iLevel; k++)
+                    {
+                        if (sEHeroName == PlayerManager.instance.sGameBord[k])
+                        {
+                            ++iSameHeroCount;
+                        }
+                    }
+                }
+
+                if (iSameHeroCount >= 3)
+                {
+                    for (int a = 0; a < 3; a++)
+                    {
+
+                    }
+                }
+            }
+            Debug.Log(sEHeroName + " count : " + iSameHeroCount);
+            iSameHeroCount = 0;
+            sEHeroName = null;
         }
     }
 }
