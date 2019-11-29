@@ -56,7 +56,6 @@ public class ShopManager : MonoBehaviour
     {
         PlayerManager.instance.iBalance -= 2;
         ReRoll();
-        Evolution.instance.EvolutionCheck();
     }
 
     public void Slot1()

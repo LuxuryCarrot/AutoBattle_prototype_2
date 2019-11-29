@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8292161551957575212}
   - component: {fileID: 8292161551957575211}
   - component: {fileID: 8292161551957575210}
+  - component: {fileID: 4745089262385061838}
   m_Layer: 10
   m_Name: ParkWarrior
   m_TagString: Untagged
@@ -66,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 0}
+  gameManager: {fileID: 0}
   attackai: {fileID: 0}
   chaseai: {fileID: 0}
   ultiai: {fileID: 0}
@@ -74,6 +76,7 @@ MonoBehaviour:
   chaseSpeed: 0
   runSpeed: 0
   target: {fileID: 0}
+  ID: 0
 --- !u!114 &8292161551957575215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,6 +156,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+--- !u!114 &4745089262385061838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8292161551957575209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666dc497e8b683d42bc7dcb2622b3835, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ichessNum: 999
+  iChessEvolutionRate: 0
+  isWaiting: 0
+  sMyName: 
+  ChessPos: {fileID: 0}
 --- !u!1001 &7922522009891043864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -160,6 +180,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8292161551957575204}
     m_Modifications:
+    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Name
+      value: ParkWarriorPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 8756368808446140155, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -214,11 +239,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: m_Name
-      value: ParkWarriorPrefab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ec1f3030e1f3d243809915c7154da2c, type: 3}

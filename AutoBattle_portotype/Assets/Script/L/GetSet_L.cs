@@ -93,9 +93,10 @@ public class GetSet_L : MonoBehaviour
                                 //Debug.Log(PlayerManager.instance.sGameBord[i] + "!");
                                 ++PlayerManager.instance.iBordSlotCount;
                                 chess.GetComponent<ChessInfo>().isWaiting = false;
-                                //chess.GetComponent<ChessFSMManager>().Settled();
+                                chess.GetComponent<ChessFSMManager>().Settled();
                                 chess.tag = "chess";
-                                //chess.gameObject.layer = 0;
+                                chess.GetComponent<ChessFSMManager>().EnQueueThis();
+                                chess.gameObject.layer = 0;
                             }
                         }
                     }

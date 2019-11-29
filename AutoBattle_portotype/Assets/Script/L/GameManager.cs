@@ -336,7 +336,6 @@ public class GameManager : MonoBehaviour
                 }
                 if (bisRoundStarted == false)
                 {
-                    Debug.Log("!!");
                     for (int k = 0; k < PlayerManager.instance.iLevel; k++)
                     {
                         if (sEHeroName == PlayerManager.instance.sGameBord[k])
