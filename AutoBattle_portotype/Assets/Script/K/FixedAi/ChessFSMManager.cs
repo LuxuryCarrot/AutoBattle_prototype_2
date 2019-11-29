@@ -127,8 +127,8 @@ public class ChessFSMManager : MonoBehaviour
         if (!isEnqueued)
         {
             isEnqueued = true;
-            
-            gameManager.chessQueue.Enqueue(gameObject);
+
+            gameManager.chessList.Add(this.gameObject);
             ID = PlayerIDSet.playerID;
         }
     }
