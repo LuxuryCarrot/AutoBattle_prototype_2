@@ -8,6 +8,7 @@ public class ObjectGetSet : MonoBehaviour
     public Transform tile;
 
     private Vector3 startPos;
+    private GameManager gameManager;
 
     private void Update()
     {
@@ -50,6 +51,7 @@ public class ObjectGetSet : MonoBehaviour
                     chess.GetComponent<ChessFSMManager>().Settled();
                     chess.tag = "chess";
                     //chess.gameObject.layer = 0;
+                    chess.GetComponent<ChessFSMManager>().EnQueueThis();
                 }
                
             }

@@ -13,7 +13,8 @@ public class PlayerManager : MonoBehaviour
     public int iExp;
     public int iLevel;
     public int iLevelUpEXp;
-    public int iSlotCount;
+    public int iBenchSlotCount;
+    public int iBordSlotCount;
 
     public bool isInventoryFull;
     public bool bMoneyLeft;
@@ -36,7 +37,6 @@ public class PlayerManager : MonoBehaviour
         PlayerManager.instance = this;
 
         sInventory = new string[MaxHeroNumber];
-        sGameBord = new string[iLevel];
 
         isInventoryFull = false;
 
@@ -47,6 +47,8 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        sGameBord = new string[iLevel];
+
         PlayerLevel.text = ("레벨 :") + (iLevel).ToString("0");
         PlayerExp.text = ("경험치 :") + (iExp).ToString("0");
         PlayerBalance.text = ("잔액 :") + (iBalance).ToString("0");

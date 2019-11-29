@@ -8,4 +8,5 @@ public class StatusLists :MonoBehaviour
     public float speed;
     public float runSpeed;
     public bool isRun;
+    public float range;
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarriorChase : ChaseAIParent
+public class RangerChase : ChaseAIParent
 {
     public override void Execute()
     {
@@ -11,18 +11,28 @@ public class WarriorChase : ChaseAIParent
         if (GameObject.FindGameObjectsWithTag("chess") != null && manager.target == null)
         {
             GameObject[] objects = GameObject.FindGameObjectsWithTag("chess");
-            for (int i=0; i< objects.Length; i++)
+            GameObject final = null;
+            for(int i=0; i<objects.Length; i++)
             {
-                if (objects[i] != manager.gameObject && objects[i].GetComponent<ChessFSMManager>().ID!=manager.ID)
-                    manager.target = objects[i].transform;
+                if(objects[i] != manager.gameObject 
+                    && objects[i].GetComponent<ChessFSMManager>().ID != manager.ID)
+                {
+                    if (final == null)
+                        final = objects[i];
+
+                    else if(final.GetComponentInChildren<StatusLists>().HP >
+                            objects[i].GetComponentInChildren<StatusLists>().HP)
+                    {
+                        final = objects[i];
+                    }
+                }
             }
+
+            manager.target = final.transform;
         }
 
-        if (manager.target==null)
+        if (manager.target == null)
             return;
-
-        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) > 9.0f)
-            manager.SetState(ChessStates.JUMP);
 
         manager.transform.position = Vector3.MoveTowards(
                                       manager.transform.position,
@@ -38,8 +48,7 @@ public class WarriorChase : ChaseAIParent
         manager.transform.rotation = Quaternion.RotateTowards(manager.transform.rotation,
                                         Quaternion.LookRotation(dir), 540);
 
-        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < 1.0f)
+        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < manager.transform.GetComponentInChildren<StatusLists>().range)
             manager.SetState(ChessStates.ATTACK);
-
     }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4727665975643669244}
   - component: {fileID: 1566635675712523583}
   - component: {fileID: 2540009279440425197}
+  - component: {fileID: 6778188719664528634}
   m_Layer: 10
   m_Name: dCapsule
   m_TagString: Capsule
@@ -125,3 +126,26 @@ MonoBehaviour:
   ichessNum: 999
   isWaiting: 0
   sMyName: 
+--- !u!114 &6778188719664528634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4727665975643669242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e1352ed1f21664d8425fdd0d305091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  gameManager: {fileID: 0}
+  attackai: {fileID: 0}
+  chaseai: {fileID: 0}
+  ultiai: {fileID: 0}
+  isRun: 0
+  hp: 0
+  chaseSpeed: 0
+  runSpeed: 0
+  target: {fileID: 0}
+  ID: 0
