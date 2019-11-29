@@ -64,10 +64,11 @@ public class ShopManager : MonoBehaviour
         {
             for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
             {
-                if (PlayerManager.instance.sInventory[i] == null)
+                if (PlayerManager.instance.Inventory[i] == null)
                 {
                     BuyHero(i, 0);
                     Slot[0].SetActive(false);
+                    GameManager.instance.Evolution();
                     break;
                 }
             }
@@ -83,10 +84,11 @@ public class ShopManager : MonoBehaviour
         {
             for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
             {
-                if (PlayerManager.instance.sInventory[i] == null)
+                if (PlayerManager.instance.Inventory[i] == null)
                 {
                     BuyHero(i, 1);
                     Slot[1].SetActive(false);
+                    GameManager.instance.Evolution();
                     break;
                 }
             }
@@ -102,10 +104,11 @@ public class ShopManager : MonoBehaviour
         {
             for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
             {
-                if (PlayerManager.instance.sInventory[i] == null)
+                if (PlayerManager.instance.Inventory[i] == null)
                 {
                     BuyHero(i, 2);
                     Slot[2].SetActive(false);
+                    GameManager.instance.Evolution();
                     break;
                 }
             }
@@ -121,10 +124,11 @@ public class ShopManager : MonoBehaviour
         {
             for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
             {
-                if (PlayerManager.instance.sInventory[i] == null)
+                if (PlayerManager.instance.Inventory[i] == null)
                 {
                     BuyHero(i, 3);
                     Slot[3].SetActive(false);
+                    GameManager.instance.Evolution();
                     break;
                 }
             }
@@ -140,10 +144,11 @@ public class ShopManager : MonoBehaviour
         {
             for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
             {
-                if (PlayerManager.instance.sInventory[i] == null)
+                if (PlayerManager.instance.Inventory[i] == null)
                 {
                     BuyHero(i, 4);
                     Slot[4].SetActive(false);
+                    GameManager.instance.Evolution();
                     break;
                 }
             }
@@ -153,7 +158,7 @@ public class ShopManager : MonoBehaviour
     {
         PlayerManager.instance.iBalance -= SlotCost[_ShopSlotNum];
         PlayerManager.instance.iBenchSlotCount++;
-        PlayerManager.instance.SetHero(_SlotPosIndex, sHeroName[_ShopSlotNum]);
+        PlayerManager.instance.SetHero(_SlotPosIndex, sHeroName[_ShopSlotNum], 1);
     }
 
     IEnumerator Error_InventoryFull()

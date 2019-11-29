@@ -40,6 +40,7 @@ public class GameManager : MonoBehaviour
     private int iRandomNum;
     private int iCurrState;
     private int iSameHeroCount = 0;
+    private int EvRate;
 
     private string sEHeroName;
     private string StageName;
@@ -158,7 +159,7 @@ public class GameManager : MonoBehaviour
                 PlayerManager.instance.iExp += 1;   
                 PlayerManager.instance.iBalance += 5;
                 iCurrState = 1;
-                EvolutionCheck();
+                //EvolutionCheck();
             }
 
             if (timeLeft < 0)
@@ -347,40 +348,82 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void EvolutionCheck()
+    public void Evolution()
     {
         for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
         {
-            if (PlayerManager.instance.sInventory[i] != null)
+            if (PlayerManager.instance.Inventory[i] != null)
             {
-                sEHeroName = PlayerManager.instance.sInventory[i];
+                sEHeroName = PlayerManager.instance.Inventory[i].GetComponent<ChessInfo>().sMyName;
+                EvRate = PlayerManager.instance.Inventory[i].GetComponent<ChessInfo>().iChessEvolutionRate;
+
                 for (int j = 0; j < PlayerManager.instance.MaxHeroNumber; j++)
                 {
-                    if (sEHeroName == PlayerManager.instance.sInventory[j])
+                    if (PlayerManager.instance.Inventory[j] != null)
                     {
-                        ++iSameHeroCount;
+                        if (sEHeroName == PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().sMyName 
+                            && PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                        {
+                            ++iSameHeroCount;
+                        }
                     }
                 }
                 if (bisRoundStarted == false)
                 {
                     for (int k = 0; k < PlayerManager.instance.iLevel; k++)
                     {
-                        if (sEHeroName == PlayerManager.instance.sGameBord[k])
+                        if (PlayerManager.instance.GameBord[k] != null)
                         {
-                            ++iSameHeroCount;
+                            if (sEHeroName == PlayerManager.instance.GameBord[k].GetComponent<ChessInfo>().sMyName
+                                && PlayerManager.instance.Inventory[k].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                            {
+                                ++iSameHeroCount;
+                            }
                         }
                     }
                 }
 
-                if (iSameHeroCount >= 3)
+                if (iSameHeroCount == 3)
                 {
                     for (int a = 0; a < 3; a++)
                     {
-
+                        if (PlayerManager.instance.Inventory[a] != null)
+                        {
+                            if (PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().sMyName == sEHeroName
+                                && PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                            {
+                                Destroy(PlayerManager.instance.Inventory[a]);
+                                --iSameHeroCount;
+                            }
+                        }
+                    }
+                    if (iSameHeroCount > 0)
+                    {
+                        for (int l = 0; i < iSameHeroCount; i++)
+                        {
+                            if (PlayerManager.instance.GameBord[l] != null)
+                            {
+                                if (PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().sMyName == sEHeroName
+                                    && PlayerManager.instance.Inventory[l].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                                {
+                                    Destroy(PlayerManager.instance.GameBord[l]);
+                                    --iSameHeroCount;
+                                }
+                            }
+                        }
+                    }
+                    for (int z = 0; z < PlayerManager.instance.MaxHeroNumber; z++)
+                    {
+                        if (PlayerManager.instance.Inventory[z] == null)
+                        {
+                            PlayerManager.instance.SetHero(z, sEHeroName, EvRate+1);
+                            break;
+                        }
                     }
                 }
+
             }
-            Debug.Log(sEHeroName + " count : " + iSameHeroCount);
+            Debug.Log(sEHeroName + " count : " + iSameHeroCount + ", " + EvRate + "\n evolution count :" + i);
             iSameHeroCount = 0;
             sEHeroName = null;
         }

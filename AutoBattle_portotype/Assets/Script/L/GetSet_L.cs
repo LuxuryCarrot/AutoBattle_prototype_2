@@ -30,14 +30,14 @@ public class GetSet_L : MonoBehaviour
                 if (chess.GetComponent<ChessInfo>().isWaiting == true)
                 {
                     Debug.Log("out");
-                    PlayerManager.instance.sInventory[chess.GetComponent<ChessInfo>().ichessNum] = null;
+                    PlayerManager.instance.Inventory[chess.GetComponent<ChessInfo>().ichessNum] = null;
                     --PlayerManager.instance.iBenchSlotCount;
                     chess.GetComponent<ChessInfo>().ichessNum = 999;
                     chess.GetComponent<ChessInfo>().isWaiting = false;
                 }
                 else if (chess.GetComponent<ChessInfo>().isWaiting == false)
                 {
-                    PlayerManager.instance.sGameBord[chess.GetComponent<ChessInfo>().ichessNum] = null;
+                    PlayerManager.instance.GameBord[chess.GetComponent<ChessInfo>().ichessNum] = null;
                     --PlayerManager.instance.iBordSlotCount;
                     chess.GetComponent<ChessInfo>().ichessNum = 999;
                 }
@@ -65,11 +65,11 @@ public class GetSet_L : MonoBehaviour
                     Debug.Log("in");
                     for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
                     {
-                        if (PlayerManager.instance.sInventory[i] == null)
+                        if (PlayerManager.instance.Inventory[i] == null)
                         {
                             chess.position = tile.position + new Vector3(0, 2, 0);
                             chess.GetComponent<ChessInfo>().ichessNum = i;
-                            PlayerManager.instance.sInventory[i] = chess.GetComponent<ChessInfo>().sMyName;
+                            PlayerManager.instance.Inventory[i] = chess.gameObject;
                             ++PlayerManager.instance.iBenchSlotCount;
                             chess.GetComponent<ChessInfo>().isWaiting = true;
                             chess.tag = "chess";
@@ -88,11 +88,11 @@ public class GetSet_L : MonoBehaviour
                     {
                         for (int i = 0; i < PlayerManager.instance.iLevel; i++)
                         {
-                            if (PlayerManager.instance.sGameBord[i] == null)
+                            if (PlayerManager.instance.GameBord[i] == null)
                             {
                                 chess.position = tile.position + new Vector3(0, 2, 0);
                                 chess.GetComponent<ChessInfo>().ichessNum = i;
-                                PlayerManager.instance.sGameBord[i] = chess.GetComponent<ChessInfo>().sMyName;
+                                PlayerManager.instance.GameBord[i] = chess.gameObject;
                                 //Debug.Log(PlayerManager.instance.sGameBord[i] + "!");
                                 ++PlayerManager.instance.iBordSlotCount;
                                 chess.GetComponent<ChessInfo>().isWaiting = false;

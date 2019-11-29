@@ -24,8 +24,8 @@ public class PlayerManager : MonoBehaviour
     public Text PlayerLevelUpExp;
     public Text PlayerBalance;
 
-    public string[] sInventory;
-    public string[] sGameBord;
+    public GameObject[] GameBord;
+    public GameObject[] Inventory;
 
     public Transform[] InventorySlotPos;
 
@@ -36,7 +36,8 @@ public class PlayerManager : MonoBehaviour
     {
         PlayerManager.instance = this;
 
-        sInventory = new string[MaxHeroNumber];
+        Inventory = new GameObject[MaxHeroNumber];
+        GameBord = new GameObject[MaxHeroNumber];
 
         isInventoryFull = false;
 
@@ -47,7 +48,6 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sGameBord = new string[iLevel];
 
         PlayerLevel.text = ("레벨 :") + (iLevel).ToString("0");
         PlayerExp.text = ("경험치 :") + (iExp).ToString("0");
@@ -77,12 +77,12 @@ public class PlayerManager : MonoBehaviour
         iExp = 0;
     }
 
-    public void SetHero(int _index, string _sHeroName)
+    public void SetHero(int _index, string _sHeroName, int _EvolutionRate)
     {
-        sInventory[_index] = _sHeroName;
-        CloneHero = Instantiate(Resources.Load("Prefabs/Characters/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation) as GameObject;
-        CloneHero.GetComponent<ChessInfo>().ichessNum = _index;
-        CloneHero.GetComponent<ChessInfo>().isWaiting = true;
-        CloneHero.GetComponent<ChessInfo>().sMyName = _sHeroName;
+        Inventory[_index] = Instantiate(Resources.Load("Prefabs/Characters/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation) as GameObject;
+        Inventory[_index].GetComponent<ChessInfo>().ichessNum = _index;
+        Inventory[_index].GetComponent<ChessInfo>().isWaiting = true;
+        Inventory[_index].GetComponent<ChessInfo>().sMyName = _sHeroName;
+        Inventory[_index].GetComponent<ChessInfo>().iChessEvolutionRate = _EvolutionRate;
     }
 }
