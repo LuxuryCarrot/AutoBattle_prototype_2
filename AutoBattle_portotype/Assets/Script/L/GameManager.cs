@@ -9,6 +9,11 @@ enum CurStage
     COMPAT,
     FINISH
 }
+public struct nextRound
+{
+    public GameObject obj;
+    public Vector3 pos;
+}
 
 public class GameManager : MonoBehaviour
 {
@@ -39,9 +44,8 @@ public class GameManager : MonoBehaviour
     private string sEHeroName;
     private string StageName;
 
-    public Queue<GameObject> chessQueue = new Queue<GameObject>();  //라운드 시작 시 체스를 재생시키는 큐
-    public Queue<GameObject> nextRoundQueue = new Queue<GameObject>();
-    public Queue<Vector3> nextRoundPos = new Queue<Vector3>();
+    public List<GameObject> chessList = new List<GameObject>();  //라운드 시작 시 체스를 재생시키는 큐
+    public List<nextRound> nextRoundList = new List<nextRound>();
     
 
     private void Awake()
@@ -50,6 +54,7 @@ public class GameManager : MonoBehaviour
         bisRoundStarted = false;
         Stage = CurStage.PREPARING; 
         iCurrState = 1;
+        
     }
 
     void Update()
@@ -72,15 +77,25 @@ public class GameManager : MonoBehaviour
                 ShopManager.instance.ReRoll();      // 상점 아이템 랜덤으로 배치
                 iCurrState = 2;
 
-                if(nextRoundQueue!=null)
-                for(;nextRoundQueue.Count!=0;)
+                //if(nextRoundQueue!=null)
+                //for(;nextRoundQueue.Count!=0;)
+                //{
+                //    GameObject nextR = nextRoundQueue.Dequeue();
+                //    nextR.transform.position = nextRoundPos.Dequeue();
+                //    nextR.SetActive(true);
+                //    nextR.GetComponent<ChessFSMManager>().EnQueueThis();
+                //}
+
+                if (nextRoundList != null)
                 {
-                    GameObject nextR = nextRoundQueue.Dequeue();
-                    nextR.transform.position = nextRoundPos.Dequeue();
-                    nextR.SetActive(true);
-                    nextR.GetComponent<ChessFSMManager>().EnQueueThis();
+                    foreach (nextRound objs in nextRoundList)
+                    {
+                        objs.obj.SetActive(true);
+                        objs.obj.transform.position = objs.pos;
+
+                    }
+                    nextRoundList.Clear();
                 }
-                
             }
 
             if (timeLeft < 0)                       // 전투 준비 시간 끝나면 전투 라운드로 스테이지 변경.
@@ -102,17 +117,27 @@ public class GameManager : MonoBehaviour
                 insts.GetComponent<ChessFSMManager>().ID = PlayerIDSet.AIID;
                 insts.tag = "chess";
 
-                for(;chessQueue.Count!=0;)          //배치한 말들을 모두 재생시키고 다음 라운드에 불러올 수 있도록 저장하는 포문
+                //for(;chessQueue.Count!=0;)          //배치한 말들을 모두 재생시키고 다음 라운드에 불러올 수 있도록 저장하는 포문
+                //{
+                //    GameObject deqChess = chessQueue.Dequeue();
+                //    //GameObject enqueChess = new GameObject();
+                //    //enqueChess = Instantiate(deqChess, deqChess.transform);
+                //    //enqueChess.transform.position = deqChess.transform.position;
+                //    //enqueChess.SetActive(false);
+                //    nextRoundQueue.Enqueue(deqChess);
+                //    nextRoundPos.Enqueue(deqChess.transform.position);
+                //    deqChess.GetComponent<ChessFSMManager>().DeQueueThis();
+                //}
+
+                foreach(GameObject obj in chessList)
                 {
-                    GameObject deqChess = chessQueue.Dequeue();
-                    //GameObject enqueChess = new GameObject();
-                    //enqueChess = Instantiate(deqChess, deqChess.transform);
-                    //enqueChess.transform.position = deqChess.transform.position;
-                    //enqueChess.SetActive(false);
-                    nextRoundQueue.Enqueue(deqChess);
-                    nextRoundPos.Enqueue(deqChess.transform.position);
-                    deqChess.GetComponent<ChessFSMManager>().DeQueueThis();
+                    nextRound nextr;
+                    nextr.obj = obj;
+                    nextr.pos = obj.transform.position;
+                    nextRoundList.Add(nextr);
+                    obj.GetComponent<ChessFSMManager>().DeQueueThis();
                 }
+                chessList.Clear();
             }
 
             if (timeLeft < 0)
