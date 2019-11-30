@@ -404,7 +404,8 @@ public class GameManager : MonoBehaviour
 
     public void Evolution()
     {
-        for (int a = 0; a < 3; a++)
+        Debug.Log("evolved");
+        for (int a = 0; iSameHeroCount!=0; a++)
         {
             if (PlayerManager.instance.Inventory[a] != null)
             {
@@ -412,6 +413,7 @@ public class GameManager : MonoBehaviour
                     && PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
                 {
                     Destroy(PlayerManager.instance.Inventory[a]);
+                    PlayerManager.instance.Inventory[a] = null;
                     --iSameHeroCount;
                 }
             }
@@ -426,6 +428,7 @@ public class GameManager : MonoBehaviour
                         && PlayerManager.instance.Inventory[l].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
                     {
                         Destroy(PlayerManager.instance.GameBord[l]);
+                        PlayerManager.instance.Inventory[l] = null;
                         --iSameHeroCount;
                     }
                 }
@@ -439,9 +442,6 @@ public class GameManager : MonoBehaviour
                 break;
             }
         }
-        for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
-        {
-            Debug.Log(PlayerManager.instance.Inventory[i]);
-        }
+        Debug.Log(PlayerManager.instance.Inventory[0]);
     }
 }
