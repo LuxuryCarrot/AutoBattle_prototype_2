@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangerChase : ChaseAIParent
 {
+    private bool isNear = false;
     public override void Execute()
     {
         base.Execute();
@@ -34,12 +35,15 @@ public class RangerChase : ChaseAIParent
         if (manager.target == null)
             return;
 
-        manager.transform.position = Vector3.MoveTowards(
-                                      manager.transform.position,
-                                      manager.target.position,
-                                      manager.chaseSpeed * Time.deltaTime);
-
-
+        if (!isNear)
+        {
+            manager.transform.position = Vector3.MoveTowards(
+                                          manager.transform.position,
+                                          manager.target.position,
+                                          manager.chaseSpeed * Time.deltaTime);
+        }
+        else
+            GotoBlock();
 
         Vector3 dir = manager.target.position - manager.transform.position;
 
@@ -49,6 +53,21 @@ public class RangerChase : ChaseAIParent
                                         Quaternion.LookRotation(dir), 540);
 
         if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < manager.transform.GetComponentInChildren<StatusLists>().range)
+            isNear = false;
+    }
+    private void GotoBlock()
+    {
+        Vector3 desti = 
+            new Vector3(Mathf.Round(transform.position.x), transform.position.y,Mathf.Round(transform.position.z));
+
+        manager.transform.position = Vector3.MoveTowards(
+                                      manager.transform.position,
+                                      desti,
+                                      manager.chaseSpeed * Time.deltaTime);
+
+        
+
+        if (Vector3.SqrMagnitude(manager.transform.position - desti) < 0.1f)
             manager.SetState(ChessStates.ATTACK);
     }
 }

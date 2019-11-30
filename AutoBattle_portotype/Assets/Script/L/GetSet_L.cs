@@ -15,8 +15,7 @@ public class GetSet_L : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.instance.Stage == CurStage.COMPAT)
-            return;
+        
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -37,6 +36,12 @@ public class GetSet_L : MonoBehaviour
                 }
                 else if (chess.GetComponent<ChessInfo>().isWaiting == false)
                 {
+                    if (GameManager.instance.Stage == CurStage.COMPAT)
+                    {
+                        chess = null;
+                        startPos = Vector3.zero;
+                        return;
+                    }
                     PlayerManager.instance.GameBord[chess.GetComponent<ChessInfo>().ichessNum] = null;
                     --PlayerManager.instance.iBordSlotCount;
                     chess.GetComponent<ChessInfo>().ichessNum = 999;
@@ -62,27 +67,78 @@ public class GetSet_L : MonoBehaviour
             {
                 if (tile.gameObject.layer == 12 && PlayerManager.instance.iBenchSlotCount < PlayerManager.instance.MaxHeroNumber)
                 {
-                    Debug.Log("in");
-                    for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
-                    {
-                        if (PlayerManager.instance.Inventory[i] == null)
-                        {
-                            chess.position = tile.position + new Vector3(0, 2, 0);
-                            chess.GetComponent<ChessInfo>().ichessNum = i;
-                            PlayerManager.instance.Inventory[i] = chess.gameObject;
-                            ++PlayerManager.instance.iBenchSlotCount;
-                            chess.GetComponent<ChessInfo>().isWaiting = true;
-                            chess.tag = "chess";
-                            break;
-                        }
-                    }
+                    //Debug.Log("in");
+                    //for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
+                    //{
+                    //    if (PlayerManager.instance.Inventory[i] == null)
+                    //    {
+                    //        chess.position = tile.position + new Vector3(0, 2, 0);
+                    //        chess.GetComponent<ChessInfo>().ichessNum = i;
+
+                    //            PlayerManager.instance.Inventory[i] = chess.gameObject;
+                    //            ++PlayerManager.instance.iBenchSlotCount;
+
+                    //        chess.GetComponent<ChessInfo>().isWaiting = true;
+                    //        chess.tag = "Untagged";
+                    //        chess.GetComponent<ChessFSMManager>().BenchIn();
+                    //        break;
+                    //    }
+                    //}
                     //chess.position = startPos;
+
+                    int tilego = (int)(tile.transform.position.x / 2) % 8;
+
+                    if (PlayerManager.instance.Inventory[tilego]==null)
+                    {
+                        chess.position = tile.position + new Vector3(0, 2, 0);
+                        chess.GetComponent<ChessInfo>().ichessNum = tilego;
+                        PlayerManager.instance.Inventory[tilego] = chess.gameObject;
+                        if(chess.tag=="chess")
+                          ++PlayerManager.instance.iBenchSlotCount;
+                        chess.GetComponent<ChessInfo>().isWaiting = true;
+                        chess.tag = "Untagged";
+                        
+                        chess.GetComponent<ChessFSMManager>().BenchIn();
+                        
+                    }
+                    else if(chess.tag=="chess")
+                    {
+                        GameObject changeChess = PlayerManager.instance.Inventory[tilego];
+                        changeChess.transform.position = startPos+ new Vector3(0, 2, 0);
+                        changeChess.GetComponent<ChessFSMManager>().Settled();
+                        
+                        changeChess.tag = "chess";
+                        ++PlayerManager.instance.iBordSlotCount;
+                        changeChess.GetComponent<ChessFSMManager>().EnQueueThis();
+                        changeChess.GetComponent<ChessInfo>().isWaiting = false;
+
+                        chess.position = tile.position + new Vector3(0, 2, 0);
+                        chess.GetComponent<ChessInfo>().ichessNum = tilego;
+                        PlayerManager.instance.Inventory[tilego] = chess.gameObject;
+                         
+                        chess.GetComponent<ChessInfo>().isWaiting = true;
+                        chess.tag = "Untagged";
+
+                        chess.GetComponent<ChessFSMManager>().BenchIn();
+                    }
+                    else
+                    {
+                        ++PlayerManager.instance.iBenchSlotCount;
+                        GameObject changeChess = PlayerManager.instance.Inventory[tilego];
+                        changeChess.transform.position = startPos;
+                        changeChess.GetComponent<ChessInfo>().ichessNum = (int)(startPos.x / 2) % 8;
+                        PlayerManager.instance.Inventory[(int)(startPos.x / 2) % 8] = changeChess;
+
+                        chess.position = tile.position + new Vector3(0, 2, 0);
+                        chess.GetComponent<ChessInfo>().ichessNum = tilego;
+                        PlayerManager.instance.Inventory[tilego] = chess.gameObject;
+                    }
                 }
                 else if (tile.gameObject.layer == 12 && PlayerManager.instance.iBenchSlotCount >= PlayerManager.instance.MaxHeroNumber)
                 {
                     chess.position = startPos;
                 }
-                else if (tile != null && tile.gameObject.layer != 12)
+                else if (tile != null && tile.gameObject.layer != 12 && GameManager.instance.Stage!=CurStage.COMPAT)
                 {
                     if (PlayerManager.instance.iBordSlotCount < PlayerManager.instance.iLevel)
                     {
@@ -99,7 +155,8 @@ public class GetSet_L : MonoBehaviour
                                 chess.GetComponent<ChessFSMManager>().Settled();
                                 chess.tag = "chess";
                                 chess.GetComponent<ChessFSMManager>().EnQueueThis();
-                                chess.gameObject.layer = 0;
+                                PlayerManager.instance.Inventory[(int)(startPos.x / 2) % 8] = null;
+                                //chess.gameObject.layer = 0;
                             }
                         }
                     }

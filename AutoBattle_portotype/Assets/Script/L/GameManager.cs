@@ -405,7 +405,7 @@ public class GameManager : MonoBehaviour
     public void Evolution()
     {
         Debug.Log("evolved");
-        for (int a = 0; iSameHeroCount!=0; a++)
+        for (int a = 0; iSameHeroCount!=0 && a<8; a++)
         {
             if (PlayerManager.instance.Inventory[a] != null)
             {
@@ -424,9 +424,11 @@ public class GameManager : MonoBehaviour
             {
                 if (PlayerManager.instance.GameBord[l] != null)
                 {
+                    Debug.Log(PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().sMyName);
                     if (PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().sMyName == sEHeroName
-                        && PlayerManager.instance.Inventory[l].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                        && PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
                     {
+                        PlayerManager.instance.GameBord[l].GetComponent<ChessFSMManager>().BenchIn();
                         Destroy(PlayerManager.instance.GameBord[l]);
                         PlayerManager.instance.Inventory[l] = null;
                         --iSameHeroCount;

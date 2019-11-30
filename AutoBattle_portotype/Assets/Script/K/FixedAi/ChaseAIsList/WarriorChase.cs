@@ -21,24 +21,37 @@ public class WarriorChase : ChaseAIParent
         if (manager.target==null)
             return;
 
-        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) > 9.0f)
+        Vector3 targetVec = manager.target.position;
+
+        if ((manager.transform.position - manager.target.position).x >= 0)
+            targetVec += new Vector3(2, 0, 0);
+        else
+            targetVec += new Vector3(-2, 0, 0);
+
+        if ((manager.transform.position - manager.target.position).z >= 0)
+            targetVec += new Vector3(0, 0, 2);
+        else
+            targetVec += new Vector3(0, 0, -2);
+
+
+        if (Vector3.SqrMagnitude(manager.transform.position - targetVec) > 36.0f)
             manager.SetState(ChessStates.JUMP);
 
         manager.transform.position = Vector3.MoveTowards(
                                       manager.transform.position,
-                                      manager.target.position,
+                                      targetVec,
                                       manager.chaseSpeed * Time.deltaTime);
 
 
 
-        Vector3 dir = manager.target.position - manager.transform.position;
+        Vector3 dir = targetVec - manager.transform.position;
 
         dir.y = 0;
 
         manager.transform.rotation = Quaternion.RotateTowards(manager.transform.rotation,
-                                        Quaternion.LookRotation(dir), 540);
+                                        Quaternion.LookRotation(dir), 1080);
 
-        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < 1.0f)
+        if (Vector3.SqrMagnitude(manager.transform.position - targetVec) < 0.1f)
             manager.SetState(ChessStates.ATTACK);
 
     }
