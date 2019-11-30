@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
                 ShopManager.instance.ReRoll();      // 상점 아이템 랜덤으로 배치
                 iCurrState = 2;
 
+                SameHeroCheck();
+
                 //if(nextRoundQueue!=null)
                 //for(;nextRoundQueue.Count!=0;)
                 //{
@@ -348,7 +350,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void Evolution()
+    public void SameHeroCheck()
     {
         for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
         {
@@ -365,6 +367,10 @@ public class GameManager : MonoBehaviour
                             && PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
                         {
                             ++iSameHeroCount;
+                            if (iSameHeroCount == 3)
+                            {
+                                Evolution();
+                            }
                         }
                     }
                 }
@@ -378,54 +384,64 @@ public class GameManager : MonoBehaviour
                                 && PlayerManager.instance.Inventory[k].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
                             {
                                 ++iSameHeroCount;
-                            }
-                        }
-                    }
-                }
-
-                if (iSameHeroCount == 3)
-                {
-                    for (int a = 0; a < 3; a++)
-                    {
-                        if (PlayerManager.instance.Inventory[a] != null)
-                        {
-                            if (PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().sMyName == sEHeroName
-                                && PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
-                            {
-                                Destroy(PlayerManager.instance.Inventory[a]);
-                                --iSameHeroCount;
-                            }
-                        }
-                    }
-                    if (iSameHeroCount > 0)
-                    {
-                        for (int l = 0; i < iSameHeroCount; i++)
-                        {
-                            if (PlayerManager.instance.GameBord[l] != null)
-                            {
-                                if (PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().sMyName == sEHeroName
-                                    && PlayerManager.instance.Inventory[l].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                                if (iSameHeroCount == 3)
                                 {
-                                    Destroy(PlayerManager.instance.GameBord[l]);
-                                    --iSameHeroCount;
+                                    Evolution();
                                 }
                             }
                         }
                     }
-                    for (int z = 0; z < PlayerManager.instance.MaxHeroNumber; z++)
-                    {
-                        if (PlayerManager.instance.Inventory[z] == null)
-                        {
-                            PlayerManager.instance.SetHero(z, sEHeroName, EvRate+1);
-                            break;
-                        }
-                    }
                 }
 
+              
+
             }
-            Debug.Log(sEHeroName + " count : " + iSameHeroCount + ", " + EvRate + "\n evolution count :" + i);
+            //Debug.Log(sEHeroName + " count : " + iSameHeroCount + ", " + EvRate + "\n evolution count :" + i);
             iSameHeroCount = 0;
             sEHeroName = null;
+        }
+    }
+
+    public void Evolution()
+    {
+        for (int a = 0; a < 3; a++)
+        {
+            if (PlayerManager.instance.Inventory[a] != null)
+            {
+                if (PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().sMyName == sEHeroName
+                    && PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                {
+                    Destroy(PlayerManager.instance.Inventory[a]);
+                    --iSameHeroCount;
+                }
+            }
+        }
+        if (iSameHeroCount > 0)
+        {
+            for (int l = 0; l < iSameHeroCount; l++)
+            {
+                if (PlayerManager.instance.GameBord[l] != null)
+                {
+                    if (PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().sMyName == sEHeroName
+                        && PlayerManager.instance.Inventory[l].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                    {
+                        Destroy(PlayerManager.instance.GameBord[l]);
+                        --iSameHeroCount;
+                    }
+                }
+            }
+        }
+        for (int z = 0; z < PlayerManager.instance.MaxHeroNumber; z++)
+        {
+            if (PlayerManager.instance.Inventory[z] == null && iSameHeroCount == 0)
+            {
+                PlayerManager.instance.SetHero(z, sEHeroName, EvRate + 1);
+                break;
+            }
+        }
+        for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
+        {
+            Debug.Log(PlayerManager.instance.Inventory[i]);
         }
     }
 }

@@ -68,7 +68,7 @@ public class ShopManager : MonoBehaviour
                 {
                     BuyHero(i, 0);
                     Slot[0].SetActive(false);
-                    GameManager.instance.Evolution();
+                    GameManager.instance.SameHeroCheck();
                     break;
                 }
             }
@@ -88,7 +88,7 @@ public class ShopManager : MonoBehaviour
                 {
                     BuyHero(i, 1);
                     Slot[1].SetActive(false);
-                    GameManager.instance.Evolution();
+                    GameManager.instance.SameHeroCheck();
                     break;
                 }
             }
@@ -108,7 +108,7 @@ public class ShopManager : MonoBehaviour
                 {
                     BuyHero(i, 2);
                     Slot[2].SetActive(false);
-                    GameManager.instance.Evolution();
+                    GameManager.instance.SameHeroCheck();
                     break;
                 }
             }
@@ -128,7 +128,7 @@ public class ShopManager : MonoBehaviour
                 {
                     BuyHero(i, 3);
                     Slot[3].SetActive(false);
-                    GameManager.instance.Evolution();
+                    GameManager.instance.SameHeroCheck();
                     break;
                 }
             }
@@ -148,7 +148,7 @@ public class ShopManager : MonoBehaviour
                 {
                     BuyHero(i, 4);
                     Slot[4].SetActive(false);
-                    GameManager.instance.Evolution();
+                    GameManager.instance.SameHeroCheck();
                     break;
                 }
             }
