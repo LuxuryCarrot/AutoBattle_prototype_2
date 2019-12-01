@@ -167,6 +167,10 @@ PrefabInstance:
       propertyPath: m_LightProbeUsage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 65ac8a7d6edfb924b9df45a34cf920c3, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65ac8a7d6edfb924b9df45a34cf920c3, type: 3}
 --- !u!4 &2572343453194523969 stripped

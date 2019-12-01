@@ -163,6 +163,10 @@ PrefabInstance:
       propertyPath: m_StitchLightmapSeams
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: a3ee8f97ec72def4ca18a5b92cb81ab3, type: 3}
+      propertyPath: m_ScaleInLightmap
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3ee8f97ec72def4ca18a5b92cb81ab3, type: 3}
 --- !u!4 &4836138253619685950 stripped
