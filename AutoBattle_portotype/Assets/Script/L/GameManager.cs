@@ -354,7 +354,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void SameHeroCheck()
     {
         for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
