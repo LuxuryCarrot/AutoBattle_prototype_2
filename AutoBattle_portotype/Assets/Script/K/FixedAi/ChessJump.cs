@@ -6,6 +6,7 @@ public class ChessJump : ChessFSMParent
 {
 
     private Vector3 moveVec;
+    private Vector3 targetVec;
     private float gravity;
 
     private float delta;
@@ -19,10 +20,24 @@ public class ChessJump : ChessFSMParent
     {
         base.BeginState();
         gravity = 10.0f;
-        moveVec = manager.target.position - transform.position;
+       
+        Vector3 targetVec = manager.target.position;
+
+        if ((manager.transform.position - manager.target.position).x >= 0)
+            targetVec += new Vector3(2, 0, 0);
+        else
+            targetVec += new Vector3(-2, 0, 0);
+
+        if ((manager.transform.position - manager.target.position).z >= 0)
+            targetVec += new Vector3(0, 0, 2);
+        else
+            targetVec += new Vector3(0, 0, -2);
+
+        moveVec = targetVec - transform.position;
+
         moveVec.y = 0;
         Debug.Log(Vector3.Magnitude(moveVec));
-        delta = Vector3.Magnitude(moveVec) * 0.45f;
+        delta = Vector3.Magnitude(moveVec) * 0.5f;
         movevecNormaled = Vector3.Normalize(moveVec);
 
         xSpeed = Mathf.Sqrt(delta * gravity);

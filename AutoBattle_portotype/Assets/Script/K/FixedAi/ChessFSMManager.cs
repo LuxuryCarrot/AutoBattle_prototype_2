@@ -127,8 +127,8 @@ public class ChessFSMManager : MonoBehaviour
         if (!isEnqueued)
         {
             isEnqueued = true;
-            
-            gameManager.chessQueue.Enqueue(gameObject);
+
+            gameManager.chessList.Add(this.gameObject);
             ID = PlayerIDSet.playerID;
         }
     }
@@ -138,5 +138,12 @@ public class ChessFSMManager : MonoBehaviour
         //gameManager.nextRoundQueue.Enqueue(this.gameObject);
         isEnqueued = false;
         SetState(ChessStates.CHASE);
+    }
+
+    public void BenchIn()
+    {
+        if(isEnqueued==true)
+          gameManager.chessList.Remove(this.gameObject);
+        isEnqueued = false;
     }
 }
