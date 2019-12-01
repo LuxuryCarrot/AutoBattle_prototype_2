@@ -1,0 +1,617 @@
+fileFormatVersion: 2
+guid: d4bb935eb3c28724bbe886f657abddc5
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Bip001
+    100004: Bip001 Foo
+    100006: Bip001 He0
+    100008: Bip001 Hea
+    100010: Bip001 L 0
+    100012: Bip001 L 1
+    100014: Bip001 L 2
+    100016: Bip001 L 3
+    100018: Bip001 L 4
+    100020: Bip001 L 5
+    100022: Bip001 L 6
+    100024: Bip001 L 7
+    100026: Bip001 L 8
+    100028: Bip001 L 9
+    100030: Bip001 L C
+    100032: Bip001 L F
+    100034: Bip001 L H
+    100036: Bip001 L T
+    100038: Bip001 L U
+    100040: Bip001 L10
+    100042: Bip001 L11
+    100044: Bip001 L12
+    100046: Bip001 L13
+    100048: Bip001 L14
+    100050: Bip001 L15
+    100052: Bip001 L16
+    100054: Bip001 L17
+    100056: Bip001 L18
+    100058: Bip001 L19
+    100060: Bip001 L20
+    100062: Bip001 L21
+    100064: Bip001 LT0
+    100066: Bip001 LT1
+    100068: Bip001 LT2
+    100070: Bip001 LT3
+    100072: Bip001 LT4
+    100074: Bip001 LT5
+    100076: Bip001 LT6
+    100078: Bip001 LT7
+    100080: Bip001 LT8
+    100082: Bip001 LTh
+    100084: Bip001 LU0
+    100086: Bip001 LU1
+    100088: Bip001 LU2
+    100090: Bip001 LU3
+    100092: Bip001 LU4
+    100094: Bip001 LU5
+    100096: Bip001 LU6
+    100098: Bip001 LU7
+    100100: Bip001 LU8
+    100102: Bip001 LUp
+    100104: Bip001 Nec
+    100106: Bip001 Pel
+    100108: Bip001 Pro
+    100110: Bip001 R 0
+    100112: Bip001 R 1
+    100114: Bip001 R 2
+    100116: Bip001 R 3
+    100118: Bip001 R 4
+    100120: Bip001 R 5
+    100122: Bip001 R 6
+    100124: Bip001 R 7
+    100126: Bip001 R 8
+    100128: Bip001 R 9
+    100130: Bip001 R C
+    100132: Bip001 R F
+    100134: Bip001 R H
+    100136: Bip001 R T
+    100138: Bip001 R U
+    100140: Bip001 R10
+    100142: Bip001 R11
+    100144: Bip001 R12
+    100146: Bip001 R13
+    100148: Bip001 R14
+    100150: Bip001 R15
+    100152: Bip001 R16
+    100154: Bip001 R17
+    100156: Bip001 R18
+    100158: Bip001 R19
+    100160: Bip001 R20
+    100162: Bip001 R21
+    100164: Bip001 RT0
+    100166: Bip001 RT1
+    100168: Bip001 RT2
+    100170: Bip001 RT3
+    100172: Bip001 RT4
+    100174: Bip001 RT5
+    100176: Bip001 RT6
+    100178: Bip001 RT7
+    100180: Bip001 RT8
+    100182: Bip001 RTh
+    100184: Bip001 RU0
+    100186: Bip001 RU1
+    100188: Bip001 RU2
+    100190: Bip001 RU3
+    100192: Bip001 RU4
+    100194: Bip001 RU5
+    100196: Bip001 RU6
+    100198: Bip001 RU7
+    100200: Bip001 RU8
+    100202: Bip001 RUp
+    100204: Bip001 Sp0
+    100206: Bip001 Spi
+    100208: body
+    100210: Box002
+    100212: Box003
+    100214: Cylinder00
+    100216: Object001
+    100218: weapon
+    400000: //RootNode
+    400002: Bip001
+    400004: Bip001 Foo
+    400006: Bip001 He0
+    400008: Bip001 Hea
+    400010: Bip001 L 0
+    400012: Bip001 L 1
+    400014: Bip001 L 2
+    400016: Bip001 L 3
+    400018: Bip001 L 4
+    400020: Bip001 L 5
+    400022: Bip001 L 6
+    400024: Bip001 L 7
+    400026: Bip001 L 8
+    400028: Bip001 L 9
+    400030: Bip001 L C
+    400032: Bip001 L F
+    400034: Bip001 L H
+    400036: Bip001 L T
+    400038: Bip001 L U
+    400040: Bip001 L10
+    400042: Bip001 L11
+    400044: Bip001 L12
+    400046: Bip001 L13
+    400048: Bip001 L14
+    400050: Bip001 L15
+    400052: Bip001 L16
+    400054: Bip001 L17
+    400056: Bip001 L18
+    400058: Bip001 L19
+    400060: Bip001 L20
+    400062: Bip001 L21
+    400064: Bip001 LT0
+    400066: Bip001 LT1
+    400068: Bip001 LT2
+    400070: Bip001 LT3
+    400072: Bip001 LT4
+    400074: Bip001 LT5
+    400076: Bip001 LT6
+    400078: Bip001 LT7
+    400080: Bip001 LT8
+    400082: Bip001 LTh
+    400084: Bip001 LU0
+    400086: Bip001 LU1
+    400088: Bip001 LU2
+    400090: Bip001 LU3
+    400092: Bip001 LU4
+    400094: Bip001 LU5
+    400096: Bip001 LU6
+    400098: Bip001 LU7
+    400100: Bip001 LU8
+    400102: Bip001 LUp
+    400104: Bip001 Nec
+    400106: Bip001 Pel
+    400108: Bip001 Pro
+    400110: Bip001 R 0
+    400112: Bip001 R 1
+    400114: Bip001 R 2
+    400116: Bip001 R 3
+    400118: Bip001 R 4
+    400120: Bip001 R 5
+    400122: Bip001 R 6
+    400124: Bip001 R 7
+    400126: Bip001 R 8
+    400128: Bip001 R 9
+    400130: Bip001 R C
+    400132: Bip001 R F
+    400134: Bip001 R H
+    400136: Bip001 R T
+    400138: Bip001 R U
+    400140: Bip001 R10
+    400142: Bip001 R11
+    400144: Bip001 R12
+    400146: Bip001 R13
+    400148: Bip001 R14
+    400150: Bip001 R15
+    400152: Bip001 R16
+    400154: Bip001 R17
+    400156: Bip001 R18
+    400158: Bip001 R19
+    400160: Bip001 R20
+    400162: Bip001 R21
+    400164: Bip001 RT0
+    400166: Bip001 RT1
+    400168: Bip001 RT2
+    400170: Bip001 RT3
+    400172: Bip001 RT4
+    400174: Bip001 RT5
+    400176: Bip001 RT6
+    400178: Bip001 RT7
+    400180: Bip001 RT8
+    400182: Bip001 RTh
+    400184: Bip001 RU0
+    400186: Bip001 RU1
+    400188: Bip001 RU2
+    400190: Bip001 RU3
+    400192: Bip001 RU4
+    400194: Bip001 RU5
+    400196: Bip001 RU6
+    400198: Bip001 RU7
+    400200: Bip001 RU8
+    400202: Bip001 RUp
+    400204: Bip001 Sp0
+    400206: Bip001 Spi
+    400208: body
+    400210: Box002
+    400212: Box003
+    400214: Cylinder00
+    400216: Object001
+    400218: weapon
+    2100000: 'Material #0'
+    2100002: 03 - Default
+    2100004: 02 - Default
+    2300000: Bip001
+    2300002: Bip001 Foo
+    2300004: Bip001 Hea
+    2300006: Bip001 L 0
+    2300008: Bip001 L 1
+    2300010: Bip001 L 2
+    2300012: Bip001 L 4
+    2300014: Bip001 L 5
+    2300016: Bip001 L 6
+    2300018: Bip001 L 8
+    2300020: Bip001 L 9
+    2300022: Bip001 L C
+    2300024: Bip001 L F
+    2300026: Bip001 L H
+    2300028: Bip001 L T
+    2300030: Bip001 L U
+    2300032: Bip001 L10
+    2300034: Bip001 L11
+    2300036: Bip001 L12
+    2300038: Bip001 L13
+    2300040: Bip001 L14
+    2300042: Bip001 L15
+    2300044: Bip001 L16
+    2300046: Bip001 L17
+    2300048: Bip001 L18
+    2300050: Bip001 L19
+    2300052: Bip001 L20
+    2300054: Bip001 LT0
+    2300056: Bip001 LT1
+    2300058: Bip001 LT2
+    2300060: Bip001 LT3
+    2300062: Bip001 LT4
+    2300064: Bip001 LT5
+    2300066: Bip001 LT6
+    2300068: Bip001 LT7
+    2300070: Bip001 LT8
+    2300072: Bip001 LTh
+    2300074: Bip001 LU0
+    2300076: Bip001 LU1
+    2300078: Bip001 LU2
+    2300080: Bip001 LU3
+    2300082: Bip001 LU4
+    2300084: Bip001 LU5
+    2300086: Bip001 LU6
+    2300088: Bip001 LU7
+    2300090: Bip001 LU8
+    2300092: Bip001 LUp
+    2300094: Bip001 Nec
+    2300096: Bip001 Pel
+    2300098: Bip001 Pro
+    2300100: Bip001 R 0
+    2300102: Bip001 R 1
+    2300104: Bip001 R 2
+    2300106: Bip001 R 4
+    2300108: Bip001 R 5
+    2300110: Bip001 R 6
+    2300112: Bip001 R 8
+    2300114: Bip001 R 9
+    2300116: Bip001 R C
+    2300118: Bip001 R F
+    2300120: Bip001 R H
+    2300122: Bip001 R T
+    2300124: Bip001 R U
+    2300126: Bip001 R10
+    2300128: Bip001 R11
+    2300130: Bip001 R12
+    2300132: Bip001 R13
+    2300134: Bip001 R14
+    2300136: Bip001 R15
+    2300138: Bip001 R16
+    2300140: Bip001 R17
+    2300142: Bip001 R18
+    2300144: Bip001 R19
+    2300146: Bip001 R20
+    2300148: Bip001 RT0
+    2300150: Bip001 RT1
+    2300152: Bip001 RT2
+    2300154: Bip001 RT3
+    2300156: Bip001 RT4
+    2300158: Bip001 RT5
+    2300160: Bip001 RT6
+    2300162: Bip001 RT7
+    2300164: Bip001 RT8
+    2300166: Bip001 RTh
+    2300168: Bip001 RU0
+    2300170: Bip001 RU1
+    2300172: Bip001 RU2
+    2300174: Bip001 RU3
+    2300176: Bip001 RU4
+    2300178: Bip001 RU5
+    2300180: Bip001 RU6
+    2300182: Bip001 RU7
+    2300184: Bip001 RU8
+    2300186: Bip001 RUp
+    2300188: Bip001 Sp0
+    2300190: Bip001 Spi
+    2300192: body
+    2300194: Box002
+    2300196: Box003
+    2300198: Cylinder00
+    2300200: Object001
+    3300000: Bip001
+    3300002: Bip001 Foo
+    3300004: Bip001 Hea
+    3300006: Bip001 L 0
+    3300008: Bip001 L 1
+    3300010: Bip001 L 2
+    3300012: Bip001 L 4
+    3300014: Bip001 L 5
+    3300016: Bip001 L 6
+    3300018: Bip001 L 8
+    3300020: Bip001 L 9
+    3300022: Bip001 L C
+    3300024: Bip001 L F
+    3300026: Bip001 L H
+    3300028: Bip001 L T
+    3300030: Bip001 L U
+    3300032: Bip001 L10
+    3300034: Bip001 L11
+    3300036: Bip001 L12
+    3300038: Bip001 L13
+    3300040: Bip001 L14
+    3300042: Bip001 L15
+    3300044: Bip001 L16
+    3300046: Bip001 L17
+    3300048: Bip001 L18
+    3300050: Bip001 L19
+    3300052: Bip001 L20
+    3300054: Bip001 LT0
+    3300056: Bip001 LT1
+    3300058: Bip001 LT2
+    3300060: Bip001 LT3
+    3300062: Bip001 LT4
+    3300064: Bip001 LT5
+    3300066: Bip001 LT6
+    3300068: Bip001 LT7
+    3300070: Bip001 LT8
+    3300072: Bip001 LTh
+    3300074: Bip001 LU0
+    3300076: Bip001 LU1
+    3300078: Bip001 LU2
+    3300080: Bip001 LU3
+    3300082: Bip001 LU4
+    3300084: Bip001 LU5
+    3300086: Bip001 LU6
+    3300088: Bip001 LU7
+    3300090: Bip001 LU8
+    3300092: Bip001 LUp
+    3300094: Bip001 Nec
+    3300096: Bip001 Pel
+    3300098: Bip001 Pro
+    3300100: Bip001 R 0
+    3300102: Bip001 R 1
+    3300104: Bip001 R 2
+    3300106: Bip001 R 4
+    3300108: Bip001 R 5
+    3300110: Bip001 R 6
+    3300112: Bip001 R 8
+    3300114: Bip001 R 9
+    3300116: Bip001 R C
+    3300118: Bip001 R F
+    3300120: Bip001 R H
+    3300122: Bip001 R T
+    3300124: Bip001 R U
+    3300126: Bip001 R10
+    3300128: Bip001 R11
+    3300130: Bip001 R12
+    3300132: Bip001 R13
+    3300134: Bip001 R14
+    3300136: Bip001 R15
+    3300138: Bip001 R16
+    3300140: Bip001 R17
+    3300142: Bip001 R18
+    3300144: Bip001 R19
+    3300146: Bip001 R20
+    3300148: Bip001 RT0
+    3300150: Bip001 RT1
+    3300152: Bip001 RT2
+    3300154: Bip001 RT3
+    3300156: Bip001 RT4
+    3300158: Bip001 RT5
+    3300160: Bip001 RT6
+    3300162: Bip001 RT7
+    3300164: Bip001 RT8
+    3300166: Bip001 RTh
+    3300168: Bip001 RU0
+    3300170: Bip001 RU1
+    3300172: Bip001 RU2
+    3300174: Bip001 RU3
+    3300176: Bip001 RU4
+    3300178: Bip001 RU5
+    3300180: Bip001 RU6
+    3300182: Bip001 RU7
+    3300184: Bip001 RU8
+    3300186: Bip001 RUp
+    3300188: Bip001 Sp0
+    3300190: Bip001 Spi
+    3300192: body
+    3300194: Box002
+    3300196: Box003
+    3300198: Cylinder00
+    3300200: Object001
+    4300000: body
+    4300002: Bip001
+    4300004: Bip001 Foo
+    4300006: Bip001 Pel
+    4300008: Bip001 Spi
+    4300010: Bip001 Sp0
+    4300012: Bip001 Nec
+    4300014: Bip001 L C
+    4300016: Bip001 L U
+    4300018: Bip001 L F
+    4300020: Bip001 L H
+    4300022: Bip001 L 0
+    4300024: Bip001 L 1
+    4300026: Bip001 L 2
+    4300028: Bip001 L 4
+    4300030: Bip001 L 5
+    4300032: Bip001 L 6
+    4300034: Bip001 L 8
+    4300036: Bip001 L 9
+    4300038: Bip001 L10
+    4300040: Bip001 L11
+    4300042: Bip001 L12
+    4300044: Bip001 L13
+    4300046: Bip001 L14
+    4300048: Bip001 L15
+    4300050: Bip001 L16
+    4300052: Bip001 L17
+    4300054: Bip001 LUp
+    4300056: Bip001 LU0
+    4300058: Bip001 LU1
+    4300060: Bip001 LU2
+    4300062: Bip001 LU3
+    4300064: Bip001 LU4
+    4300066: Bip001 LU5
+    4300068: Bip001 LU6
+    4300070: Bip001 LU7
+    4300072: Bip001 LU8
+    4300074: Bip001 R C
+    4300076: Bip001 R U
+    4300078: Bip001 R F
+    4300080: Bip001 R H
+    4300082: Bip001 R 0
+    4300084: Bip001 R 1
+    4300086: Bip001 R 2
+    4300088: Bip001 R 4
+    4300090: Bip001 R 5
+    4300092: Bip001 R 6
+    4300094: Bip001 R 8
+    4300096: Bip001 R 9
+    4300098: Bip001 R10
+    4300100: Bip001 R11
+    4300102: Bip001 R12
+    4300104: Bip001 R13
+    4300106: Bip001 R14
+    4300108: Bip001 R15
+    4300110: Bip001 R16
+    4300112: Bip001 R17
+    4300114: Bip001 RUp
+    4300116: Bip001 RU0
+    4300118: Bip001 RU1
+    4300120: Bip001 RU2
+    4300122: Bip001 RU3
+    4300124: Bip001 RU4
+    4300126: Bip001 RU5
+    4300128: Bip001 RU6
+    4300130: Bip001 RU7
+    4300132: Bip001 RU8
+    4300134: Bip001 Hea
+    4300136: Bip001 L T
+    4300138: Bip001 L18
+    4300140: Bip001 L19
+    4300142: Bip001 L20
+    4300144: Bip001 R T
+    4300146: Bip001 R18
+    4300148: Bip001 R19
+    4300150: Bip001 R20
+    4300152: Bip001 LTh
+    4300154: Bip001 LT0
+    4300156: Bip001 LT1
+    4300158: Bip001 LT2
+    4300160: Bip001 LT3
+    4300162: Bip001 LT4
+    4300164: Bip001 LT5
+    4300166: Bip001 LT6
+    4300168: Bip001 LT7
+    4300170: Bip001 LT8
+    4300172: Bip001 RTh
+    4300174: Bip001 RT0
+    4300176: Bip001 RT1
+    4300178: Bip001 RT2
+    4300180: Bip001 RT3
+    4300182: Bip001 RT4
+    4300184: Bip001 RT5
+    4300186: Bip001 RT6
+    4300188: Bip001 RT7
+    4300190: Bip001 RT8
+    4300192: Bip001 Pro
+    4300194: Cylinder00
+    4300196: Box003
+    4300198: Box002
+    4300200: Object001
+  externalObjects: {}
+  materials:
+    importMaterials: 0
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
