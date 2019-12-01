@@ -9,8 +9,6 @@ public class TileSet : MonoBehaviour
 
     private void Awake()
     {
-        Camera.main.transform.position = new Vector3(7, 14, -8);
-        Camera.main.transform.Rotate(45, 0, 0);
         bool isBlack = true;
         for(int i=0; i<8; i++)
         {
