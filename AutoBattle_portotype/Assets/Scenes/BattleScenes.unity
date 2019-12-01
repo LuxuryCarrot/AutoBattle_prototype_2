@@ -2185,7 +2185,7 @@ GameObject:
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3037,7 +3037,7 @@ PrefabInstance:
     - target: {fileID: 4711223492512944957, guid: a7cc1338ccbc58e4a83ee4d27f623b7b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4711223492512944957, guid: a7cc1338ccbc58e4a83ee4d27f623b7b,
         type: 3}
@@ -3047,7 +3047,7 @@ PrefabInstance:
     - target: {fileID: 4711223492512944957, guid: a7cc1338ccbc58e4a83ee4d27f623b7b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -26.84
+      value: -18.84
       objectReference: {fileID: 0}
     - target: {fileID: 4711223492512944957, guid: a7cc1338ccbc58e4a83ee4d27f623b7b,
         type: 3}
@@ -3200,7 +3200,7 @@ GameObject:
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
-  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
