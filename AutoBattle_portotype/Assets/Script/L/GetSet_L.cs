@@ -11,12 +11,12 @@ public class GetSet_L : MonoBehaviour
 
     private Vector3 startPos;
 
+    public GameObject MyPlatform;
+
   
 
     private void Update()
     {
-        
-
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -170,7 +170,7 @@ public class GetSet_L : MonoBehaviour
                         {
                             chess.position = tile.transform.position + new Vector3(0, 2, 0);
                         }
-
+                        //chess.transform.parent = MyPlatform.transform; // 게임 보드에 자식으로 넣어주는 코드. 자식으로는 들어가지는데 현재 전투에 돌입 시 착지하는 곳의 타일 위치가 맞지 않아 주석처리함.
                         ++PlayerManager.instance.iBordSlotCount;
                         Destroy(changeChess);
                         return;

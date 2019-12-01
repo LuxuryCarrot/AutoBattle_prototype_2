@@ -517,6 +517,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77276488}
   m_CullTransparentMesh: 0
+--- !u!1 &98774604 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9079329541043703683, guid: 6431ea81069611342abd7785e52c25da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1681530578}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &98774607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98774604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3873bd1c7851f1846998f49a69f9edce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  iPlatformParam: 0
 --- !u!1 &132067270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2953,6 +2973,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1394545945}
   m_CullTransparentMesh: 0
+--- !u!1 &1427572448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9079329540942491227, guid: 6431ea81069611342abd7785e52c25da,
+    type: 3}
+  m_PrefabInstance: {fileID: 1681530578}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1440325322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3171,6 +3197,7 @@ MonoBehaviour:
   chess: {fileID: 0}
   tile: {fileID: 0}
   store: {fileID: 3386770101393705486, guid: b855b10ed12f897448b7d1fd5e78b8d2, type: 3}
+  MyPlatform: {fileID: 1427572448}
 --- !u!4 &1523204720
 Transform:
   m_ObjectHideFlags: 0

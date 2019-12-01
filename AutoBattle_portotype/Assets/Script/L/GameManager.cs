@@ -61,8 +61,11 @@ public class GameManager : MonoBehaviour
     {
         timeLeft -= Time.deltaTime;
 
-        RoundText.text = iRoundCount.ToString("0") + (" 라운드 ") + StageName + ("!");
-        TimeText.text = ("남은 시간: ") + (timeLeft).ToString("0");
+        if (timeLeft >= 0)
+        {
+            RoundText.text = iRoundCount.ToString("0") + (" 라운드 ") + StageName + ("!");
+            TimeText.text = ("남은 시간: ") + (timeLeft).ToString("0");
+        }
 
         if (Stage == CurStage.PREPARING)            // 전투 준비 시간
         {
@@ -104,7 +107,7 @@ public class GameManager : MonoBehaviour
 
             if (timeLeft < 0)                       // 전투 준비 시간 끝나면 전투 라운드로 스테이지 변경.
             {
-                Stage = CurStage.COMPAT;
+                StartCoroutine("COMPAT_Start");
             }
         }
         else if (Stage == CurStage.COMPAT)          // 전투 돌입 
@@ -179,7 +182,7 @@ public class GameManager : MonoBehaviour
                             Destroy(chesss[i]);
                     }
                 }
-                Stage = CurStage.PREPARING;         // 전투 마무리 시간이 다 되어 다음라운드의 전투 준비 라운드로 스테이지 변경.
+                StartCoroutine("PREPARING_Start");          // 전투 마무리 시간이 다 되어 다음라운드의 전투 준비 라운드로 스테이지 변경.
             }
         }
     }
@@ -351,7 +354,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
     public void SameHeroCheck()
     {
         for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
@@ -448,5 +450,21 @@ public class GameManager : MonoBehaviour
             }
         }
         Debug.Log(PlayerManager.instance.Inventory[0]);
+    }
+
+    IEnumerator COMPAT_Start()
+    {
+        PlatformAnim.instance.iPlatformParam = 1;
+        yield return new WaitForSeconds(0.76f);
+        Stage = CurStage.COMPAT;
+        StopCoroutine("COMPAT_Start");
+    }
+
+    IEnumerator PREPARING_Start()
+    {
+        PlatformAnim.instance.iPlatformParam = 2;
+        yield return new WaitForSeconds(0.76f);
+        Stage = CurStage.PREPARING;
+        StopCoroutine("PREPARING_Start");
     }
 }
