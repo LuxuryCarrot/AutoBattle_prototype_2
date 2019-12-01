@@ -430,7 +430,8 @@ public class GameManager : MonoBehaviour
                     {
                         PlayerManager.instance.GameBord[l].GetComponent<ChessFSMManager>().BenchIn();
                         Destroy(PlayerManager.instance.GameBord[l]);
-                        PlayerManager.instance.Inventory[l] = null;
+                        PlayerManager.instance.GameBord[l] = null;
+                        --PlayerManager.instance.iBordSlotCount;
                         --iSameHeroCount;
                     }
                 }
