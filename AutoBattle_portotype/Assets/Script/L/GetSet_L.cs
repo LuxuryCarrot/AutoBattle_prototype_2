@@ -130,6 +130,7 @@ public class GetSet_L : MonoBehaviour
                         changeChess.GetComponent<ChessInfo>().ichessNum = (int)(startPos.x / 2) % 8;
                         PlayerManager.instance.Inventory[(int)(startPos.x / 2) % 8] = changeChess;
 
+                        chess.GetComponent<ChessInfo>().isWaiting = true;
                         chess.position = tile.position + new Vector3(0, 2, 0);
                         chess.GetComponent<ChessInfo>().ichessNum = tilego;
                         PlayerManager.instance.Inventory[tilego] = chess.gameObject;
