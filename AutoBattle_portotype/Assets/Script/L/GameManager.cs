@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviour
                 ShopManager.instance.ReRoll();      // 상점 아이템 랜덤으로 배치
                 iCurrState = 2;
 
-                SameHeroCheck();
+                
 
                 //if(nextRoundQueue!=null)
                 //for(;nextRoundQueue.Count!=0;)
@@ -97,7 +97,9 @@ public class GameManager : MonoBehaviour
                     }
                     nextRoundList.Clear();
                 }
-                
+
+                SameHeroCheck();
+
             }
 
             if (timeLeft < 0)                       // 전투 준비 시간 끝나면 전투 라운드로 스테이지 변경.

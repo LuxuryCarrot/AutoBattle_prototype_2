@@ -142,8 +142,12 @@ public class ChessFSMManager : MonoBehaviour
 
     public void BenchIn()
     {
-        if(isEnqueued==true)
-          gameManager.chessList.Remove(this.gameObject);
+        if (isEnqueued == true)
+        {
+            gameManager.chessList.Remove(this.gameObject);
+            Debug.Log("Bench");
+        }
+
         isEnqueued = false;
     }
 }
