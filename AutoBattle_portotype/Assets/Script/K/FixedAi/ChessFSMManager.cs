@@ -10,7 +10,8 @@ public enum ChessStates
     ATTACK,
     ULTIMATE,
     JUMP,
-    RUN
+    RUN,
+    DIE
 }
 
 public class ChessFSMManager : MonoBehaviour
@@ -29,6 +30,8 @@ public class ChessFSMManager : MonoBehaviour
     public ChaseAIParent chaseai;
     [HideInInspector]
     public UltimateAIParent ultiai;
+    [HideInInspector]
+    public SynergyParent[] synergys;
 
     [HideInInspector]
     public bool isRun;
@@ -42,6 +45,27 @@ public class ChessFSMManager : MonoBehaviour
     public Transform target=null;
     [HideInInspector]
     public int ID;
+    [HideInInspector]
+    public bool isTargeted;
+    [HideInInspector]
+    public float damage;
+    [HideInInspector]
+    public float range;
+    [HideInInspector]
+    public float def;
+    [HideInInspector]
+    public string className;
+
+    [HideInInspector]
+    public float chaseSpeedReal;
+    [HideInInspector]
+    public float runSpeedReal;
+    [HideInInspector]
+    public float damageReal;
+    [HideInInspector]
+    public float rangeReal;
+    [HideInInspector]
+    public float defReal;
     
    
 
@@ -50,7 +74,7 @@ public class ChessFSMManager : MonoBehaviour
         target = null;
         isSettled = false;
         isEnqueued = false;
-  
+        isTargeted = false;
         
         anim = transform.GetChild(0).GetComponent<Animator>();
 
@@ -60,6 +84,7 @@ public class ChessFSMManager : MonoBehaviour
         FSMLists.Add(ChessStates.ULTIMATE, GetComponent<ChessUltimate>());
         FSMLists.Add(ChessStates.JUMP, GetComponent<ChessJump>());
         FSMLists.Add(ChessStates.RUN, GetComponent<ChessRun>());
+        FSMLists.Add(ChessStates.DIE, GetComponent<ChessDie>());
 
         current = ChessStates.IDLE;
         SetState(current);
@@ -67,11 +92,23 @@ public class ChessFSMManager : MonoBehaviour
         attackai = transform.GetChild(0).GetComponent<AttackAIParent>();
         chaseai = transform.GetChild(0).GetComponent<ChaseAIParent>();
         ultiai =  transform.GetChild(0).GetComponent<UltimateAIParent>();
+        synergys = transform.GetChild(0).GetComponents<SynergyParent>();
 
         isRun = transform.GetChild(0).GetComponent<StatusLists>().isRun;
         hp = transform.GetChild(0).GetComponent<StatusLists>().HP;
         chaseSpeed = transform.GetChild(0).GetComponent<StatusLists>().speed;
         runSpeed = transform.GetChild(0).GetComponent<StatusLists>().runSpeed;
+        damage= transform.GetChild(0).GetComponent<StatusLists>().damage;
+        range = transform.GetChild(0).GetComponent<StatusLists>().range;
+        def = transform.GetChild(0).GetComponent<StatusLists>().def;
+
+        chaseSpeedReal = chaseSpeed;
+        runSpeedReal = runSpeed;
+        damageReal = damage;
+        rangeReal = range;
+        defReal = def;
+
+        className = transform.GetChild(0).GetComponent<StatusLists>().className;
 
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
@@ -88,11 +125,14 @@ public class ChessFSMManager : MonoBehaviour
         current = s;
 
         FSMLists[current].enabled = true;
+        anim.SetBool("miss", false);
+        anim.SetInteger("Param", (int)current);
         FSMLists[current].BeginState();
     }
 
-    public void MeleeDamaged()
+    public void MeleeDamaged(float dam)
     {
+        hp -= dam-defReal;
         if (isRun)
             SetState(ChessStates.RUN);
     }
@@ -105,6 +145,7 @@ public class ChessFSMManager : MonoBehaviour
     public void Settled()
     {
         isSettled = true;
+
     }
 
     private void Update()
@@ -113,12 +154,19 @@ public class ChessFSMManager : MonoBehaviour
         {
             transform.position -= new Vector3(0, 2 * Time.deltaTime, 0);
 
-            if(transform.position.y<=2.0f)
+            if(transform.position.y<=0.7f)
             {
                 isSettled = false;
-              
-                transform.position = new Vector3(transform.position.x, 2.0f, transform.position.z);
+                Instantiate(Resources.Load("Prefabs/VFX/VFX_Jump"), transform.position - new Vector3(0, 1, 0), Quaternion.identity);
+                transform.position = new Vector3(transform.position.x, 0.7f, transform.position.z);
             }
+        }
+
+        if(hp<=0)
+        {
+            
+            SetState(ChessStates.DIE);
+            anim.SetInteger("Param", (int)current);
         }
     }
 
@@ -137,6 +185,10 @@ public class ChessFSMManager : MonoBehaviour
     {
         //gameManager.nextRoundQueue.Enqueue(this.gameObject);
         isEnqueued = false;
+        foreach(SynergyParent syn in synergys)
+        {
+            syn.IncreaseAbility();
+        }
         SetState(ChessStates.CHASE);
     }
 
@@ -145,9 +197,18 @@ public class ChessFSMManager : MonoBehaviour
         if (isEnqueued == true)
         {
             gameManager.chessList.Remove(this.gameObject);
+            if (gameObject.transform.parent != null)
+                gameObject.transform.parent = null;
             Debug.Log("Bench");
         }
 
         isEnqueued = false;
+    }
+
+    public void JumpTargeted(ChessFSMManager by)
+    {
+        isTargeted = true;
+        target = by.gameObject.transform;
+        anim.SetBool("miss", true);
     }
 }

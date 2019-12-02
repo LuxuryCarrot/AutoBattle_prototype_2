@@ -170,7 +170,7 @@ public class GetSet_L : MonoBehaviour
                         {
                             chess.position = tile.transform.position + new Vector3(0, 2, 0);
                         }
-                        //chess.transform.parent = MyPlatform.transform; // 게임 보드에 자식으로 넣어주는 코드. 자식으로는 들어가지는데 현재 전투에 돌입 시 착지하는 곳의 타일 위치가 맞지 않아 주석처리함.
+                        chess.transform.parent = MyPlatform.transform; // 게임 보드에 자식으로 넣어주는 코드. 자식으로는 들어가지는데 현재 전투에 돌입 시 착지하는 곳의 타일 위치가 맞지 않아 주석처리함.
                         ++PlayerManager.instance.iBordSlotCount;
                         Destroy(changeChess);
                         return;
@@ -193,7 +193,8 @@ public class GetSet_L : MonoBehaviour
                         chess.GetComponent<ChessInfo>().isWaiting = false;
                         chess.tag = "chess";
                         chess.GetComponent<ChessFSMManager>().EnQueueThis();
-                        for(int i=0;i< PlayerManager.instance.GameBord.Length; i++)
+                        chess.transform.parent = MyPlatform.transform; // 게임 보드에 자식으로 넣어주는 코드. 자식으로는 들어가지는데 현재 전투에 돌입 시 착지하는 곳의 타일 위치가 맞지 않아 주석처리함.
+                        for (int i=0;i< PlayerManager.instance.GameBord.Length; i++)
                         {
                             if(PlayerManager.instance.GameBord[i]==changeChess)
                             {
@@ -227,8 +228,10 @@ public class GetSet_L : MonoBehaviour
                                 chess.GetComponent<ChessFSMManager>().EnQueueThis();
                                 PlayerManager.instance.Inventory[(int)(startPos.x / 2) % 8] = null;
                                 isPassed = true;
+                                chess.transform.parent = MyPlatform.transform; // 게임 보드에 자식으로 넣어주는 코드. 자식으로는 들어가지는데 현재 전투에 돌입 시 착지하는 곳의 타일 위치가 맞지 않아 주석처리함.
                                 Debug.Log("passed");
                                 break;
+
                                 //chess.gameObject.layer = 0;
                             }
                         }

@@ -16,7 +16,8 @@ public class RangerChase : ChaseAIParent
             for(int i=0; i<objects.Length; i++)
             {
                 if(objects[i] != manager.gameObject 
-                    && objects[i].GetComponent<ChessFSMManager>().ID != manager.ID)
+                    && objects[i].GetComponent<ChessFSMManager>().ID != manager.ID
+                    && objects[i].GetComponent<ChessFSMManager>().hp > 0)
                 {
                     if (final == null)
                         final = objects[i];
@@ -29,18 +30,21 @@ public class RangerChase : ChaseAIParent
                 }
             }
 
+            if(final!=null)
             manager.target = final.transform;
         }
 
         if (manager.target == null)
+        {
+            manager.anim.SetBool("miss", true);
             return;
-
+        }
         if (!isNear)
         {
             manager.transform.position = Vector3.MoveTowards(
                                           manager.transform.position,
                                           manager.target.position,
-                                          manager.chaseSpeed * Time.deltaTime);
+                                          manager.chaseSpeedReal * Time.deltaTime);
         }
         else
             GotoBlock();
@@ -52,8 +56,8 @@ public class RangerChase : ChaseAIParent
         manager.transform.rotation = Quaternion.RotateTowards(manager.transform.rotation,
                                         Quaternion.LookRotation(dir), 540);
 
-        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < manager.transform.GetComponentInChildren<StatusLists>().range)
-            isNear = false;
+        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < Mathf.Pow(manager.rangeReal,2))
+            isNear = true;
     }
     private void GotoBlock()
     {
@@ -63,11 +67,14 @@ public class RangerChase : ChaseAIParent
         manager.transform.position = Vector3.MoveTowards(
                                       manager.transform.position,
                                       desti,
-                                      manager.chaseSpeed * Time.deltaTime);
+                                      manager.chaseSpeedReal * Time.deltaTime);
 
-        
 
-        if (Vector3.SqrMagnitude(manager.transform.position - desti) < 0.1f)
+
+        if (Vector3.SqrMagnitude(manager.transform.position - desti) < 0.04f)
+        {
+            isNear = false;
             manager.SetState(ChessStates.ATTACK);
+        }
     }
 }

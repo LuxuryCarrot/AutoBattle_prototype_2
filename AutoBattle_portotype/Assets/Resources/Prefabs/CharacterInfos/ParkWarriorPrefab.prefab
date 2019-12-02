@@ -1550,6 +1550,8 @@ GameObject:
   - component: {fileID: 8756368808342128698}
   - component: {fileID: 114024070579870640}
   - component: {fileID: 8756368808342128700}
+  - component: {fileID: 114570742413129122}
+  - component: {fileID: 114282590369643844}
   m_Layer: 0
   m_Name: ParkWarriorPrefab
   m_TagString: Untagged
@@ -1648,7 +1650,35 @@ MonoBehaviour:
   speed: 3
   runSpeed: 4
   isRun: 0
-  range: 2
+  range: 3
+  damage: 25
+  className: Warrior
+  def: 0
+--- !u!114 &114570742413129122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756368808445838043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4e148196fb0434ea5ce96b3d8f9cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114282590369643844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756368808445838043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 337c912a0b68d0a43a83fdee259eb703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
 --- !u!1 &8756368808445838049
 GameObject:
   m_ObjectHideFlags: 0
