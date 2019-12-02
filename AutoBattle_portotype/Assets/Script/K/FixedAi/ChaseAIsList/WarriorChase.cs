@@ -21,6 +21,7 @@ public class WarriorChase : ChaseAIParent
                     manager.target = objects[i].transform;
                     manager.target.gameObject.GetComponent<ChessFSMManager>().JumpTargeted(manager);
                     manager.anim.SetBool("miss", false);
+                    break;
                 }
             }
         }
@@ -51,7 +52,7 @@ public class WarriorChase : ChaseAIParent
             manager.transform.position = Vector3.MoveTowards(
                                           manager.transform.position,
                                           targetVec,
-                                          manager.chaseSpeed * Time.deltaTime);
+                                          manager.chaseSpeedReal * Time.deltaTime);
 
         }
 

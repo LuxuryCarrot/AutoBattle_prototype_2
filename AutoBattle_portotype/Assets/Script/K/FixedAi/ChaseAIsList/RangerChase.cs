@@ -44,7 +44,7 @@ public class RangerChase : ChaseAIParent
             manager.transform.position = Vector3.MoveTowards(
                                           manager.transform.position,
                                           manager.target.position,
-                                          manager.chaseSpeed * Time.deltaTime);
+                                          manager.chaseSpeedReal * Time.deltaTime);
         }
         else
             GotoBlock();
@@ -56,7 +56,7 @@ public class RangerChase : ChaseAIParent
         manager.transform.rotation = Quaternion.RotateTowards(manager.transform.rotation,
                                         Quaternion.LookRotation(dir), 540);
 
-        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < Mathf.Pow(manager.transform.GetComponentInChildren<StatusLists>().range,2))
+        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < Mathf.Pow(manager.rangeReal,2))
             isNear = true;
     }
     private void GotoBlock()
@@ -67,7 +67,7 @@ public class RangerChase : ChaseAIParent
         manager.transform.position = Vector3.MoveTowards(
                                       manager.transform.position,
                                       desti,
-                                      manager.chaseSpeed * Time.deltaTime);
+                                      manager.chaseSpeedReal * Time.deltaTime);
 
 
 

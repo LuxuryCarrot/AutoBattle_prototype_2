@@ -11,6 +11,6 @@ public class AnimFunctions : MonoBehaviour
     }
     public void AttackCheck()
     {
-        manager.target.gameObject.GetComponent<ChessFSMManager>().MeleeDamaged(manager.damage);
+        manager.target.gameObject.GetComponent<ChessFSMManager>().MeleeDamaged(manager.damageReal);
     }
 }

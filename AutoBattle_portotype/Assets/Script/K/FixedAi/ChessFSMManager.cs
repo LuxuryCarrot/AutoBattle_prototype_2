@@ -30,6 +30,8 @@ public class ChessFSMManager : MonoBehaviour
     public ChaseAIParent chaseai;
     [HideInInspector]
     public UltimateAIParent ultiai;
+    [HideInInspector]
+    public SynergyParent[] synergys;
 
     [HideInInspector]
     public bool isRun;
@@ -47,7 +49,23 @@ public class ChessFSMManager : MonoBehaviour
     public bool isTargeted;
     [HideInInspector]
     public float damage;
+    [HideInInspector]
     public float range;
+    [HideInInspector]
+    public float def;
+    [HideInInspector]
+    public string className;
+
+    [HideInInspector]
+    public float chaseSpeedReal;
+    [HideInInspector]
+    public float runSpeedReal;
+    [HideInInspector]
+    public float damageReal;
+    [HideInInspector]
+    public float rangeReal;
+    [HideInInspector]
+    public float defReal;
     
    
 
@@ -74,6 +92,7 @@ public class ChessFSMManager : MonoBehaviour
         attackai = transform.GetChild(0).GetComponent<AttackAIParent>();
         chaseai = transform.GetChild(0).GetComponent<ChaseAIParent>();
         ultiai =  transform.GetChild(0).GetComponent<UltimateAIParent>();
+        synergys = transform.GetChild(0).GetComponents<SynergyParent>();
 
         isRun = transform.GetChild(0).GetComponent<StatusLists>().isRun;
         hp = transform.GetChild(0).GetComponent<StatusLists>().HP;
@@ -81,6 +100,15 @@ public class ChessFSMManager : MonoBehaviour
         runSpeed = transform.GetChild(0).GetComponent<StatusLists>().runSpeed;
         damage= transform.GetChild(0).GetComponent<StatusLists>().damage;
         range = transform.GetChild(0).GetComponent<StatusLists>().range;
+        def = transform.GetChild(0).GetComponent<StatusLists>().def;
+
+        chaseSpeedReal = chaseSpeed;
+        runSpeedReal = runSpeed;
+        damageReal = damage;
+        rangeReal = range;
+        defReal = def;
+
+        className = transform.GetChild(0).GetComponent<StatusLists>().className;
 
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
@@ -104,7 +132,7 @@ public class ChessFSMManager : MonoBehaviour
 
     public void MeleeDamaged(float dam)
     {
-        hp -= dam;
+        hp -= dam-defReal;
         if (isRun)
             SetState(ChessStates.RUN);
     }
@@ -157,6 +185,10 @@ public class ChessFSMManager : MonoBehaviour
     {
         //gameManager.nextRoundQueue.Enqueue(this.gameObject);
         isEnqueued = false;
+        foreach(SynergyParent syn in synergys)
+        {
+            syn.IncreaseAbility();
+        }
         SetState(ChessStates.CHASE);
     }
 

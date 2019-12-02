@@ -10,4 +10,6 @@ public class StatusLists :MonoBehaviour
     public bool isRun;
     public float range;
     public float damage;
+    public string className;
+    public float def;
 }

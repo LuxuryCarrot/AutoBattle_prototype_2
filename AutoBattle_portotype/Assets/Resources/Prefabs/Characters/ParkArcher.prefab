@@ -1,6 +1,14 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &9212324557947472014
+--- !u!33 &4288393449942261072
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943392751342427563}
+  m_Mesh: {fileID: 4300000, guid: bb537ab7fb7f98849912d35c1afad722, type: 3}
+--- !u!114 &317881382637697557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,7 +17,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3943392751342427581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43672db827cbcd34e977c0cdb5e4bebc, type: 3}
+  m_Script: {fileID: 11500000, guid: 412c5c4c148de85428d79a8737f1c4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
@@ -26,7 +34,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
---- !u!114 &317881382637697557
+--- !u!114 &9212324557947472014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -35,18 +43,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3943392751342427581}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 412c5c4c148de85428d79a8737f1c4f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 43672db827cbcd34e977c0cdb5e4bebc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
---- !u!33 &4288393449942261072
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3943392751342427563}
-  m_Mesh: {fileID: 4300000, guid: bb537ab7fb7f98849912d35c1afad722, type: 3}
 --- !u!1 &5898799533918626647
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,6 +127,14 @@ MonoBehaviour:
   ID: 0
   isTargeted: 0
   damage: 0
+  range: 0
+  def: 0
+  className: 
+  chaseSpeedReal: 0
+  runSpeedReal: 0
+  damageReal: 0
+  rangeReal: 0
+  defReal: 0
 --- !u!114 &5898799533918626641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +251,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5898799533918626650}
     m_Modifications:
+    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Name
+      value: ParkArcherPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 8756368808446140155, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -297,11 +310,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: m_Name
-      value: ParkArcherPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 8756368808446140195, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
@@ -362,6 +370,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: HP
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: damage
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: range
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: className
+      value: Archer
       objectReference: {fileID: 0}
     - target: {fileID: 8756368808446140137, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
@@ -1882,21 +1910,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.00000042691389
-      objectReference: {fileID: 0}
-    - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: HP
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: damage
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: range
-      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114024070579870640, guid: 9ec1f3030e1f3d243809915c7154da2c, type: 3}
