@@ -20,7 +20,7 @@ public class ChessJump : ChessFSMParent
     {
         base.BeginState();
         gravity = 10.0f;
-
+       
         Vector3 targetVec = manager.target.position;
 
         if ((manager.transform.position - manager.target.position).x >= 0)
@@ -54,9 +54,9 @@ public class ChessJump : ChessFSMParent
         ySpeed -= gravity * Time.deltaTime;
 
 
-        if (transform.position.y < 0.7f)
+        if (transform.position.y < 2.0f)
         {
-            transform.position = new Vector3(transform.position.x, 0.7f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, 2, transform.position.z);
             GameObject dust = Instantiate(jumpDust, manager.transform.position-new Vector3(0,1,0), Quaternion.identity);
             manager.SetState(ChessStates.ATTACK);
         }
