@@ -4483,6 +4483,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inst: {fileID: 8292161551957575209, guid: ba9bb7190b253a245b70b76083631b1c, type: 3}
+  inst2: {fileID: 5898799533918626647, guid: 70b1f1993f4ce8c48a89ced6f095e701, type: 3}
   Shop: {fileID: 1261366242}
   TimeText: {fileID: 1979057322}
   RoundText: {fileID: 966169122}
