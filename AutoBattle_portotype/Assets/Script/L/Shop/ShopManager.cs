@@ -13,6 +13,11 @@ public class ShopManager : MonoBehaviour
     public Text[] SlotText = new Text[5];
 
     public GameObject[] Slot = new GameObject[5];
+    public Button[] SlotButton = new Button[5];
+
+    public Sprite Image1;
+    public Sprite Image2;
+    public Sprite Image3;
 
     public int[] SlotCost = new int[5];
 
@@ -47,6 +52,18 @@ public class ShopManager : MonoBehaviour
         {
             GameManager.instance.ShopReRoll();
             SlotCost[i] = GameManager.instance.iCost;
+            if (GameManager.instance.sHeroName == "ParkWarrior")
+            {
+                SlotButton[i].image.sprite = Image1;
+            }
+            else if (GameManager.instance.sHeroName == "ParkShield")
+            {
+                SlotButton[i].image.sprite = Image2;
+            }
+            else
+            {
+                SlotButton[i].image.sprite = Image3;
+            }
             SlotText[i].text = GameManager.instance.sHeroName + "\n" + "Cost = " + SlotCost[i];
             sHeroName[i] = GameManager.instance.sHeroName;
         }

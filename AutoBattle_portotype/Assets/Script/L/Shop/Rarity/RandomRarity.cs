@@ -32,7 +32,7 @@ public class RandomRarity : MonoBehaviour
         }
         else if (iRandomNum == 2)
         {
-            sRandomHeroName = "dCylinder";
+            sRandomHeroName = "ParkShield";
         }
         else if (iRandomNum == 3)
         {

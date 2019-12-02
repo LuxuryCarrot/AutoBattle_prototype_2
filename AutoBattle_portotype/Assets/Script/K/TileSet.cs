@@ -32,7 +32,7 @@ public class TileSet : MonoBehaviour
             //else
             //    isBlack = true;
 
-            GameObject store = Instantiate(storeTile, new Vector3(i*2, 0, -4), Quaternion.identity);
+            GameObject store = Instantiate(storeTile, new Vector3(i*2, 1, -4), Quaternion.identity);
         }
     }
 }
