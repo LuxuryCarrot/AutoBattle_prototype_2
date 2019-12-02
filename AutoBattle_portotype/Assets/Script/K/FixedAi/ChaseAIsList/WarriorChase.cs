@@ -13,13 +13,24 @@ public class WarriorChase : ChaseAIParent
             GameObject[] objects = GameObject.FindGameObjectsWithTag("chess");
             for (int i=0; i< objects.Length; i++)
             {
-                if (objects[i] != manager.gameObject && objects[i].GetComponent<ChessFSMManager>().ID!=manager.ID)
+                if (objects[i] != manager.gameObject 
+                    && objects[i].GetComponent<ChessFSMManager>().ID != manager.ID 
+                    && !manager.isTargeted
+                    && objects[i].GetComponent<ChessFSMManager>().hp>0)
+                {
                     manager.target = objects[i].transform;
+                    manager.target.gameObject.GetComponent<ChessFSMManager>().JumpTargeted(manager);
+                    manager.anim.SetBool("miss", false);
+                    break;
+                }
             }
         }
 
-        if (manager.target==null)
+        if (manager.target == null)
+        {
+            manager.anim.SetBool("miss", true);
             return;
+        }
 
         Vector3 targetVec = manager.target.position;
 
@@ -33,16 +44,17 @@ public class WarriorChase : ChaseAIParent
         else
             targetVec += new Vector3(0, 0, -2);
 
+        if (!manager.isTargeted)
+        {
+            if (Vector3.SqrMagnitude(manager.transform.position - targetVec) > 36.0f)
+                manager.SetState(ChessStates.JUMP);
 
-        if (Vector3.SqrMagnitude(manager.transform.position - targetVec) > 36.0f)
-            manager.SetState(ChessStates.JUMP);
+            manager.transform.position = Vector3.MoveTowards(
+                                          manager.transform.position,
+                                          targetVec,
+                                          manager.chaseSpeedReal * Time.deltaTime);
 
-        manager.transform.position = Vector3.MoveTowards(
-                                      manager.transform.position,
-                                      targetVec,
-                                      manager.chaseSpeed * Time.deltaTime);
-
-
+        }
 
         Vector3 dir = targetVec - manager.transform.position;
 
@@ -51,7 +63,7 @@ public class WarriorChase : ChaseAIParent
         manager.transform.rotation = Quaternion.RotateTowards(manager.transform.rotation,
                                         Quaternion.LookRotation(dir), 1080);
 
-        if (Vector3.SqrMagnitude(manager.transform.position - targetVec) < 0.1f)
+        if (Vector3.SqrMagnitude(manager.transform.position - targetVec) < 8.0f)
             manager.SetState(ChessStates.ATTACK);
 
     }

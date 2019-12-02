@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public GameObject inst;
+    public GameObject inst2;
 
     public GameObject Shop;
 
@@ -120,9 +121,15 @@ public class GameManager : MonoBehaviour
                 bisRoundStarted = true;             // 전투에 들어갔는지 확인. -> 전투 중이면 벤치에서 게임판으로 캐릭터 옮기는거 불가능하게 막아야함.
                 iCurrState = 3;
 
-                GameObject insts = Instantiate(inst, new Vector3(10, 2.6f, 10), Quaternion.identity);
+                GameObject insts = Instantiate(inst, new Vector3(10, 0.7f, 10), Quaternion.identity);
                 insts.GetComponent<ChessFSMManager>().ID = PlayerIDSet.AIID;
                 insts.tag = "chess";
+                insts.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
+
+                //GameObject insts2 = Instantiate(inst2, new Vector3(8, 0.7f, 8), Quaternion.identity);
+                //insts2.GetComponent<ChessFSMManager>().ID = PlayerIDSet.AIID;
+                //insts2.tag = "chess";
+                //insts2.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
 
                 //for(;chessQueue.Count!=0;)          //배치한 말들을 모두 재생시키고 다음 라운드에 불러올 수 있도록 저장하는 포문
                 //{
@@ -136,13 +143,13 @@ public class GameManager : MonoBehaviour
                 //    deqChess.GetComponent<ChessFSMManager>().DeQueueThis();
                 //}
 
-                if(chessList!=null)
+                if (chessList!=null)
                 {
                     foreach(GameObject objs in chessList)
                     {
                         nextRound nextr;
                         nextr.obj = objs;
-                        nextr.pos = objs.transform.position;
+                        nextr.pos = objs.transform.position-new Vector3(0,0,0.5f);
                         nextRoundList.Add(nextr);
                         objs.GetComponent<ChessFSMManager>().DeQueueThis();
                     }
