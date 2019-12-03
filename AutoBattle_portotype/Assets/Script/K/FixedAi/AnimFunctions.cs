@@ -13,4 +13,8 @@ public class AnimFunctions : MonoBehaviour
     {
         manager.target.gameObject.GetComponent<ChessFSMManager>().MeleeDamaged(manager.damageReal);
     }
+    public void ManaCharge()
+    {
+        manager.ManaCharge();
+    }
 }

@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class RangerChase : ChaseAIParent
 {
-    private bool isNear = false;
+   
     public override void Execute()
     {
         base.Execute();
 
-        if (GameObject.FindGameObjectsWithTag("chess") != null && manager.target == null)
+        if (manager.target==null && GameObject.FindGameObjectsWithTag("chess") != null)
         {
+            isNear = false;
             GameObject[] objects = GameObject.FindGameObjectsWithTag("chess");
             GameObject final = null;
             for(int i=0; i<objects.Length; i++)
@@ -47,7 +48,9 @@ public class RangerChase : ChaseAIParent
                                           manager.chaseSpeedReal * Time.deltaTime);
         }
         else
-            GotoBlock();
+        {
+            GotoBlock();   
+        }
 
         Vector3 dir = manager.target.position - manager.transform.position;
 
@@ -59,22 +62,5 @@ public class RangerChase : ChaseAIParent
         if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < Mathf.Pow(manager.rangeReal,2))
             isNear = true;
     }
-    private void GotoBlock()
-    {
-        Vector3 desti = 
-            new Vector3(Mathf.Round(transform.position.x), transform.position.y,Mathf.Round(transform.position.z));
-
-        manager.transform.position = Vector3.MoveTowards(
-                                      manager.transform.position,
-                                      desti,
-                                      manager.chaseSpeedReal * Time.deltaTime);
-
-
-
-        if (Vector3.SqrMagnitude(manager.transform.position - desti) < 0.04f)
-        {
-            isNear = false;
-            manager.SetState(ChessStates.ATTACK);
-        }
-    }
+    
 }

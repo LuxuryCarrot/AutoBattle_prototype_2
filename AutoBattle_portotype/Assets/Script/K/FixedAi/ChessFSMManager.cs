@@ -55,6 +55,10 @@ public class ChessFSMManager : MonoBehaviour
     public float def;
     [HideInInspector]
     public string className;
+    [HideInInspector]
+    public float manaGet;
+    [HideInInspector]
+    public float mana;
 
     [HideInInspector]
     public float chaseSpeedReal;
@@ -66,7 +70,8 @@ public class ChessFSMManager : MonoBehaviour
     public float rangeReal;
     [HideInInspector]
     public float defReal;
-    
+    [HideInInspector]
+    public float manaGetReal;
    
 
     private void Awake()
@@ -101,16 +106,50 @@ public class ChessFSMManager : MonoBehaviour
         damage= transform.GetChild(0).GetComponent<StatusLists>().damage;
         range = transform.GetChild(0).GetComponent<StatusLists>().range;
         def = transform.GetChild(0).GetComponent<StatusLists>().def;
+        manaGet = transform.GetChild(0).GetComponent<StatusLists>().manaGet;
 
         chaseSpeedReal = chaseSpeed;
         runSpeedReal = runSpeed;
         damageReal = damage;
         rangeReal = range;
         defReal = def;
+        manaGetReal = manaGet;
 
         className = transform.GetChild(0).GetComponent<StatusLists>().className;
 
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+    }
+
+    public void SetDefaultStat()
+    {
+        if(gameObject.GetComponent<ChessInfo>().iChessEvolutionRate==1)
+        {
+            isRun = transform.GetChild(0).GetComponent<StatusLists>().isRun;
+            hp = transform.GetChild(0).GetComponent<StatusLists>().HP;
+            chaseSpeed = transform.GetChild(0).GetComponent<StatusLists>().speed;
+            runSpeed = transform.GetChild(0).GetComponent<StatusLists>().runSpeed;
+            damage = transform.GetChild(0).GetComponent<StatusLists>().damage;
+            range = transform.GetChild(0).GetComponent<StatusLists>().range;
+            def = transform.GetChild(0).GetComponent<StatusLists>().def;
+            manaGet = transform.GetChild(0).GetComponent<StatusLists>().manaGet;
+        }
+        else if(gameObject.GetComponent<ChessInfo>().iChessEvolutionRate == 2)
+        {
+            isRun = transform.GetChild(0).GetComponent<StatusLists2>().isRun;
+            hp = transform.GetChild(0).GetComponent<StatusLists2>().HP;
+            chaseSpeed = transform.GetChild(0).GetComponent<StatusLists2>().speed;
+            runSpeed = transform.GetChild(0).GetComponent<StatusLists2>().runSpeed;
+            damage = transform.GetChild(0).GetComponent<StatusLists2>().damage;
+            range = transform.GetChild(0).GetComponent<StatusLists2>().range;
+            def = transform.GetChild(0).GetComponent<StatusLists2>().def;
+            manaGet = transform.GetChild(0).GetComponent<StatusLists2>().manaGet;
+        }
+        chaseSpeedReal = chaseSpeed;
+        runSpeedReal = runSpeed;
+        damageReal = damage;
+        rangeReal = range;
+        defReal = def;
+        manaGetReal = manaGet;
     }
 
     public void SetState(ChessStates s)
@@ -210,5 +249,14 @@ public class ChessFSMManager : MonoBehaviour
         isTargeted = true;
         target = by.gameObject.transform;
         anim.SetBool("miss", true);
+    }
+
+    public void ManaCharge()
+    {
+        mana += manaGetReal;
+    }
+    public ChessStates GetState()
+    {
+        return current;
     }
 }

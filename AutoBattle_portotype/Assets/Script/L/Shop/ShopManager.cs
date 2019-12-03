@@ -52,19 +52,30 @@ public class ShopManager : MonoBehaviour
         {
             GameManager.instance.ShopReRoll();
             SlotCost[i] = GameManager.instance.iCost;
+            Color color;
+            string heraldry;
             if (GameManager.instance.sHeroName == "ParkWarrior")
             {
                 SlotButton[i].image.sprite = Image1;
+                heraldry = "Starshyer";
+                color = Color.black;
             }
             else if (GameManager.instance.sHeroName == "ParkShield")
             {
                 SlotButton[i].image.sprite = Image2;
+                heraldry = " ";
+                color = Color.black;
             }
             else
             {
                 SlotButton[i].image.sprite = Image3;
+                heraldry = "Selentheor";
+                color = Color.blue;
             }
-            SlotText[i].text = GameManager.instance.sHeroName + "\n" + "Cost = " + SlotCost[i];
+
+           
+            SlotText[i].text = GameManager.instance.sHeroName + "\n" + heraldry + "\n" + "Cost = " + SlotCost[i]+"Wn";
+            SlotText[i].color = color;
             sHeroName[i] = GameManager.instance.sHeroName;
         }
     }

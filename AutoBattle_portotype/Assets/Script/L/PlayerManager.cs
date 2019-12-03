@@ -80,9 +80,12 @@ public class PlayerManager : MonoBehaviour
     public void SetHero(int _index, string _sHeroName, int _EvolutionRate)
     {
         Inventory[_index] = Instantiate(Resources.Load("Prefabs/Characters/" + _sHeroName), InventorySlotPos[_index].position, InventorySlotPos[_index].rotation) as GameObject;
+
         Inventory[_index].GetComponent<ChessInfo>().ichessNum = _index;
         Inventory[_index].GetComponent<ChessInfo>().isWaiting = true;
         Inventory[_index].GetComponent<ChessInfo>().sMyName = _sHeroName;
         Inventory[_index].GetComponent<ChessInfo>().iChessEvolutionRate = _EvolutionRate;
+        Inventory[_index].GetComponent<ChessFSMManager>().SetDefaultStat();
+        Inventory[_index].transform.localScale = new Vector3(0.8f + 0.2f * _EvolutionRate, 0.8f + 0.2f * _EvolutionRate, 0.8f + 0.2f * _EvolutionRate);
     }
 }

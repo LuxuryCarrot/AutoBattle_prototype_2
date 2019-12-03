@@ -13,8 +13,14 @@ public class GetSet_L : MonoBehaviour
 
     public GameObject MyPlatform;
 
-  
 
+    public GameObject tileEff;
+    
+
+    private void Awake()
+    {
+        tileEff.SetActive(false);
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -59,11 +65,15 @@ public class GetSet_L : MonoBehaviour
                 {
                     chess.position = hit.point + new Vector3(0, 2, 0);
                     tile = hit.transform;
+                    tileEff.SetActive(true);
+                    tileEff.transform.position = tile.position+new Vector3(0, 1.02f,0);
+                      
                 }
             }
         }
         else if (Input.GetMouseButtonUp(0))
         {
+            tileEff.SetActive(false);
             if (chess != null && chess.GetComponent<ChessInfo>().ichessNum == 999)
             {
                 if (tile.gameObject.layer == 12 && PlayerManager.instance.iBenchSlotCount < PlayerManager.instance.MaxHeroNumber)

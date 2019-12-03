@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatusLists :MonoBehaviour
+public class StatusLists2 : MonoBehaviour
 {
     public float HP;
     public float speed;

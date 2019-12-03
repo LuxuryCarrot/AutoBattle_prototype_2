@@ -34,6 +34,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  desti: {x: 0, y: 0, z: 0}
+  isNear: 0
 --- !u!114 &9212324557947472014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,6 +121,7 @@ MonoBehaviour:
   attackai: {fileID: 0}
   chaseai: {fileID: 0}
   ultiai: {fileID: 0}
+  synergys: []
   isRun: 0
   hp: 0
   chaseSpeed: 0
@@ -130,11 +133,14 @@ MonoBehaviour:
   range: 0
   def: 0
   className: 
+  manaGet: 0
+  mana: 0
   chaseSpeedReal: 0
   runSpeedReal: 0
   damageReal: 0
   rangeReal: 0
   defReal: 0
+  manaGetReal: 0
 --- !u!114 &5898799533918626641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,11 +257,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5898799533918626650}
     m_Modifications:
-    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: m_Name
-      value: ParkArcherPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 8756368808446140155, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -310,6 +311,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Name
+      value: ParkArcherPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 8756368808446140195, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
@@ -374,12 +380,12 @@ PrefabInstance:
     - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
       propertyPath: HP
-      value: 90
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
       propertyPath: damage
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}

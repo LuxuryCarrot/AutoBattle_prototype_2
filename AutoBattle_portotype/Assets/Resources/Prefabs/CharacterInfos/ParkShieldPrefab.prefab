@@ -2242,6 +2242,7 @@ GameObject:
   - component: {fileID: 5669875959039613657}
   - component: {fileID: 3944208067233687367}
   - component: {fileID: 3944500457310793633}
+  - component: {fileID: 114275749247321042}
   m_Layer: 0
   m_Name: ParkShieldPrefab
   m_TagString: Untagged
@@ -2312,6 +2313,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  isNear: 0
 --- !u!114 &3944789768790837589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2337,14 +2339,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a782fb2fbd4fd14dad1976f53621f87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
-  speed: 3
+  HP: 2000
+  speed: 2
   runSpeed: 4
   isRun: 0
   range: 3
-  damage: 25
+  damage: 80
   className: Warrior
-  def: 0
+  heraldry: None
+  def: 10
+  manaGet: 8
 --- !u!114 &3944208067233687367
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2370,6 +2374,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+--- !u!114 &114275749247321042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669875958873051198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee43cdf8b8590b44c9cbe4184c99606b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HP: 4000
+  speed: 2
+  runSpeed: 4
+  isRun: 0
+  range: 3
+  damage: 160
+  className: Warrior
+  heraldry: None
+  def: 12.5
+  manaGet: 12
 --- !u!1 &5681833077667434097
 GameObject:
   m_ObjectHideFlags: 0
