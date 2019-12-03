@@ -126,10 +126,10 @@ public class GameManager : MonoBehaviour
                 insts.tag = "chess";
                 insts.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
 
-                //GameObject insts2 = Instantiate(inst2, new Vector3(8, 0.7f, 8), Quaternion.identity);
-                //insts2.GetComponent<ChessFSMManager>().ID = PlayerIDSet.AIID;
-                //insts2.tag = "chess";
-                //insts2.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
+                GameObject insts2 = Instantiate(inst2, new Vector3(8, 0.7f, 8), Quaternion.identity);
+                insts2.GetComponent<ChessFSMManager>().ID = PlayerIDSet.AIID;
+                insts2.tag = "chess";
+                insts2.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
 
                 //for(;chessQueue.Count!=0;)          //배치한 말들을 모두 재생시키고 다음 라운드에 불러올 수 있도록 저장하는 포문
                 //{
@@ -392,7 +392,7 @@ public class GameManager : MonoBehaviour
                         if (PlayerManager.instance.GameBord[k] != null)
                         {
                             if (sEHeroName == PlayerManager.instance.GameBord[k].GetComponent<ChessInfo>().sMyName
-                                && PlayerManager.instance.Inventory[k].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                                && PlayerManager.instance.GameBord[k].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
                             {
                                 ++iSameHeroCount;
                                 if (iSameHeroCount == 3)
@@ -443,10 +443,12 @@ public class GameManager : MonoBehaviour
                         Destroy(PlayerManager.instance.GameBord[l]);
                         PlayerManager.instance.GameBord[l] = null;
                         --PlayerManager.instance.iBordSlotCount;
-                        --iSameHeroCount;
+                        
                     }
+                    
                 }
             }
+            iSameHeroCount = 0;
         }
         for (int z = 0; z < PlayerManager.instance.MaxHeroNumber; z++)
         {
