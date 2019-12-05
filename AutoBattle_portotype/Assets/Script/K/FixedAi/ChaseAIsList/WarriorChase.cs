@@ -73,7 +73,7 @@ public class WarriorChase : ChaseAIParent
         manager.transform.rotation = Quaternion.RotateTowards(manager.transform.rotation,
                                         Quaternion.LookRotation(dir), 1080);
 
-        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < 0.04f)
+        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < 9.0f)
 
         {
             isNear = true;

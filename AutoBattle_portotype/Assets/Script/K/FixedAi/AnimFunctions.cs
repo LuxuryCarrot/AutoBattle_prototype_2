@@ -17,4 +17,12 @@ public class AnimFunctions : MonoBehaviour
     {
         manager.ManaCharge();
     }
+    public void PassiveStack()
+    {
+        manager.passive.Execute();
+    }
+    public void UltimateCheck()
+    {
+        manager.target.gameObject.GetComponent<ChessFSMManager>().MeleeDamaged(manager.ultimateDamReal);
+    }
 }

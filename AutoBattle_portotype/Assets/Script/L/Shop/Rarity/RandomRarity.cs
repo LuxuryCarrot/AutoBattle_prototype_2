@@ -6,7 +6,7 @@ public class RandomRarity : MonoBehaviour
 {
     public static RandomRarity instance;
 
-    private int iRandomCount = 4;
+    private int iRandomCount = 2;
 
     private int iRandomNum;
 
@@ -22,15 +22,15 @@ public class RandomRarity : MonoBehaviour
     {
         iRandomNum = Random.Range(0, iRandomCount);
 
-        if (iRandomNum == 0)
+        if (iRandomNum == 2)
         {
             sRandomHeroName = "dCapsule";
         }
-        else if (iRandomNum == 1)
+        else if (iRandomNum == 0)
         {
             sRandomHeroName = "ParkWarrior";
         }
-        else if (iRandomNum == 2)
+        else if (iRandomNum == 1)
         {
             sRandomHeroName = "ParkShield";
         }

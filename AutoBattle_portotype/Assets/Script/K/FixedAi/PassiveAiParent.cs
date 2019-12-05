@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UltimateAIParent : MonoBehaviour
+public class PassiveAiParent : MonoBehaviour
 {
-    
+    [HideInInspector]
     public ChessFSMManager manager;
 
 
@@ -12,6 +12,5 @@ public class UltimateAIParent : MonoBehaviour
     {
         manager = transform.GetComponentInParent<ChessFSMManager>();
     }
-
     public virtual void Execute() { }
 }

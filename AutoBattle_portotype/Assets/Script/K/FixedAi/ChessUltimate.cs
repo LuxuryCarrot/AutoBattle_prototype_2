@@ -7,6 +7,7 @@ public class ChessUltimate : ChessFSMParent
     public override void BeginState()
     {
         base.BeginState();
+        manager.mana = 0;
     }
 
     private void Update()

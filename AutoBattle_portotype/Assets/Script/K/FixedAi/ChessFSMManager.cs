@@ -32,6 +32,8 @@ public class ChessFSMManager : MonoBehaviour
     public UltimateAIParent ultiai;
     [HideInInspector]
     public SynergyParent[] synergys;
+    [HideInInspector]
+    public PassiveAiParent passive;
 
     [HideInInspector]
     public bool isRun;
@@ -59,6 +61,8 @@ public class ChessFSMManager : MonoBehaviour
     public float manaGet;
     [HideInInspector]
     public float mana;
+    [HideInInspector]
+    public float ultimateDam;
 
     [HideInInspector]
     public float chaseSpeedReal;
@@ -72,6 +76,11 @@ public class ChessFSMManager : MonoBehaviour
     public float defReal;
     [HideInInspector]
     public float manaGetReal;
+    [HideInInspector]
+    public float ultimateDamReal;
+
+    public bool protecting;
+    public float protectTemp;
    
 
     private void Awake()
@@ -98,6 +107,7 @@ public class ChessFSMManager : MonoBehaviour
         chaseai = transform.GetChild(0).GetComponent<ChaseAIParent>();
         ultiai =  transform.GetChild(0).GetComponent<UltimateAIParent>();
         synergys = transform.GetChild(0).GetComponents<SynergyParent>();
+        passive = transform.GetChild(0).GetComponent<PassiveAiParent>();
 
         isRun = transform.GetChild(0).GetComponent<StatusLists>().isRun;
         hp = transform.GetChild(0).GetComponent<StatusLists>().HP;
@@ -107,6 +117,7 @@ public class ChessFSMManager : MonoBehaviour
         range = transform.GetChild(0).GetComponent<StatusLists>().range;
         def = transform.GetChild(0).GetComponent<StatusLists>().def;
         manaGet = transform.GetChild(0).GetComponent<StatusLists>().manaGet;
+        ultimateDam = transform.GetChild(0).GetComponent<StatusLists>().ultimateDam;
 
         chaseSpeedReal = chaseSpeed;
         runSpeedReal = runSpeed;
@@ -114,6 +125,7 @@ public class ChessFSMManager : MonoBehaviour
         rangeReal = range;
         defReal = def;
         manaGetReal = manaGet;
+        ultimateDamReal = ultimateDam;
 
         className = transform.GetChild(0).GetComponent<StatusLists>().className;
 
@@ -132,6 +144,7 @@ public class ChessFSMManager : MonoBehaviour
             range = transform.GetChild(0).GetComponent<StatusLists>().range;
             def = transform.GetChild(0).GetComponent<StatusLists>().def;
             manaGet = transform.GetChild(0).GetComponent<StatusLists>().manaGet;
+            ultimateDam = transform.GetChild(0).GetComponent<StatusLists>().ultimateDam;
         }
         else if(gameObject.GetComponent<ChessInfo>().iChessEvolutionRate == 2)
         {
@@ -143,6 +156,7 @@ public class ChessFSMManager : MonoBehaviour
             range = transform.GetChild(0).GetComponent<StatusLists2>().range;
             def = transform.GetChild(0).GetComponent<StatusLists2>().def;
             manaGet = transform.GetChild(0).GetComponent<StatusLists2>().manaGet;
+            ultimateDam = transform.GetChild(0).GetComponent<StatusLists2>().ultimateDam;
         }
         chaseSpeedReal = chaseSpeed;
         runSpeedReal = runSpeed;
@@ -150,6 +164,8 @@ public class ChessFSMManager : MonoBehaviour
         rangeReal = range;
         defReal = def;
         manaGetReal = manaGet;
+        ultimateDamReal = ultimateDam;
+
     }
 
     public void SetState(ChessStates s)
@@ -171,6 +187,9 @@ public class ChessFSMManager : MonoBehaviour
 
     public void MeleeDamaged(float dam)
     {
+        if (protecting)
+            return;
+
         hp -= dam-defReal;
         if (isRun)
             SetState(ChessStates.RUN);
@@ -206,6 +225,16 @@ public class ChessFSMManager : MonoBehaviour
             
             SetState(ChessStates.DIE);
             anim.SetInteger("Param", (int)current);
+        }
+
+        if(protectTemp>0)
+        {
+            protectTemp -= Time.deltaTime;
+            if(protectTemp<=0)
+            {
+                protecting = false;
+                protectTemp = 0;
+            }
         }
     }
 

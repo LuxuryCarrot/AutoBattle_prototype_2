@@ -14,4 +14,5 @@ public class StatusLists :MonoBehaviour
     public string heraldry;
     public float def;
     public float manaGet;
+    public float ultimateDam;
 }

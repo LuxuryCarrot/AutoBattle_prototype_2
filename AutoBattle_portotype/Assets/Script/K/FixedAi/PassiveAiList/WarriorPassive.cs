@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarriorAttack : AttackAIParent
+public class WarriorPassive : PassiveAiParent
 {
     public override void Execute()
     {
         base.Execute();
-        if (manager.mana >= 100)
-            manager.SetState(ChessStates.ULTIMATE);
+        manager.ultimateDamReal += 10;
     }
 }

@@ -98,6 +98,7 @@ public class GameManager : MonoBehaviour
                         part.obj.SetActive(true);
                         part.obj.transform.position = part.pos;
                         part.obj.GetComponent<ChessFSMManager>().EnQueueThis();
+                        part.obj.GetComponent<ChessFSMManager>().SetDefaultStat();
                     }
                     nextRoundList.Clear();
                 }
@@ -126,10 +127,7 @@ public class GameManager : MonoBehaviour
                 insts.tag = "chess";
                 insts.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
 
-                GameObject insts2 = Instantiate(inst2, new Vector3(8, 0.7f, 8), Quaternion.identity);
-                insts2.GetComponent<ChessFSMManager>().ID = PlayerIDSet.AIID;
-                insts2.tag = "chess";
-                insts2.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
+               
 
                 //for(;chessQueue.Count!=0;)          //배치한 말들을 모두 재생시키고 다음 라운드에 불러올 수 있도록 저장하는 포문
                 //{
@@ -196,7 +194,7 @@ public class GameManager : MonoBehaviour
 
     public void ShopReRoll()
     {
-        iRandomNum = Random.Range(0, 100);
+        iRandomNum = Random.Range(0, 9);
 
         if (PlayerManager.instance.iLevel == 1)
         {

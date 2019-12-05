@@ -1553,6 +1553,7 @@ GameObject:
   - component: {fileID: 114570742413129122}
   - component: {fileID: 114282590369643844}
   - component: {fileID: 114985683430479516}
+  - component: {fileID: 114486176040745924}
   m_Layer: 0
   m_Name: ParkWarriorPrefab
   m_TagString: Untagged
@@ -1622,6 +1623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
+  desti: {x: 0, y: 0, z: 0}
   isNear: 0
 --- !u!114 &114024070579870640
 MonoBehaviour:
@@ -1658,6 +1660,7 @@ MonoBehaviour:
   heraldry: Starshyer
   def: 5
   manaGet: 10
+  ultimateDam: 150
 --- !u!114 &114570742413129122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1705,6 +1708,20 @@ MonoBehaviour:
   heraldry: Starshyer
   def: 10
   manaGet: 15
+  ultimateDam: 300
+--- !u!114 &114486176040745924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8756368808445838043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a5daf08ca9b864a8bf2c7900243ff1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
 --- !u!1 &8756368808445838049
 GameObject:
   m_ObjectHideFlags: 0
