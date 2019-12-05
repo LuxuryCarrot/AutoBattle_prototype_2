@@ -170,19 +170,30 @@ public class GetSet_L : MonoBehaviour
                                 if(PlayerManager.instance.GameBord[i]==null)
                                 {
                                     PlayerManager.instance.GameBord[i] = chess.gameObject;
+                                    chess.GetComponent<ChessInfo>().ichessNum = i;
                                     break;
                                 }
 
                             chess.position = changeChess.transform.position;
+                            
                             changeChess.transform.position = startPos;
                         }
                         else
                         {
                             chess.position = tile.transform.position + new Vector3(0, 2, 0);
+                            for (int i = 0; i < PlayerManager.instance.GameBord.Length; i++)
+                                if (PlayerManager.instance.GameBord[i] == null)
+                                {
+                                    PlayerManager.instance.GameBord[i] = chess.gameObject;
+                                    chess.GetComponent<ChessInfo>().ichessNum = i;
+                                    break;
+                                }
                         }
                         chess.transform.parent = MyPlatform.transform; // 게임 보드에 자식으로 넣어주는 코드. 자식으로는 들어가지는데 현재 전투에 돌입 시 착지하는 곳의 타일 위치가 맞지 않아 주석처리함.
                         ++PlayerManager.instance.iBordSlotCount;
                         Destroy(changeChess);
+                        chess = null;
+                        tile = null;
                         return;
                     }
 

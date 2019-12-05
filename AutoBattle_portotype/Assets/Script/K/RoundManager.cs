@@ -58,10 +58,10 @@ public class RoundManager : MonoBehaviour
             int id = obj.GetComponent<ChessFSMManager>().ID;
             if (id == PlayerIDSet.playerID
                 && obj.GetComponent<ChessFSMManager>().GetState() != ChessStates.DIE)
-                winner--;
+                winner++;
             else if (id == PlayerIDSet.AIID
                 && obj.GetComponent<ChessFSMManager>().GetState() != ChessStates.DIE)
-                winner++;
+                winner--;
             else if (id == PlayerIDSet.AIID
                 && obj.GetComponent<ChessFSMManager>().GetState() == ChessStates.DIE)
                 PlayerManager.instance.iExp += 5;
