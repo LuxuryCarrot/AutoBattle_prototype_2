@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 114291854784685854}
   - {fileID: 114205087754926342}
   - {fileID: 114626941983780508}
+  - {fileID: 114849855152862366}
 --- !u!114 &114205087754926342
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -34,7 +35,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: 3
+    value: 3.5
   threshold:
     overrideState: 1
     value: 1
@@ -165,10 +166,10 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: 0
+    value: -2.5
   tint:
     overrideState: 1
-    value: 0
+    value: 2.5
   colorFilter:
     overrideState: 1
     value: {r: 1, g: 1, b: 1, a: 1}
@@ -177,16 +178,16 @@ MonoBehaviour:
     value: 0
   saturation:
     overrideState: 1
-    value: 6
+    value: -4.1
   brightness:
     overrideState: 1
     value: 0
   postExposure:
     overrideState: 1
-    value: 0.25
+    value: 0.13
   contrast:
     overrideState: 1
-    value: 2
+    value: 4.7
   mixerRedOutRedIn:
     overrideState: 1
     value: 100
@@ -216,13 +217,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 0.8688098, y: 0.8326477, z: 1, w: 0.09448819}
+    value: {x: 0.77856255, y: 0.79176265, z: 1, w: 0.068119995}
   gamma:
     overrideState: 1
-    value: {x: 0.834002, y: 0.8743979, z: 1, w: 0.062992126}
+    value: {x: 0.8119965, y: 0.87029845, z: 1, w: -0.087542854}
   gain:
     overrideState: 1
-    value: {x: 0.7564391, y: 0.90021116, z: 1, w: 0.047244094}
+    value: {x: 0.73202515, y: 0.8369056, z: 1, w: 0.07878114}
   masterCurve:
     overrideState: 1
     value:
@@ -1423,3 +1424,25 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
+--- !u!114 &114849855152862366
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94fcd11afffcb142908bfcb1e261fba, type: 3}
+  m_Name: MotionBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  shutterAngle:
+    overrideState: 1
+    value: 260
+  sampleCount:
+    overrideState: 1
+    value: 10
