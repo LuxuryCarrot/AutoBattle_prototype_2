@@ -4,15 +4,75 @@ using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public GameObject[] prefabs;
+    public static RoundManager Instance;
+
+    private void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GoldGet(int round)
     {
-        
+        PlayerManager.instance.iBalance += 2;
+        if (round < 3)
+        {
+            PlayerManager.instance.iBalance += (3 - round) * 5;
+        }
+        else if (round == 3)
+            PlayerManager.instance.iBalance += 2;
+    }
+
+    public void EnemySpawn(int round)
+    {
+        if (round < 3)
+            InstPrefab(0, 1);
+        else
+            InstPrefab(0, 2);
+
+        if (round >= 3)
+            InstPrefab((int)Mathf.Round(Random.Range(0, 1)), 1);
+
+        if(round>=5)
+            InstPrefab((int)Mathf.Round(Random.Range(0, 1)), 1);
+    }
+
+    public void InstPrefab(int a, int level)
+    {
+        GameObject inst = Instantiate(prefabs[a],
+            new Vector3(Mathf.Round(Random.Range(0, 7)) * 2, 0.7f, Mathf.Round(Random.Range(4, 7)) * 2)
+            , Quaternion.identity);
+        inst.GetComponent<ChessFSMManager>().ID = PlayerIDSet.AIID;
+        inst.tag = "chess";
+        inst.GetComponent<ChessInfo>().iChessEvolutionRate = level;
+        inst.GetComponent<ChessFSMManager>().SetDefaultStat();
+        inst.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
+    }
+
+    public void RoundEnd()
+    {
+        GameObject[] counts = GameObject.FindGameObjectsWithTag("chess");
+        int winner = 0;
+        foreach(GameObject obj in counts)
+        {
+            int id = obj.GetComponent<ChessFSMManager>().ID;
+            if (id == PlayerIDSet.playerID
+                && obj.GetComponent<ChessFSMManager>().GetState() != ChessStates.DIE)
+                winner--;
+            else if (id == PlayerIDSet.AIID
+                && obj.GetComponent<ChessFSMManager>().GetState() != ChessStates.DIE)
+                winner++;
+            else if (id == PlayerIDSet.AIID
+                && obj.GetComponent<ChessFSMManager>().GetState() == ChessStates.DIE)
+                PlayerManager.instance.iExp += 5;
+        }
+
+        PlayerManager.instance.iBalance += winner*2;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
     }
 }
