@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum CurStage
 {
@@ -243,7 +244,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-
+                    SceneManager.LoadScene("DeathScene");
                 }
             }
         }
