@@ -29,14 +29,15 @@ public class StarBar : MonoBehaviour
             }
         }
 
+        if(target!=null)
         if (target.GetComponent<ChessFSMManager>().GetState() != ChessStates.IDLE)
             Destroy(gameObject);
 
-        
 
-        transform.position = target.transform.position + new Vector3(0, 1.5f, 0);
-
-        level = target.GetComponent<ChessInfo>().iChessEvolutionRate;
+        if (target != null)
+            transform.position = target.transform.position + new Vector3(0, 1.5f, 0);
+        if (target != null)
+            level = target.GetComponent<ChessInfo>().iChessEvolutionRate;
         if(level==1)
         {
             star1.enabled = true;
