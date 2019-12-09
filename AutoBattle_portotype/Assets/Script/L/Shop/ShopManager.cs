@@ -46,7 +46,7 @@ public class ShopManager : MonoBehaviour
 
     public void ExpBUY()
     {
-        if (PlayerManager.instance.iBalance >= 5)
+        if (PlayerManager.instance.iBalance >= 5 && PlayerManager.instance.iLevel < 9)
         {
             PlayerManager.instance.iBalance -= 5;
             PlayerManager.instance.iExp += 5;

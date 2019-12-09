@@ -94,6 +94,12 @@ public class GameManager : MonoBehaviour
             {
 
                 //timeLeft = 60.0f // 원래 시간
+                BillList1 = null;
+                BillList2 = null;
+                BillList3 = null;
+                BillName = null;
+                BillResult = null;
+                BillTotal = null;
                 BillPanel.SetActive(false);
                 timeLeft = 30.0f;
                 ++iRoundCount;                      // 현재 라운드 카운트
@@ -424,7 +430,7 @@ public class GameManager : MonoBehaviour
                     if (PlayerManager.instance.Inventory[j] != null)
                     {
                         if (sEHeroName == PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().sMyName 
-                            && PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                            && PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().iChessEvolutionRate == 1)
                         {
                             ++iSameHeroCount;
                             if (iSameHeroCount == 3)
@@ -441,7 +447,7 @@ public class GameManager : MonoBehaviour
                         if (PlayerManager.instance.GameBord[k] != null)
                         {
                             if (sEHeroName == PlayerManager.instance.GameBord[k].GetComponent<ChessInfo>().sMyName
-                                && PlayerManager.instance.GameBord[k].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                                && PlayerManager.instance.GameBord[k].GetComponent<ChessInfo>().iChessEvolutionRate == 1)
                             {
                                 ++iSameHeroCount;
                                 if (iSameHeroCount == 3)
@@ -470,7 +476,7 @@ public class GameManager : MonoBehaviour
             if (PlayerManager.instance.Inventory[a] != null)
             {
                 if (PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().sMyName == sEHeroName
-                    && PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                    && PlayerManager.instance.Inventory[a].GetComponent<ChessInfo>().iChessEvolutionRate == 1)
                 {
                     Destroy(PlayerManager.instance.Inventory[a]);
                     PlayerManager.instance.Inventory[a] = null;
@@ -486,7 +492,7 @@ public class GameManager : MonoBehaviour
                 {
                     Debug.Log(PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().sMyName);
                     if (PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().sMyName == sEHeroName
-                        && PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().iChessEvolutionRate == EvRate)
+                        && PlayerManager.instance.GameBord[l].GetComponent<ChessInfo>().iChessEvolutionRate == 1)
                     {
                         PlayerManager.instance.GameBord[l].GetComponent<ChessFSMManager>().BenchIn();
                         Destroy(PlayerManager.instance.GameBord[l]);
