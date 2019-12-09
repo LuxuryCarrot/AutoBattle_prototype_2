@@ -157,6 +157,7 @@ public class GameManager : MonoBehaviour
                         objs.GetComponent<ChessFSMManager>().DeQueueThis();
                         GameObject hpbar = Instantiate(Resources.Load("Prefabs/HPMPBars"), objs.transform.position, Quaternion.identity) as GameObject;
                         hpbar.GetComponent<HPMPBarScripts>().target = objs;
+                        hpbar.GetComponent<HPMPBarScripts>().level = objs.GetComponent<ChessInfo>().iChessEvolutionRate;
                     }
                     chessList.Clear();
                 }
