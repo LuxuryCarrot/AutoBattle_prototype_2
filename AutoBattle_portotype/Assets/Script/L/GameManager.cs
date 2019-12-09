@@ -218,11 +218,11 @@ public class GameManager : MonoBehaviour
                 }
                 else if (RoundManager.Instance.wincount == 0)
                 {
-                    StartCoroutine("Lose_Bill");
+                    StartCoroutine("Draw_Bill");
                 }
                 else if (RoundManager.Instance.wincount < 0)
                 {
-                    StartCoroutine("Draw_Bill");
+                    StartCoroutine("Lose_Bill");
                 }
                 iCurrState = 1;
                 //EvolutionCheck();
