@@ -25,4 +25,12 @@ public class AnimFunctions : MonoBehaviour
     {
         manager.target.gameObject.GetComponent<ChessFSMManager>().MeleeDamaged(manager.ultimateDamReal);
     }
+    public void BulletInst()
+    {
+        manager.attackai.BulletInst();
+    }
+    public void UltimateBulletInst()
+    {
+        manager.ultiai.BulletInst();
+    }
 }
