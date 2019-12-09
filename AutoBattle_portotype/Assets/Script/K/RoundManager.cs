@@ -11,6 +11,8 @@ public class RoundManager : MonoBehaviour
 
     public int Money;
 
+    public int getMoney;
+
     private void Awake()
     {
         Instance = this;
@@ -18,13 +20,13 @@ public class RoundManager : MonoBehaviour
 
     public void GoldGet(int round)
     {
-        PlayerManager.instance.iBalance += 2;
+        getMoney = 0;
         if (round < 3)
         {
-            PlayerManager.instance.iBalance += (3 - round) * 5;
+            getMoney += (3 - round) * 5;
         }
         else if (round == 3)
-            PlayerManager.instance.iBalance += 2;
+            getMoney += 2;
     }
 
     public void EnemySpawn(int round)
@@ -51,6 +53,9 @@ public class RoundManager : MonoBehaviour
         inst.GetComponent<ChessInfo>().iChessEvolutionRate = level;
         inst.GetComponent<ChessFSMManager>().SetDefaultStat();
         inst.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
+        GameObject hpbar = Instantiate(Resources.Load("Prefabs/HPMPBars"), inst.transform.position, Quaternion.identity) as GameObject;
+        hpbar.GetComponent<HPMPBarScripts>().target = inst;
+        hpbar.GetComponent<HPMPBarScripts>().level = inst.GetComponent<ChessInfo>().iChessEvolutionRate;
     }
 
     public void RoundEnd()

@@ -34,6 +34,7 @@ public class ShopManager : MonoBehaviour
         {
             if (PlayerManager.instance.iBalance >= 2)
             {
+                PlayerManager.instance.iBalance -= 2;
                 ReRoll();
             }
             else
@@ -58,7 +59,6 @@ public class ShopManager : MonoBehaviour
 
     public void ReRoll()
     {
-        PlayerManager.instance.iBalance -= 2;
         for (int i = 0; i < 5; i++)
         {
             Slot[i].SetActive(true);
