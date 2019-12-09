@@ -68,6 +68,14 @@ public class GameManager : MonoBehaviour
             TimeText.text = ("남은 시간: ") + (timeLeft).ToString("0");
         }
 
+        if (Input.GetKey(KeyCode.S))
+        {
+            timeLeft -= 1;
+        }
+
+
+
+
         if (Stage == CurStage.PREPARING)            // 전투 준비 시간
         {
             if (iCurrState == 1)                    // 전투 준비 라운드 돌입하면서 한번만 실행됨

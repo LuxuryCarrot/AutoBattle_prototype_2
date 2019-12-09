@@ -42,7 +42,7 @@ public class GetSet_L : MonoBehaviour
                 }
                 else if (chess.GetComponent<ChessInfo>().isWaiting == false)
                 {
-                    if (GameManager.instance.Stage == CurStage.COMPAT)
+                    if (GameManager.instance.Stage != CurStage.PREPARING)
                     {
                         chess = null;
                         startPos = Vector3.zero;
@@ -150,7 +150,7 @@ public class GetSet_L : MonoBehaviour
                 {
                     chess.position = startPos;
                 }
-                else if (tile != null && tile.gameObject.layer != 12 && GameManager.instance.Stage!=CurStage.COMPAT)
+                else if (tile != null && tile.gameObject.layer != 12 && GameManager.instance.Stage==CurStage.PREPARING)
                 {
 
                     Debug.Log("passed?");
