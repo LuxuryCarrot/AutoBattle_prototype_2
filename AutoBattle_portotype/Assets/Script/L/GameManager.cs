@@ -164,6 +164,26 @@ public class GameManager : MonoBehaviour
                 RoundManager.Instance.EnemySpawn(iRoundCount);
             }
 
+
+            GameObject[] dieChecks = GameObject.FindGameObjectsWithTag("chess");
+            bool endCheck=true;
+            bool enemyendCheck = true;
+            foreach(GameObject obj in dieChecks)
+            {
+                if (obj.GetComponent<ChessFSMManager>().GetState() != ChessStates.DIE
+                    && obj.GetComponent<ChessFSMManager>().ID == PlayerIDSet.playerID)
+                    endCheck = false;
+
+                if (obj.GetComponent<ChessFSMManager>().GetState() != ChessStates.DIE
+                    && obj.GetComponent<ChessFSMManager>().ID == PlayerIDSet.AIID)
+                    enemyendCheck = false;
+
+            }
+
+            if (endCheck || enemyendCheck)
+                timeLeft = -0.1f;
+
+
             if (timeLeft < 0)
             {
                 Stage = CurStage.FINISH;            // 전투 라운드 시간이 다 되어 전투 마무리 라운드로 스테이지 변경.
