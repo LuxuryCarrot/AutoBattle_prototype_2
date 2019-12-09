@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
             TimeText.text = ("남은 시간: ") + (timeLeft).ToString("0");
         }
 
-        if (Input.GetKey(KeyCode.S))
+        if (Input.GetKey(KeyCode.Backspace))
         {
             timeLeft -= 0.1f;
         }
