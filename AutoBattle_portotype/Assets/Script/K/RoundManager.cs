@@ -53,6 +53,7 @@ public class RoundManager : MonoBehaviour
         inst.GetComponent<ChessFSMManager>().SetState(ChessStates.CHASE);
         GameObject hpbar = Instantiate(Resources.Load("Prefabs/HPMPBars"), inst.transform.position, Quaternion.identity) as GameObject;
         hpbar.GetComponent<HPMPBarScripts>().target = inst;
+        hpbar.GetComponent<HPMPBarScripts>().level = inst.GetComponent<ChessInfo>().iChessEvolutionRate;
     }
 
     public void RoundEnd()
