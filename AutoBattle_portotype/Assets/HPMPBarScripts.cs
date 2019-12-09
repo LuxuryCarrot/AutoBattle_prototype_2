@@ -42,6 +42,25 @@ public class HPMPBarScripts : MonoBehaviour
         else
             hpbar.value = hp / target.transform.GetComponentInChildren<StatusLists2>().HP;
         mpbar.value = mp / 100;
+
+        if(level==1)
+        {
+            star1.enabled = true;
+            star2.enabled = false;
+            star3.enabled = false;
+        }
+        else if(level==2)
+        {
+            star1.enabled = true;
+            star2.enabled = true;
+            star3.enabled = false;
+        }
+        else
+        {
+            star1.enabled = true;
+            star2.enabled = true;
+            star3.enabled = true;
+        }
     }
 
 }
