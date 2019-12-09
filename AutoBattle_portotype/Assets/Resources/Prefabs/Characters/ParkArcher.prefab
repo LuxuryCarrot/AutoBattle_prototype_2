@@ -122,6 +122,7 @@ MonoBehaviour:
   chaseai: {fileID: 0}
   ultiai: {fileID: 0}
   synergys: []
+  passive: {fileID: 0}
   isRun: 0
   hp: 0
   chaseSpeed: 0
@@ -135,12 +136,16 @@ MonoBehaviour:
   className: 
   manaGet: 0
   mana: 0
+  ultimateDam: 0
   chaseSpeedReal: 0
   runSpeedReal: 0
   damageReal: 0
   rangeReal: 0
   defReal: 0
   manaGetReal: 0
+  ultimateDamReal: 0
+  protecting: 0
+  protectTemp: 0
 --- !u!114 &5898799533918626641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,6 +262,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5898799533918626650}
     m_Modifications:
+    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Name
+      value: ParkArcherPrefab
+      objectReference: {fileID: 0}
     - target: {fileID: 8756368808446140155, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -311,11 +321,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8756368808445838043, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: m_Name
-      value: ParkArcherPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 8756368808446140195, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
@@ -377,6 +382,11 @@ PrefabInstance:
       propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8756368808436363459, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 6f11e23ac9f6e58469b087c7d90f543f, type: 2}
     - target: {fileID: 8756368808342128700, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
       propertyPath: HP
@@ -528,26 +538,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4300004, guid: bb537ab7fb7f98849912d35c1afad722, type: 3}
     - target: {fileID: 8756368808440565249, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2b1eaa8c47038a14da9693c49fd12fbf, type: 2}
-    - target: {fileID: 8756368808440565253, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300008, guid: bb537ab7fb7f98849912d35c1afad722, type: 3}
-    - target: {fileID: 8756368808440565253, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2b1eaa8c47038a14da9693c49fd12fbf, type: 2}
-    - target: {fileID: 8756368808440565255, guid: 9ec1f3030e1f3d243809915c7154da2c,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300006, guid: bb537ab7fb7f98849912d35c1afad722, type: 3}
-    - target: {fileID: 8756368808440565255, guid: 9ec1f3030e1f3d243809915c7154da2c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -1917,6 +1907,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -0.00000042691389
       objectReference: {fileID: 0}
+    - target: {fileID: 8756368808440565253, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300008, guid: bb537ab7fb7f98849912d35c1afad722, type: 3}
+    - target: {fileID: 8756368808440565253, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b1eaa8c47038a14da9693c49fd12fbf, type: 2}
+    - target: {fileID: 8756368808440565255, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300006, guid: bb537ab7fb7f98849912d35c1afad722, type: 3}
+    - target: {fileID: 8756368808440565255, guid: 9ec1f3030e1f3d243809915c7154da2c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2b1eaa8c47038a14da9693c49fd12fbf, type: 2}
     m_RemovedComponents:
     - {fileID: 114024070579870640, guid: 9ec1f3030e1f3d243809915c7154da2c, type: 3}
     - {fileID: 8756368808342128698, guid: 9ec1f3030e1f3d243809915c7154da2c, type: 3}

@@ -14,4 +14,5 @@ public class AttackAIParent : MonoBehaviour
     }
 
     public virtual void Execute() { }
+    public virtual void BulletInst() { }
 }
