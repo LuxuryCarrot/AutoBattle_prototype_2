@@ -182,7 +182,7 @@ public class GameManager : MonoBehaviour
             }
 
             if (endCheck || enemyendCheck)
-                timeLeft = -0.1f;
+                timeLeft -= 0.05f;
 
 
             if (timeLeft < 0)
@@ -534,10 +534,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         BillList1.text = ("상대방으로부터") + RoundManager.Instance.Money + ("원을 지급받았습니다.");
         yield return new WaitForSeconds(0.5f);
-        BillList2.text = ("은행으로부터") + 5 + ("원을 후원받았습니다!");
+        BillList2.text = ("은행으로부터") + RoundManager.Instance.getMoney + ("원을 후원받았습니다!");
         yield return new WaitForSeconds(0.5f);
         BillList3.text = ("잔액: ") + PlayerManager.instance.iBalance +("원") +  ("\n + 지급받은 금액: ") + RoundManager.Instance.Money + ("원") + ("\n + 후원받은 금액: ") + 5 + ("원");
-        PlayerManager.instance.iBalance += 5;
+        PlayerManager.instance.iBalance += RoundManager.Instance.getMoney;
         PlayerManager.instance.iBalance += RoundManager.Instance.Money;
         yield return new WaitForSeconds(0.5f);
         BillTotal.text = ("합계 : ") + PlayerManager.instance.iBalance + ("원!");
@@ -552,10 +552,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         BillList1.text = ("상대방에게") + RoundManager.Instance.Money + ("원을 지불했습니다.");
         yield return new WaitForSeconds(0.5f);
-        BillList2.text = ("은행으로부터") + 5 + ("원을 후원받았습니다!");
+        BillList2.text = ("은행으로부터") + RoundManager.Instance.getMoney + ("원을 후원받았습니다!");
         yield return new WaitForSeconds(0.5f);
         BillList3.text = ("잔액: ") + PlayerManager.instance.iBalance + ("원") + ("\n + 지불한 금액: ") + RoundManager.Instance.Money + ("원") + ("\n + 후원받은 금액: ") + 5 + ("원");
-        PlayerManager.instance.iBalance += 5;
+        PlayerManager.instance.iBalance += RoundManager.Instance.getMoney;
         PlayerManager.instance.iBalance += RoundManager.Instance.Money;
         yield return new WaitForSeconds(0.5f);
         BillTotal.text = ("합계 : ") + PlayerManager.instance.iBalance + ("원!");
@@ -568,10 +568,10 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         BillResult.text = ("게임 결과 : 무승부!");
         yield return new WaitForSeconds(0.5f);
-        BillList2.text = ("은행으로부터") + 5 + ("원을 후원받았습니다!");
+        BillList2.text = ("은행으로부터") + RoundManager.Instance.getMoney + ("원을 후원받았습니다!");
         yield return new WaitForSeconds(0.5f);
         BillList3.text = ("잔액: ") + PlayerManager.instance.iBalance + ("원") + ("\n + 후원받은 금액: ") + 5 + ("원");
-        PlayerManager.instance.iBalance += 5;
+        PlayerManager.instance.iBalance += RoundManager.Instance.getMoney;
         PlayerManager.instance.iBalance += RoundManager.Instance.Money;
         yield return new WaitForSeconds(0.5f);
         BillTotal.text = ("합계 : ") + PlayerManager.instance.iBalance + ("원!");
