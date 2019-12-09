@@ -18,6 +18,9 @@ public class ShopManager : MonoBehaviour
     public Sprite Image1;
     public Sprite Image2;
     public Sprite Image3;
+    public Sprite Image4;
+    public Sprite Image5;
+
 
     public int[] SlotCost = new int[5];
 
@@ -90,13 +93,13 @@ public class ShopManager : MonoBehaviour
             }
             else if(GameManager.instance.sHeroName=="Ranger")
             {
-                SlotButton[i].image.sprite = Image3;
+                SlotButton[i].image.sprite = Image5;
                 heraldry = " ";
                 color = Color.blue;
             }
             else
             {
-                SlotButton[i].image.sprite = Image3;
+                SlotButton[i].image.sprite = Image4;
                 heraldry = "Selenthyor";
                 color = Color.blue;
             }

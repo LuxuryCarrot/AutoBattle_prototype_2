@@ -40,7 +40,7 @@ public class RandomRarity : MonoBehaviour
         }
         else
         {
-            sRandomHeroName = "Archor";
+            sRandomHeroName = "Archer";
         }
         
         return sRandomHeroName;

@@ -3388,7 +3388,9 @@ MonoBehaviour:
   - {fileID: 862610476}
   Image1: {fileID: 21300000, guid: fd24d57fd8efc16488c0d7365f951b16, type: 3}
   Image2: {fileID: 21300000, guid: f4709080aaeb43641ae6e2a624bfdedd, type: 3}
-  Image3: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  Image3: {fileID: 21300000, guid: 6e97c7d2749473a428af1e110f7a882e, type: 3}
+  Image4: {fileID: 21300000, guid: 65741832c09c1284da996a7138eb5f63, type: 3}
+  Image5: {fileID: 21300000, guid: 7d5a09e1649ae6646b2407f22f420ead, type: 3}
   SlotCost: 0000000000000000000000000000000000000000
 --- !u!1 &1293531591
 GameObject:
