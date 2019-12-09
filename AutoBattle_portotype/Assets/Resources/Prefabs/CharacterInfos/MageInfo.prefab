@@ -258,7 +258,7 @@ GameObject:
   - component: {fileID: 4784399949303459156}
   - component: {fileID: 6553545686943853810}
   - component: {fileID: 8020040146076283701}
-  - component: {fileID: 114603965692342018}
+  - component: {fileID: 8484013715137875783}
   m_Layer: 0
   m_Name: MageInfo
   m_TagString: Untagged
@@ -421,7 +421,7 @@ MonoBehaviour:
   def: 5
   manaGet: 20
   ultimateDam: 650
---- !u!114 &114603965692342018
+--- !u!114 &8484013715137875783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8596196527347767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b3787b035a7e494f9e1f1ff8a938ead, type: 3}
+  m_Script: {fileID: 11500000, guid: de7e12b1c898241498649fef15fd8323, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}

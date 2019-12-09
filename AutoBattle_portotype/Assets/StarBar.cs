@@ -15,14 +15,24 @@ public class StarBar : MonoBehaviour
     private void Awake()
     {
         target = null;
+        level = 0;
     }
     private void Update()
     {
         if (target == null)
-            return;
+        {
+            if (level == 0)
+                return;
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
 
         if (target.GetComponent<ChessFSMManager>().GetState() != ChessStates.IDLE)
             Destroy(gameObject);
+
+        
 
         transform.position = target.transform.position + new Vector3(0, 1.5f, 0);
 

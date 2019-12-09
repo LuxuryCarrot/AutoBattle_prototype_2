@@ -11,7 +11,8 @@ public class AnimFunctions : MonoBehaviour
     }
     public void AttackCheck()
     {
-        manager.target.gameObject.GetComponent<ChessFSMManager>().MeleeDamaged(manager.damageReal);
+        if (manager.target != null)
+            manager.target.gameObject.GetComponent<ChessFSMManager>().MeleeDamaged(manager.damageReal);
     }
     public void ManaCharge()
     {
@@ -23,6 +24,7 @@ public class AnimFunctions : MonoBehaviour
     }
     public void UltimateCheck()
     {
+        if(manager.target!=null)
         manager.target.gameObject.GetComponent<ChessFSMManager>().MeleeDamaged(manager.ultimateDamReal);
     }
     public void BulletInst()
