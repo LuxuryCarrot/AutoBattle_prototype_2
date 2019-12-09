@@ -185,11 +185,11 @@ public class GameManager : MonoBehaviour
                 }
                 else if (RoundManager.Instance.wincount == 0)
                 {
-
+                    StartCoroutine("Lose_Bill");
                 }
                 else if (RoundManager.Instance.wincount < 0)
                 {
-
+                    StartCoroutine("Draw_Bill");
                 }
                 iCurrState = 1;
                 //EvolutionCheck();
@@ -538,7 +538,6 @@ public class GameManager : MonoBehaviour
         BillTotal.text = ("합계 : ") + PlayerManager.instance.iBalance + ("원!");
         StopCoroutine("Lose_Bill");
     }
-
 
     IEnumerator Draw_Bill()
     {
