@@ -155,6 +155,8 @@ public class GameManager : MonoBehaviour
                         nextr.pos = objs.transform.position-new Vector3(0,0,0.5f);
                         nextRoundList.Add(nextr);
                         objs.GetComponent<ChessFSMManager>().DeQueueThis();
+                        GameObject hpbar = Instantiate(Resources.Load("Prefabs/HPMPBars"), objs.transform.position, Quaternion.identity) as GameObject;
+                        hpbar.GetComponent<HPMPBarScripts>().target = objs;
                     }
                     chessList.Clear();
                 }
