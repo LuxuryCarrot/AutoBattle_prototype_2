@@ -337,7 +337,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.75
+      scalar: 1
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2
@@ -5040,8 +5040,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1.75
-      minScalar: 0.75
+      scalar: 1
+      minScalar: 0.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -9796,8 +9796,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 2.75
-      minScalar: 3
+      scalar: 2
+      minScalar: 1.5
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -24110,7 +24110,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5.5
+      scalar: 3.2
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -33972,7 +33972,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -38463,6 +38463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4844998184969898734}
   - component: {fileID: 4844998184969898705}
+  - component: {fileID: 4844998183276896883}
   m_Layer: 10
   m_Name: VFX_Ultimate_Sword
   m_TagString: Untagged
@@ -38505,6 +38506,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4844998183276896883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4844998184969898735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f07fb3195d1965342b29a892533e569e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  temp: 7
 --- !u!1 &4844998184991054337
 GameObject:
   m_ObjectHideFlags: 0
@@ -38789,7 +38803,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 6
+      scalar: 4
       minScalar: 1
       maxCurve:
         serializedVersion: 2
