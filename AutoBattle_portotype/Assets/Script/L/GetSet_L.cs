@@ -30,8 +30,10 @@ public class GetSet_L : MonoBehaviour
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, 1000, 1024))
             {
+                GameObject eff= Instantiate(Resources.Load("Prefabs/VFX/VFX_Pick"), hit.transform.position, Quaternion.identity) as GameObject;
                 chess = hit.transform;
                 startPos = chess.position;
+                eff.transform.SetParent(chess);
                 if (chess.GetComponent<ChessInfo>().isWaiting == true)
                 {
                     Debug.Log("out");

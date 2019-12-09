@@ -16,9 +16,9 @@ public class RangerUltimate : UltimateAIParent
             manager.SetState(ChessStates.ATTACK);
         }
     }
-    public override void BulletInst()
+    public override void uBulletInst()
     {
-        base.BulletInst();
+        base.uBulletInst();
         GameObject[] targets = GameObject.FindGameObjectsWithTag("chess");
         Vector3 tarVec=Vector3.zero;
 

@@ -80,7 +80,7 @@ public class ChessFSMManager : MonoBehaviour
     public float ultimateDamReal;
 
     public bool protecting;
-    public float protectTemp;
+    public float protectTemp=1;
    
 
     private void Awake()
@@ -190,6 +190,8 @@ public class ChessFSMManager : MonoBehaviour
         if (protecting)
             return;
 
+        GameObject eff = Instantiate(Resources.Load("Prefabs/VFX/VFX_Damage"), transform.position, Quaternion.identity) as GameObject;
+
         hp -= dam-defReal;
         if (isRun)
             SetState(ChessStates.RUN);
@@ -233,7 +235,7 @@ public class ChessFSMManager : MonoBehaviour
             if(protectTemp<=0)
             {
                 protecting = false;
-                protectTemp = 0;
+                protectTemp = 1;
             }
         }
     }

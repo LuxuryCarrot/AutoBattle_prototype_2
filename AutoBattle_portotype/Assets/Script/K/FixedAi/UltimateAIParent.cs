@@ -14,5 +14,5 @@ public class UltimateAIParent : MonoBehaviour
     }
 
     public virtual void Execute() { }
-    public virtual void BulletInst() { }
+    public virtual void uBulletInst() { }
 }

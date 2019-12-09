@@ -12,9 +12,9 @@ public class MageUltimate : UltimateAIParent
         if (temp >= 2.0f)
             manager.SetState(ChessStates.ATTACK);
     }
-    public override void BulletInst()
+    public override void uBulletInst()
     {
-        base.BulletInst();
+        base.uBulletInst();
         foreach(Vector3 pos in manager.passive.pos)
         {
             GameObject[] targets = GameObject.FindGameObjectsWithTag("chess");

@@ -31,6 +31,6 @@ public class AnimFunctions : MonoBehaviour
     }
     public void UltimateBulletInst()
     {
-        manager.ultiai.BulletInst();
+        manager.ultiai.uBulletInst();
     }
 }

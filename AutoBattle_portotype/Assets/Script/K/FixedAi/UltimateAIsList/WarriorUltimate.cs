@@ -16,4 +16,9 @@ public class WarriorUltimate : UltimateAIParent
             manager.SetState(ChessStates.ATTACK);
         }
     }
+    public override void uBulletInst()
+    {
+        base.uBulletInst();
+        GameObject eff = Instantiate(Resources.Load("Prefabs/VFX/Sword/VFX_Ultimate_Sword"), manager.transform.position, Quaternion.identity) as GameObject;
+    }
 }

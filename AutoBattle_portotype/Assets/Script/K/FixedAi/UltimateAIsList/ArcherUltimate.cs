@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ArcherUltimate : UltimateAIParent
 {
-    public override void BulletInst()
+    public override void uBulletInst()
     {
-        base.Execute();
+        base.uBulletInst();
         GameObject[] targets = GameObject.FindGameObjectsWithTag("chess");
         int i = 2;
         foreach (GameObject obj in targets)

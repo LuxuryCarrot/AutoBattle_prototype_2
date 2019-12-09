@@ -289,8 +289,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.3345588
-        functionName: AttackCheck
+      - time: 0.081521735
+        functionName: PassiveStack
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -303,8 +303,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.081521735
-        functionName: PassiveStack
+      - time: 0.1344593
+        functionName: BulletInst
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3345588
+        functionName: AttackCheck
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

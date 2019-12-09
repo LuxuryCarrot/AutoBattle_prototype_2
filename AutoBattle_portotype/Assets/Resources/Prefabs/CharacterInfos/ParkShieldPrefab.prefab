@@ -2237,13 +2237,13 @@ GameObject:
   - component: {fileID: 5669875958872558622}
   - component: {fileID: 5669875958882411046}
   - component: {fileID: 5669875959039613663}
-  - component: {fileID: 3944789768790837589}
   - component: {fileID: 5669875959039613657}
   - component: {fileID: 3944208067233687367}
   - component: {fileID: 3944500457310793633}
   - component: {fileID: 114275749247321042}
   - component: {fileID: 114395433607851360}
   - component: {fileID: 114982501696869066}
+  - component: {fileID: 1318834099514273328}
   m_Layer: 0
   m_Name: ParkShieldPrefab
   m_TagString: Untagged
@@ -2303,19 +2303,6 @@ MonoBehaviour:
   manager: {fileID: 0}
   desti: {x: 0, y: 0, z: 0}
   isNear: 0
---- !u!114 &3944789768790837589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5669875958873051198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2aee8da75cac9b408c5145fee19c8c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 0}
 --- !u!114 &5669875959039613657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2410,6 +2397,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2382b96e86e24274398e9dab050628ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+--- !u!114 &1318834099514273328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5669875958873051198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa6e43734df5134a8867910d2f1f9ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
