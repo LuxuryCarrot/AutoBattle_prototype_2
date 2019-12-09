@@ -6,7 +6,7 @@ public class RandomRarity : MonoBehaviour
 {
     public static RandomRarity instance;
 
-    private int iRandomCount = 2;
+    private int iRandomCount = 5;
 
     private int iRandomNum;
 
@@ -24,7 +24,7 @@ public class RandomRarity : MonoBehaviour
 
         if (iRandomNum == 2)
         {
-            sRandomHeroName = "dCapsule";
+            sRandomHeroName = "Mage";
         }
         else if (iRandomNum == 0)
         {
@@ -36,8 +36,13 @@ public class RandomRarity : MonoBehaviour
         }
         else if (iRandomNum == 3)
         {
-            sRandomHeroName = "dSphere";
+            sRandomHeroName = "Ranger";
         }
+        else
+        {
+            sRandomHeroName = "Archor";
+        }
+        
         return sRandomHeroName;
     }
 

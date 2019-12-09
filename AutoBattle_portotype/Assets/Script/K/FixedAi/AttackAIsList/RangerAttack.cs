@@ -9,5 +9,8 @@ public class RangerAttack : AttackAIParent
         base.Execute();
         if (manager.mana >= 100)
             manager.SetState(ChessStates.ULTIMATE);
+
+        if (manager.target.GetComponent<ChessFSMManager>().hp <= 0)
+            manager.SetState(ChessStates.CHASE);
     }
 }

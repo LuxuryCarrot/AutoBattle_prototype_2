@@ -40,16 +40,20 @@ public class RangerChase : ChaseAIParent
             manager.anim.SetBool("miss", true);
             return;
         }
-        if (!isNear)
+
+        if (!manager.isTargeted)
         {
-            manager.transform.position = Vector3.MoveTowards(
-                                          manager.transform.position,
-                                          manager.target.position,
-                                          manager.chaseSpeedReal * Time.deltaTime);
-        }
-        else
-        {
-            GotoBlock();   
+            if (!isNear)
+            {
+                manager.transform.position = Vector3.MoveTowards(
+                                              manager.transform.position,
+                                              manager.target.position,
+                                              manager.chaseSpeedReal * Time.deltaTime);
+            }
+            else
+            {
+                GotoBlock();
+            }
         }
 
         Vector3 dir = manager.target.position - manager.transform.position;
@@ -59,8 +63,12 @@ public class RangerChase : ChaseAIParent
         manager.transform.rotation = Quaternion.RotateTowards(manager.transform.rotation,
                                         Quaternion.LookRotation(dir), 540);
 
-        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < Mathf.Pow(manager.rangeReal,2))
+        if (Vector3.SqrMagnitude(manager.transform.position - manager.target.position) < Mathf.Pow(manager.rangeReal, 2))
+        {
             isNear = true;
+            if (manager.isTargeted)
+                manager.SetState(ChessStates.ATTACK);
+        }
     }
     
 }

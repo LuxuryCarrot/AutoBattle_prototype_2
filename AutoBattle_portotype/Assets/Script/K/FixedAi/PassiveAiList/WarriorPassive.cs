@@ -9,4 +9,6 @@ public class WarriorPassive : PassiveAiParent
         base.Execute();
         manager.ultimateDamReal += 10;
     }
+
+   
 }

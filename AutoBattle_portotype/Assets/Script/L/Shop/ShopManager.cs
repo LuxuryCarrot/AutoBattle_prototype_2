@@ -67,10 +67,22 @@ public class ShopManager : MonoBehaviour
                 heraldry = " ";
                 color = Color.black;
             }
+            else if(GameManager.instance.sHeroName =="Mage")
+            {
+                SlotButton[i].image.sprite = Image3;
+                heraldry = "Lune";
+                color = Color.blue;
+            }
+            else if(GameManager.instance.sHeroName=="Ranger")
+            {
+                SlotButton[i].image.sprite = Image3;
+                heraldry = " ";
+                color = Color.blue;
+            }
             else
             {
                 SlotButton[i].image.sprite = Image3;
-                heraldry = "Selentheor";
+                heraldry = "Selenthyor";
                 color = Color.blue;
             }
 
