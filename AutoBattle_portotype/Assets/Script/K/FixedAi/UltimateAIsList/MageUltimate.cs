@@ -10,7 +10,10 @@ public class MageUltimate : UltimateAIParent
         base.Execute();
         temp += Time.deltaTime;
         if (temp >= 2.0f)
+        {
+            temp = 0;
             manager.SetState(ChessStates.ATTACK);
+        }
     }
     public override void uBulletInst()
     {
