@@ -17,6 +17,11 @@ public class WarriorSynergy : SynergyParent
         }
 
         if (count >= 2)
+        {
             manager.defReal = manager.def + 5;
+            SynergyCanvas.instance.WarriorSetSynergy(2);
+        }
+
+        
     }
 }

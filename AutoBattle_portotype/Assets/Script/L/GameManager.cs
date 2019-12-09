@@ -92,7 +92,7 @@ public class GameManager : MonoBehaviour
         {
             if (iCurrState == 1)                    // 전투 준비 라운드 돌입하면서 한번만 실행됨
             {
-
+                SynergyCanvas.instance.RoundEnd();
                 //timeLeft = 60.0f // 원래 시간
                 BillList1 = null;
                 BillList2 = null;
