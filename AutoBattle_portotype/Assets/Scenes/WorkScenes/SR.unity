@@ -1998,6 +1998,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SelectEff
       objectReference: {fileID: 0}
+    - target: {fileID: 5028311728275121140, guid: 3deb3c8112108804186c9ac79f9edcda,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3529802873667235841, guid: 3deb3c8112108804186c9ac79f9edcda,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2223,7 +2228,7 @@ PrefabInstance:
     - target: {fileID: 8292161551957575209, guid: ba9bb7190b253a245b70b76083631b1c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8292161551957575204, guid: ba9bb7190b253a245b70b76083631b1c,
         type: 3}
