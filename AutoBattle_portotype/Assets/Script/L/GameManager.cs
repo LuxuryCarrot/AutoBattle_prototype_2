@@ -171,18 +171,25 @@ public class GameManager : MonoBehaviour
 
             if (timeLeft < 0)
             {
-                GameObject[] chesss = GameObject.FindGameObjectsWithTag("chess");
-                if(chesss!=null)
+                if (PlayerManager.instance.iBalance > 0)
                 {
-                    for(int i=0;i<chesss.Length;i++)
+                    GameObject[] chesss = GameObject.FindGameObjectsWithTag("chess");
+                    if(chesss!=null)
                     {
-                        chesss[i].GetComponent<ChessFSMManager>().SetState(ChessStates.IDLE);
-                        chesss[i].SetActive(false);
-                        if (chesss[i].GetComponent<ChessFSMManager>().ID == PlayerIDSet.AIID)
-                            Destroy(chesss[i]);
+                        for(int i=0;i<chesss.Length;i++)
+                        {
+                            chesss[i].GetComponent<ChessFSMManager>().SetState(ChessStates.IDLE);
+                            chesss[i].SetActive(false);
+                            if (chesss[i].GetComponent<ChessFSMManager>().ID == PlayerIDSet.AIID)
+                                Destroy(chesss[i]);
+                        }
                     }
+                    StartCoroutine("PREPARING_Start");          // 전투 마무리 시간이 다 되어 다음라운드의 전투 준비 라운드로 스테이지 변경.
                 }
-                StartCoroutine("PREPARING_Start");          // 전투 마무리 시간이 다 되어 다음라운드의 전투 준비 라운드로 스테이지 변경.
+                else
+                {
+
+                }
             }
         }
     }

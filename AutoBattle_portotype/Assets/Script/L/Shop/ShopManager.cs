@@ -30,7 +30,7 @@ public class ShopManager : MonoBehaviour
 
     public void ExpBUY()
     {
-        if (PlayerManager.instance.bMoneyLeft)
+        if (PlayerManager.instance.iBalance >= 5)
         {
             PlayerManager.instance.iBalance -= 5;
             PlayerManager.instance.iExp += 5;
@@ -95,8 +95,11 @@ public class ShopManager : MonoBehaviour
 
     public void ReRoll_Button()
     {
-        PlayerManager.instance.iBalance -= 2;
-        ReRoll();
+        if (PlayerManager.instance.iBalance >= 2)
+        {
+            PlayerManager.instance.iBalance -= 2;
+            ReRoll();
+        }
     }
 
     public void Slot1()
