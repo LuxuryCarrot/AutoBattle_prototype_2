@@ -128,6 +128,9 @@ public class GameManager : MonoBehaviour
                         part.obj.transform.position = part.pos;
                         part.obj.GetComponent<ChessFSMManager>().EnQueueThis();
                         part.obj.GetComponent<ChessFSMManager>().SetDefaultStat();
+                        GameObject star = Instantiate(Resources.Load("Prefabs/StarBars"), part.obj.transform.position, Quaternion.identity) as GameObject;
+                        star.GetComponent<StarBar>().target = part.obj;
+                        star.transform.SetParent(part.obj.transform);
                     }
                     nextRoundList.Clear();
                 }
