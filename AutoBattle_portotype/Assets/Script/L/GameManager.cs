@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour
 
         if (Input.GetKey(KeyCode.S))
         {
-            timeLeft -= 1;
+            timeLeft -= 0.1f;
         }
 
 
