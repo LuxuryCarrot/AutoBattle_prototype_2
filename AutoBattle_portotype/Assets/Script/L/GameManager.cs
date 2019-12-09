@@ -94,12 +94,12 @@ public class GameManager : MonoBehaviour
             {
                 SynergyCanvas.instance.RoundEnd();
                 //timeLeft = 60.0f // 원래 시간
-                BillList1 = null;
-                BillList2 = null;
-                BillList3 = null;
-                BillName = null;
-                BillResult = null;
-                BillTotal = null;
+                BillList1.text = null;
+                BillList2.text = null;
+                BillList3.text = null;
+                BillName.text = null;
+                BillResult.text = null;
+                BillTotal.text = null;
                 BillPanel.SetActive(false);
                 timeLeft = 30.0f;
                 ++iRoundCount;                      // 현재 라운드 카운트
@@ -188,7 +188,7 @@ public class GameManager : MonoBehaviour
             }
 
             if (endCheck || enemyendCheck)
-                timeLeft -= 0.05f;
+                timeLeft -= 0.08f;
 
 
             if (timeLeft < 0)
