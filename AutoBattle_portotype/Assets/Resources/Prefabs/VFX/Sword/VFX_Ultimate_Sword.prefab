@@ -971,7 +971,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 2.5
+      time: 1.25
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -5727,7 +5727,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 2.5
+      time: 1.25
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -10483,7 +10483,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 0.75
+      time: 0.35
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -15273,7 +15273,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 0.75
+      time: 0.35
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -20038,7 +20038,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 2.1
+      time: 1.05
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -24797,7 +24797,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 2.5
+      time: 1.25
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -29553,7 +29553,7 @@ ParticleSystem:
     m_BurstCount: 7
     m_Bursts:
     - serializedVersion: 2
-      time: 2.5
+      time: 1.25
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -29611,7 +29611,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
     - serializedVersion: 2
-      time: 3
+      time: 1.5
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -29669,7 +29669,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
     - serializedVersion: 2
-      time: 3.2
+      time: 1.6
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -29727,7 +29727,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
     - serializedVersion: 2
-      time: 3.4
+      time: 1.7
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -29785,7 +29785,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
     - serializedVersion: 2
-      time: 3.6
+      time: 1.8
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -29843,7 +29843,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
     - serializedVersion: 2
-      time: 3.8
+      time: 1.9
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -29901,7 +29901,7 @@ ParticleSystem:
       repeatInterval: 0.01
       probability: 1
     - serializedVersion: 2
-      time: 4
+      time: 2
       countCurve:
         serializedVersion: 2
         minMaxState: 3
@@ -34659,7 +34659,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 2.5
+      time: 1.25
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -39490,7 +39490,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 2.5
+      time: 1.25
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -44338,7 +44338,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 0.75
+      time: 0.35
       countCurve:
         serializedVersion: 2
         minMaxState: 0
@@ -49103,7 +49103,7 @@ ParticleSystem:
     m_BurstCount: 1
     m_Bursts:
     - serializedVersion: 2
-      time: 0.75
+      time: 0.35
       countCurve:
         serializedVersion: 2
         minMaxState: 3
