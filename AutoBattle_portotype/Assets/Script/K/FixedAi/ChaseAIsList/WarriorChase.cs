@@ -8,6 +8,8 @@ public class WarriorChase : ChaseAIParent
     {
         base.Execute();
 
+        manager.transform.position = new Vector3(manager.transform.position.x, 0.7f, manager.transform.position.z);
+
         if (GameObject.FindGameObjectsWithTag("chess") != null && manager.target == null)
         {
             isNear = false;

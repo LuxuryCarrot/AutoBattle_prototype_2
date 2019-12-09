@@ -7,6 +7,10 @@ public class RoundManager : MonoBehaviour
     public GameObject[] prefabs;
     public static RoundManager Instance;
 
+    public int wincount;
+
+    public int Money;
+
     private void Awake()
     {
         Instance = this;
@@ -51,6 +55,7 @@ public class RoundManager : MonoBehaviour
 
     public void RoundEnd()
     {
+        Money = 0;
         GameObject[] counts = GameObject.FindGameObjectsWithTag("chess");
         int winner = 0;
         foreach(GameObject obj in counts)
@@ -66,8 +71,9 @@ public class RoundManager : MonoBehaviour
                 && obj.GetComponent<ChessFSMManager>().GetState() == ChessStates.DIE)
                 PlayerManager.instance.iExp += 5;
         }
+        wincount = winner;
 
-        PlayerManager.instance.iBalance += winner*2;
+        Money += winner * 2;
     }
 
     private void Update()

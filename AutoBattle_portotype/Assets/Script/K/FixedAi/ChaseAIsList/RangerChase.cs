@@ -9,6 +9,8 @@ public class RangerChase : ChaseAIParent
     {
         base.Execute();
 
+        manager.transform.position = new Vector3(manager.transform.position.x, 0.7f, manager.transform.position.z);
+
         if (manager.target==null && GameObject.FindGameObjectsWithTag("chess") != null)
         {
             isNear = false;
