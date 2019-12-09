@@ -14,6 +14,6 @@ public class WarriorAttack : AttackAIParent
     public override void BulletInst()
     {
         base.BulletInst();
-        GameObject eff = Instantiate(Resources.Load("Prefabs/VFX/Sword/VFX_Attack_Sword"), manager.transform.position, Quaternion.identity) as GameObject;
+        GameObject eff = Instantiate(Resources.Load("Prefabs/VFX/Sword/VFX_Attack_Sword"), manager.transform.position, manager.transform.rotation) as GameObject;
     }
 }

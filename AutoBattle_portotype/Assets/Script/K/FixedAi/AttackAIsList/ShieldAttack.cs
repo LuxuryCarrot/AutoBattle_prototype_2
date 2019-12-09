@@ -14,6 +14,6 @@ public class ShieldAttack : AttackAIParent
     public override void BulletInst()
     {
         base.BulletInst();
-        GameObject eff = Instantiate(Resources.Load("Prefabs/VFX/Shield/VFX_Attack_Shield"), manager.target.transform.position, Quaternion.identity) as GameObject;
+        GameObject eff = Instantiate(Resources.Load("Prefabs/VFX/Shield/VFX_Attack_Shield"), manager.target.transform.position, manager.transform.rotation) as GameObject;
     }
 }

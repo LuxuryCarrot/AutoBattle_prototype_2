@@ -19,6 +19,6 @@ public class WarriorUltimate : UltimateAIParent
     public override void uBulletInst()
     {
         base.uBulletInst();
-        GameObject eff = Instantiate(Resources.Load("Prefabs/VFX/Sword/VFX_Ultimate_Sword"), manager.transform.position, Quaternion.identity) as GameObject;
+        GameObject eff = Instantiate(Resources.Load("Prefabs/VFX/Sword/VFX_Ultimate_Sword"), manager.transform.position, manager.transform.rotation) as GameObject;
     }
 }

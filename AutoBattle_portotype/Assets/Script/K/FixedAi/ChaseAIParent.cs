@@ -21,7 +21,7 @@ public class ChaseAIParent : MonoBehaviour
         if (desti == Vector3.zero)
         {
             desti =
-                new Vector3(Mathf.Round(transform.position.x), transform.position.y, Mathf.Round(transform.position.z));
+                new Vector3(Mathf.Round(transform.position.x), 0.7f, Mathf.Round(transform.position.z));
 
             if (desti.x % 2 > 0)
                 desti.x = Random.Range(0, 1) >= 0.5f ? desti.x + 1 : desti.x - 1;
@@ -36,7 +36,7 @@ public class ChaseAIParent : MonoBehaviour
 
 
 
-        if (Vector3.SqrMagnitude(manager.transform.position - desti) < 0.04f)
+        if (Vector3.SqrMagnitude(manager.transform.position - desti) < 0.4f)
         {
             manager.transform.position = desti;
             desti = Vector3.zero;
