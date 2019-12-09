@@ -28,6 +28,21 @@ public class ShopManager : MonoBehaviour
         ShopManager.instance = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            if (PlayerManager.instance.iBalance >= 2)
+            {
+                ReRoll();
+            }
+            else
+            {
+                StartCoroutine("Error_NoBalance");
+            }
+        }
+    }
+
     public void ExpBUY()
     {
         if (PlayerManager.instance.iBalance >= 5)

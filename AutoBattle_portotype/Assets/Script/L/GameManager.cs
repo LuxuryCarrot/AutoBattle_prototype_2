@@ -21,10 +21,23 @@ public class GameManager : MonoBehaviour
     public GameObject inst;
     public GameObject inst2;
 
+    public GameObject BillPanel;
+
     public GameObject Shop;
 
     public Text TimeText;
     public Text RoundText;
+
+    public Text BillName;
+
+    public Text BillResult;
+
+    public Text BillList1;
+    public Text BillList2;
+    public Text BillList3;
+
+    public Text BillTotal;
+
 
     public bool bisRoundStarted;
 
@@ -75,14 +88,13 @@ public class GameManager : MonoBehaviour
 
 
 
-
         if (Stage == CurStage.PREPARING)            // 전투 준비 시간
         {
             if (iCurrState == 1)                    // 전투 준비 라운드 돌입하면서 한번만 실행됨
             {
 
                 //timeLeft = 60.0f // 원래 시간
-                
+                BillPanel.SetActive(false);
                 timeLeft = 30.0f;
                 ++iRoundCount;                      // 현재 라운드 카운트
                 StageName = "준비";
@@ -165,6 +177,20 @@ public class GameManager : MonoBehaviour
                 StageName = "마무리";
                 PlayerManager.instance.iExp += 1;
                 RoundManager.Instance.RoundEnd();
+                Debug.Log(RoundManager.Instance.wincount);
+                BillPanel.SetActive(true);
+                if (RoundManager.Instance.wincount > 0)
+                {
+                    StartCoroutine("Win_Bill");
+                }
+                else if (RoundManager.Instance.wincount == 0)
+                {
+
+                }
+                else if (RoundManager.Instance.wincount < 0)
+                {
+
+                }
                 iCurrState = 1;
                 //EvolutionCheck();
             }
@@ -475,5 +501,58 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(0.76f);
         Stage = CurStage.PREPARING;
         StopCoroutine("PREPARING_Start");
+    }
+
+    IEnumerator Win_Bill()
+    {
+        BillName.text = ("영수증!");
+        yield return new WaitForSeconds(0.5f);
+        BillResult.text = ("게임 결과 : 승리!!");
+        yield return new WaitForSeconds(0.5f);
+        BillList1.text = ("상대방으로부터") + RoundManager.Instance.Money + ("원을 지급받았습니다.");
+        yield return new WaitForSeconds(0.5f);
+        BillList2.text = ("은행으로부터") + 5 + ("원을 후원받았습니다!");
+        yield return new WaitForSeconds(0.5f);
+        BillList3.text = ("잔액: ") + PlayerManager.instance.iBalance +("원") +  ("\n + 지급받은 금액: ") + RoundManager.Instance.Money + ("원") + ("\n + 후원받은 금액: ") + 5 + ("원");
+        PlayerManager.instance.iBalance += 5;
+        PlayerManager.instance.iBalance += RoundManager.Instance.Money;
+        yield return new WaitForSeconds(0.5f);
+        BillTotal.text = ("합계 : ") + PlayerManager.instance.iBalance + ("원!");
+        StopCoroutine("Win_Bill");
+    }
+
+    IEnumerator Lose_Bill()
+    {
+        BillName.text = ("영수증!");
+        yield return new WaitForSeconds(0.5f);
+        BillResult.text = ("게임 결과 : 패배...");
+        yield return new WaitForSeconds(0.5f);
+        BillList1.text = ("상대방에게") + RoundManager.Instance.Money + ("원을 지불했습니다.");
+        yield return new WaitForSeconds(0.5f);
+        BillList2.text = ("은행으로부터") + 5 + ("원을 후원받았습니다!");
+        yield return new WaitForSeconds(0.5f);
+        BillList3.text = ("잔액: ") + PlayerManager.instance.iBalance + ("원") + ("\n + 지불한 금액: ") + RoundManager.Instance.Money + ("원") + ("\n + 후원받은 금액: ") + 5 + ("원");
+        PlayerManager.instance.iBalance += 5;
+        PlayerManager.instance.iBalance += RoundManager.Instance.Money;
+        yield return new WaitForSeconds(0.5f);
+        BillTotal.text = ("합계 : ") + PlayerManager.instance.iBalance + ("원!");
+        StopCoroutine("Lose_Bill");
+    }
+
+
+    IEnumerator Draw_Bill()
+    {
+        BillName.text = ("영수증!");
+        yield return new WaitForSeconds(0.5f);
+        BillResult.text = ("게임 결과 : 무승부!");
+        yield return new WaitForSeconds(0.5f);
+        BillList2.text = ("은행으로부터") + 5 + ("원을 후원받았습니다!");
+        yield return new WaitForSeconds(0.5f);
+        BillList3.text = ("잔액: ") + PlayerManager.instance.iBalance + ("원") + ("\n + 후원받은 금액: ") + 5 + ("원");
+        PlayerManager.instance.iBalance += 5;
+        PlayerManager.instance.iBalance += RoundManager.Instance.Money;
+        yield return new WaitForSeconds(0.5f);
+        BillTotal.text = ("합계 : ") + PlayerManager.instance.iBalance + ("원!");
+        StopCoroutine("Draw_Bill");
     }
 }
