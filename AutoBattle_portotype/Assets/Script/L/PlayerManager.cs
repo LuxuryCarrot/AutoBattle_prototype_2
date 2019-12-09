@@ -87,5 +87,7 @@ public class PlayerManager : MonoBehaviour
         Inventory[_index].GetComponent<ChessInfo>().iChessEvolutionRate = _EvolutionRate;
         Inventory[_index].GetComponent<ChessFSMManager>().SetDefaultStat();
         Inventory[_index].transform.localScale = new Vector3(0.8f + 0.2f * _EvolutionRate, 0.8f + 0.2f * _EvolutionRate, 0.8f + 0.2f * _EvolutionRate);
+        GameObject star = Instantiate(Resources.Load("Prefabs/StarBars"), Inventory[_index].transform.position, Quaternion.identity) as GameObject;
+        star.GetComponent<StarBar>().target = Inventory[_index];
     }
 }
