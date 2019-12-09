@@ -128,6 +128,9 @@ public class GameManager : MonoBehaviour
                         part.obj.transform.position = part.pos;
                         part.obj.GetComponent<ChessFSMManager>().EnQueueThis();
                         part.obj.GetComponent<ChessFSMManager>().SetDefaultStat();
+                        GameObject star = Instantiate(Resources.Load("Prefabs/StarBars"), part.obj.transform.position, Quaternion.identity) as GameObject;
+                        star.GetComponent<StarBar>().target = part.obj;
+                        star.transform.SetParent(part.obj.transform);
                     }
                     nextRoundList.Clear();
                 }
@@ -215,11 +218,11 @@ public class GameManager : MonoBehaviour
                 }
                 else if (RoundManager.Instance.wincount == 0)
                 {
-                    StartCoroutine("Lose_Bill");
+                    StartCoroutine("Draw_Bill");
                 }
                 else if (RoundManager.Instance.wincount < 0)
                 {
-                    StartCoroutine("Draw_Bill");
+                    StartCoroutine("Lose_Bill");
                 }
                 iCurrState = 1;
                 //EvolutionCheck();
