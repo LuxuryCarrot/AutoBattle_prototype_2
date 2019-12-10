@@ -429,17 +429,19 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < PlayerManager.instance.MaxHeroNumber; i++)
         {
-            if (PlayerManager.instance.Inventory[i] != null)
+            if (PlayerManager.instance.Inventory[i] != null && 
+                PlayerManager.instance.Inventory[i].GetComponent<ChessInfo>().iChessEvolutionRate != 2)
             {
                 sEHeroName = PlayerManager.instance.Inventory[i].GetComponent<ChessInfo>().sMyName;
                 EvRate = PlayerManager.instance.Inventory[i].GetComponent<ChessInfo>().iChessEvolutionRate;
 
                 for (int j = 0; j < PlayerManager.instance.MaxHeroNumber; j++)
                 {
-                    if (PlayerManager.instance.Inventory[j] != null)
+                    if (PlayerManager.instance.Inventory[j] != null
+                        &&
+                PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().iChessEvolutionRate != 2)
                     {
-                        if (sEHeroName == PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().sMyName 
-                            && PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().iChessEvolutionRate == 1)
+                        if (sEHeroName == PlayerManager.instance.Inventory[j].GetComponent<ChessInfo>().sMyName)
                         {
                             ++iSameHeroCount;
                             if (iSameHeroCount == 3)
