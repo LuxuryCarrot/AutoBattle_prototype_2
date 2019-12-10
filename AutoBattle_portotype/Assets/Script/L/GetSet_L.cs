@@ -273,12 +273,33 @@ public class GetSet_L : MonoBehaviour
                         chess.gameObject.GetComponent<ChessInfo>().isWaiting = true;
                         chess.gameObject.GetComponent<ChessInfo>().ichessNum = (int)(startPos.x / 2) % 8;
                         ++PlayerManager.instance.iBenchSlotCount;
+                        for(int i=0;i< PlayerManager.instance.Inventory.Length;i++ )
+                        {
+                            if(PlayerManager.instance.Inventory[i]=null)
+                            {
+                                PlayerManager.instance.Inventory[i] = chess.gameObject;
+                                break;
+                            }
+                                
+                        }
                     }
                     
                 }
                 else
                 {
                     chess.position = startPos;
+                    chess.gameObject.GetComponent<ChessInfo>().isWaiting = true;
+                    chess.gameObject.GetComponent<ChessInfo>().ichessNum = (int)(startPos.x / 2) % 8;
+                    ++PlayerManager.instance.iBenchSlotCount;
+                    for (int i = 0; i < PlayerManager.instance.Inventory.Length; i++)
+                    {
+                        if (PlayerManager.instance.Inventory[i] = null)
+                        {
+                            PlayerManager.instance.Inventory[i] = chess.gameObject;
+                            break;
+                        }
+
+                    }
                 }
 
             }
