@@ -16,6 +16,9 @@ public enum ChessStates
 
 public class ChessFSMManager : MonoBehaviour
 {
+    public string name;
+    public int level;
+
     [HideInInspector]
     public Animator anim;
     private ChessStates current;
@@ -129,7 +132,7 @@ public class ChessFSMManager : MonoBehaviour
 
         className = transform.GetChild(0).GetComponent<StatusLists>().className;
 
-        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        //gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     public void SetDefaultStat()

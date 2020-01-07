@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 7598190786775979357}
   - component: {fileID: 7598190786775979356}
   - component: {fileID: 6698968044298015949}
-  - component: {fileID: 114822817029777866}
   m_Layer: 10
   m_Name: Mage
   m_TagString: Untagged
@@ -67,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e1352ed1f21664d8425fdd0d305091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Mage
   anim: {fileID: 0}
   gameManager: {fileID: 0}
   attackai: {fileID: 0}
@@ -189,23 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
---- !u!114 &114822817029777866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7598190786775979359}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 666dc497e8b683d42bc7dcb2622b3835, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ichessNum: 999
-  iChessEvolutionRate: 0
-  isWaiting: 0
-  sMyName: 
-  ChessPos: {fileID: 0}
 --- !u!1001 &6948361415405529342
 PrefabInstance:
   m_ObjectHideFlags: 0

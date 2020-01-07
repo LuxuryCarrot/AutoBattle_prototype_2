@@ -18,7 +18,6 @@ GameObject:
   - component: {fileID: 7903741268037066241}
   - component: {fileID: 7903741268037066240}
   - component: {fileID: 6352902853082734481}
-  - component: {fileID: 114984777858192594}
   m_Layer: 10
   m_Name: Ranger
   m_TagString: Untagged
@@ -67,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e1352ed1f21664d8425fdd0d305091, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Ranger
   anim: {fileID: 0}
   gameManager: {fileID: 0}
   attackai: {fileID: 0}
@@ -189,23 +189,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
---- !u!114 &114984777858192594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7903741268037066243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 666dc497e8b683d42bc7dcb2622b3835, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ichessNum: 999
-  iChessEvolutionRate: 0
-  isWaiting: 0
-  sMyName: 
-  ChessPos: {fileID: 0}
 --- !u!1001 &6932387960024835911
 PrefabInstance:
   m_ObjectHideFlags: 0
