@@ -8,6 +8,7 @@ TagManager:
   - chess
   - IDSet
   - EnemyID
+  - StoreFunction
   layers:
   - Default
   - TransparentFX
