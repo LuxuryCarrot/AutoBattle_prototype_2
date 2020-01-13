@@ -67,6 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   name: Ranger
+  level: 0
   anim: {fileID: 0}
   gameManager: {fileID: 0}
   attackai: {fileID: 0}
@@ -196,11 +197,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7903741268037066254}
     m_Modifications:
-    - target: {fileID: 2909410895684427849, guid: 1b95a96d8b826a043848ac8da3dd20b0,
-        type: 3}
-      propertyPath: m_Name
-      value: RangerInfos
-      objectReference: {fileID: 0}
     - target: {fileID: 2909410895684467881, guid: 1b95a96d8b826a043848ac8da3dd20b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -256,10 +252,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2909410895684427849, guid: 1b95a96d8b826a043848ac8da3dd20b0,
+        type: 3}
+      propertyPath: m_Name
+      value: RangerInfos
+      objectReference: {fileID: 0}
     - target: {fileID: 6396232499990852204, guid: 1b95a96d8b826a043848ac8da3dd20b0,
         type: 3}
       propertyPath: manaGet
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885225156842343261, guid: 1b95a96d8b826a043848ac8da3dd20b0,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 33561639
+      objectReference: {fileID: 0}
+    - target: {fileID: 4885225156842343261, guid: 1b95a96d8b826a043848ac8da3dd20b0,
+        type: 3}
+      propertyPath: m_UseOcclusionCulling
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b95a96d8b826a043848ac8da3dd20b0, type: 3}

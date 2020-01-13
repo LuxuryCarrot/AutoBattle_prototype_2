@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: WaterDistortion
   m_Shader: {fileID: 211, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: EFFECT_BUMP _ALPHABLEND_ON _NORMALMAP
+  m_ShaderKeywords: EFFECT_BUMP _ALPHABLEND_ON _FADING_ON _NORMALMAP
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -85,8 +85,8 @@ Material:
     - _DetailNormalMapScale: 1
     - _DistortionBlend: 1
     - _DistortionEnabled: 1
-    - _DistortionStrength: 8
-    - _DistortionStrengthScaled: 0.8
+    - _DistortionStrength: 10
+    - _DistortionStrengthScaled: 1
     - _DstBlend: 10
     - _EmissionEnabled: 0
     - _FlipbookMode: 0
@@ -104,7 +104,7 @@ Material:
     - _Parallax: 0.02
     - _SkyRefDistance: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SoftParticlesEnabled: 0
+    - _SoftParticlesEnabled: 1
     - _SoftParticlesFarFadeDistance: 1
     - _SoftParticlesNearFadeDistance: 0
     - _SpecularHighlights: 1
@@ -123,5 +123,5 @@ Material:
     - _DGShallow: {r: 0.41162333, g: 0.5957954, b: 0.6981132, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FoColor: {r: 0.8726415, g: 0.9483682, b: 1, a: 1}
-    - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
+    - _SoftParticleFadeParams: {r: 0, g: 1, b: 0, a: 0}
     - _SufNoiseScroll: {r: 0.05, g: 0.26, b: 0, a: 0}

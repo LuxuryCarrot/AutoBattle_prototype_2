@@ -55,13 +55,13 @@ ReflectionProbe:
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 33561639
   m_IntensityMultiplier: 1
   m_BlendDistance: 1
   m_HDR: 1
   m_BoxProjection: 1
   m_RenderDynamicObjects: 0
-  m_UseOcclusionCulling: 1
+  m_UseOcclusionCulling: 0
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
 --- !u!1 &8292161551957575209
@@ -262,11 +262,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8292161551957575204}
     m_Modifications:
-    - target: {fileID: 5669875958873051198, guid: 2accf6abd18d3b144b7b32c4134823b4,
-        type: 3}
-      propertyPath: m_Name
-      value: ParkShieldPrefab
-      objectReference: {fileID: 0}
     - target: {fileID: 5669875958872558622, guid: 2accf6abd18d3b144b7b32c4134823b4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -321,6 +316,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5669875958873051198, guid: 2accf6abd18d3b144b7b32c4134823b4,
+        type: 3}
+      propertyPath: m_Name
+      value: ParkShieldPrefab
       objectReference: {fileID: 0}
     - target: {fileID: 6669289497367454307, guid: 2accf6abd18d3b144b7b32c4134823b4,
         type: 3}
