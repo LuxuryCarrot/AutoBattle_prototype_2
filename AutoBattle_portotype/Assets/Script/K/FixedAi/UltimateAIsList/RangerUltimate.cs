@@ -34,6 +34,6 @@ public class RangerUltimate : UltimateAIParent
         GameObject inst = Instantiate(Resources.Load("Prefabs/VFX/InstanceExploseEff"), tarVec, Quaternion.identity) as GameObject;
 
         inst.GetComponent<ManaField>().id = manager.ID;
-        inst.GetComponent<ManaField>().level = manager.gameObject.GetComponent<ChessInfo>().iChessEvolutionRate -1;
+        inst.GetComponent<ManaField>().level = manager.level -1;
     }
 }

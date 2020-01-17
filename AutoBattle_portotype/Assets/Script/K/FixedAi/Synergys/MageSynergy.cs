@@ -16,10 +16,10 @@ public class MageSynergy : SynergyParent
                 count++;
         }
 
-        if (count >= 2)
+        if (count >= 3)
         {
             manager.ultimateDamReal += 140;
-            SynergyCanvas.instance.MageSetSynergy(2);
+            SynergyCanvas.instance.MageSetSynergy(3);
         }
 
 

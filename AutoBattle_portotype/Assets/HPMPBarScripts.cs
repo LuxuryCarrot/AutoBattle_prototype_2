@@ -19,24 +19,24 @@ public class HPMPBarScripts : MonoBehaviour
 
     private void Awake()
     {
-        target = null;
+        target = transform.parent.gameObject;
         hp = 0;
         mp = 0;
     }
     private void Update()
     {
-        
+        transform.rotation = Quaternion.FromToRotation(transform.position, transform.position + new Vector3(0, 1, -1));
         if (target == null)
             return;
 
         transform.position = target.transform.position + new Vector3(0, 1.5f, 0);
-        if (target.GetComponent<ChessFSMManager>().GetState() == ChessStates.IDLE)
-            Destroy(gameObject);
+        //if (target.GetComponent<ChessFSMManager>().GetState() == ChessStates.IDLE)
+        //    Destroy(gameObject);
 
         hp = target.GetComponent<ChessFSMManager>().hp;
         mp = target.GetComponent<ChessFSMManager>().mana;
 
-        int level = target.GetComponent<ChessInfo>().iChessEvolutionRate;
+        int level = target.GetComponent<ChessFSMManager>().level;
         if(level==1)
          hpbar.value = hp / target.transform.GetComponentInChildren<StatusLists>().HP;
         else

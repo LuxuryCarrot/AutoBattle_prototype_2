@@ -7,11 +7,18 @@ public class ObjectGetSet : MonoBehaviour
     public Transform chess;
     public Transform tile;
 
-    private Transform startPos;
-    private GameManager gameManager;
+    public Transform startPos;
+    private RoundContinueManager gameManager;
+
+    private void Awake()
+    {
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<RoundContinueManager>();
+    }
 
     private void Update()
     {
+        
+
         if(Input.GetMouseButtonDown(0))
         {
             
@@ -52,7 +59,7 @@ public class ObjectGetSet : MonoBehaviour
                 if(tile==null)
                 {
                     chess.SetParent(startPos);
-                    chess.transform.position = startPos.position += new Vector3(0, 1.5f, 0);
+                    chess.transform.position = startPos.position += new Vector3(0, 1.8f, 0);
                 }
                 else if (tile != null)
                 {
@@ -62,13 +69,26 @@ public class ObjectGetSet : MonoBehaviour
                         if (tile.gameObject.layer == 11)
                         {
                             //레벨제한 코드 추가할 곳
+                            if(!gameManager.CanSetInBoard())
+                            {
+                                chess.SetParent(startPos);
+                                chess.transform.position = startPos.position + new Vector3(0, 1.8f, 0);
+                                chess = null;
+                                tile = null;
+                                startPos = null;
+                                return;
+                            }
+
                         }
                         chess.GetComponent<ChessFSMManager>().Settled();
                         chess.parent = tile;
-                        chess.position = tile.position + new Vector3(0, 2, 0);
-                        
+                        chess.position = tile.position + new Vector3(0, 2.2f, 0);
+
                         if (tile.gameObject.layer == 11)
+                        {
                             chess.tag = "chess";
+                            gameManager.chessList.Add(chess.gameObject);
+                        }
                         else
                             chess.tag = "Untagged";
                         //chess.gameObject.layer = 0;
@@ -77,18 +97,26 @@ public class ObjectGetSet : MonoBehaviour
                     else
                     {
                         tile.GetChild(0).SetParent(startPos);
-                        startPos.GetChild(0).position = startPos.position + new Vector3(0, 1.5f, 0);
+                        startPos.GetChild(0).position = startPos.position + new Vector3(0, 2.2f, 0);
                         startPos.GetChild(0).GetComponent<ChessFSMManager>().Settled();
                         if (startPos.gameObject.layer == 11)
-                            chess.tag = "chess";
+                        {
+                            gameManager.chessList.Remove(chess.gameObject);
+                            startPos.GetChild(0).tag = "chess";
+                            gameManager.chessList.Add(startPos.GetChild(0).gameObject);
+                        }
                         else
-                            chess.tag = "Untagged";
+                            startPos.GetChild(0).tag = "Untagged";
 
                         chess.SetParent(tile);
-                        chess.position = tile.position + new Vector3(0, 2, 0);
+                        chess.position = tile.position + new Vector3(0, 2.2f, 0);
                         chess.GetComponent<ChessFSMManager>().Settled();
                         if (tile.gameObject.layer == 11)
+                        {
+                            gameManager.chessList.Remove(startPos.GetChild(0).gameObject);
                             chess.tag = "chess";
+                            gameManager.chessList.Add(chess.gameObject);
+                        }
                         else
                             chess.tag = "Untagged";
                     }
@@ -97,6 +125,7 @@ public class ObjectGetSet : MonoBehaviour
             }
             chess = null;
             tile = null;
+            startPos = null;
         }
     }
 }

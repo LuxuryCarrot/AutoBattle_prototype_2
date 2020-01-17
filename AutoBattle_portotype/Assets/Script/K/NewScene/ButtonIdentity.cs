@@ -9,7 +9,8 @@ public class ButtonIdentity : MonoBehaviour
         = new string[5] { "Sword", "Shield", "Whip", "Whip", "Whip" };
     public static string[] prefabs
         = new string[5] { "ParkWarrior", "ParkShield", "Archer", "Mage", "Ranger" };
-
+   
+    
 
     private Image spriteImg;
     private int info;
@@ -18,13 +19,17 @@ public class ButtonIdentity : MonoBehaviour
     private void Awake()
     {
         info = (int)Random.Range(0, 5);
-        gameObject.GetComponent<Button>().image =
-            Resources.Load("Textures/UI/CharacterIcon/" + icons[info]) as Image;
+        
         store = GameObject.FindGameObjectWithTag("StoreFunction").GetComponent<ChessInitialize>();
+        gameObject.GetComponent<Image>().sprite =
+            store.images[info];
     }
 
     public void PurchaseButtonOn()
     {
         store.InitializingWithInfo(1, prefabs[info]);
+        Destroy(gameObject);
     }
+
+    
 }

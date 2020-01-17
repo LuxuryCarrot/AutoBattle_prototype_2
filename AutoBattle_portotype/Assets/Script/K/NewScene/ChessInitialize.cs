@@ -8,6 +8,20 @@ public class ChessInitialize : MonoBehaviour
     public GameObject Store;
     public GameObject tiles1;
     public GameObject tiles2;
+    public GameObject banner;
+
+    public Sprite[] images;
+
+    private Transform[] slots = new Transform[5];
+
+    private void Awake()
+    {
+        for(int i=0; i<5; i++)
+        {
+            slots[i] = banner.transform.GetChild(i);
+        }
+        ReRoll();
+    }
 
     public void InitializingInst()
     {
@@ -48,10 +62,13 @@ public class ChessInitialize : MonoBehaviour
             return;
 
 
-        GameObject NewChess = Instantiate(Resources.Load("Prefabs/Characters/" + name), target.position + new Vector3(0, 2, 0), Quaternion.identity) as GameObject;
+        GameObject NewChess = Instantiate(Resources.Load("Prefabs/Characters/" + name), target.position + new Vector3(0, 1.8f, 0), Quaternion.identity) as GameObject;
         NewChess.transform.parent=target;
-        NewChess.GetComponent<ChessFSMManager>().level = level+1;
-        //UpGrade(NewChess.GetComponent<ChessFSMManager>());
+        NewChess.GetComponent<ChessFSMManager>().level = level;
+        NewChess.GetComponent<ChessFSMManager>().SetDefaultStat();
+        NewChess.GetComponent<ChessFSMManager>().ID = PlayerIDSet.playerID;
+        if (level<=1)
+        UpGrade(NewChess.GetComponent<ChessFSMManager>());
     }
 
     public void UpGrade(ChessFSMManager chess)
@@ -100,16 +117,23 @@ public class ChessInitialize : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 upTargets[i].transform.SetParent(null);
+                upTargets[i].GetComponent<ChessFSMManager>().RemoveList();
                 Destroy(upTargets[i]);
             }
-            InitializingWithInfo(findLevel, findName);
+            InitializingWithInfo(findLevel+1, findName);
         }
 
         upTargets=null;
     }
 
-    public void Reroll()
+    public void ReRoll()
     {
+        for(int i=0; i<5; i++)
+        {
+            if (slots[i].childCount > 0)
+                Destroy(slots[i].GetChild(0).gameObject);
 
+            GameObject.Instantiate(Resources.Load("Prefabs/UIs/UnitButton"), slots[i]);
+        }
     }
 }
